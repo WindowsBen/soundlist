@@ -144,6 +144,26 @@ toggleBtn.addEventListener("click", () => {
 
 let triggerImages = {};
 
+// Twitch API helper function
+async function getTwitchAvatar(username) {
+  try {
+    const clientId = "YOUR_TWITCH_CLIENT_ID"; // replace with your app's Client ID
+    const accessToken = "YOUR_ACCESS_TOKEN";  // replace with your OAuth token
+    const res = await fetch(`https://api.twitch.tv/helix/users?login=${username}`, {
+      headers: {
+        "Client-ID": clientId,
+        "Authorization": `Bearer ${accessToken}`
+      }
+    });
+    const data = await res.json();
+    return data.data[0]?.profile_image_url || "https://static.twitchcdn.net/assets/favicon-32-e29e246c157142c94346.png";
+  } catch (err) {
+    console.error("Failed to fetch Twitch avatar for", username, err);
+    return "https://static.twitchcdn.net/assets/favicon-32-e29e246c157142c94346.png";
+  }
+}
+
+
 async function loadTriggerImages() {
   try {
     const res = await fetch("lists/IconTriggers.json");
@@ -172,11 +192,14 @@ function displayUserLists() {
 
     // Twitch avatar
     const twitchImg = document.createElement("img");
-    twitchImg.src = `https://static-cdn.jtvnw.net/jtv_user_pictures/${user}-profile_image-70x70.png`;
     twitchImg.alt = user;
     twitchImg.onerror = () => {
       twitchImg.src = "https://static.twitchcdn.net/assets/favicon-32-e29e246c157142c94346.png";
-    };
+};
+
+// Fetch avatar from Twitch API
+getTwitchAvatar(user).then(url => twitchImg.src = url);
+
 
     // Twitch profile link (clickable avatar)
     const twitchLink = document.createElement("a");
