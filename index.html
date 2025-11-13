@@ -9,7 +9,7 @@
     font-family: Arial, sans-serif;
     padding: 20px;
     background: linear-gradient(270deg, #4d480a, #120b49, #410d47, #043306);
-    background-size: 800% 800%;
+    background-size: 400% 400%;
     animation: gradientBG 60s linear infinite alternate;
     transition: background 0.5s ease, color 0.5s ease;
     color: #fff;
@@ -24,7 +24,7 @@
   /* Light mode override */
   body.lightmode {
     background: linear-gradient(270deg, #e2d522, #3b27f0, #cc26e2, #18d821);
-    background-size: 1000% 1000%;
+    background-size: 400% 400%;
     animation: gradientBG 40s linear infinite alternate;
     color: #000;
   }
@@ -144,29 +144,11 @@ toggleBtn.addEventListener("click", () => {
 
 let triggerImages = {};
 
-// Twitch API helper function
-async function getTwitchAvatar(username) {
-  try {
-    const clientId = "YOUR_TWITCH_CLIENT_ID"; // replace with your app's Client ID
-    const accessToken = "YOUR_ACCESS_TOKEN";  // replace with your OAuth token
-    const res = await fetch(`https://api.twitch.tv/helix/users?login=${username}`, {
-      headers: {
-        "Client-ID": clientId,
-        "Authorization": `Bearer ${accessToken}`
-      }
-    });
-    const data = await res.json();
-    return data.data[0]?.profile_image_url || "https://static.twitchcdn.net/assets/favicon-32-e29e246c157142c94346.png";
-  } catch (err) {
-    console.error("Failed to fetch Twitch avatar for", username, err);
-    return "https://static.twitchcdn.net/assets/favicon-32-e29e246c157142c94346.png";
-  }
-}
 
 
 async function loadTriggerImages() {
   try {
-    const res = await fetch("lists/IconTriggers.json");
+    const res = await fetch("lists/internals/IconTriggers.json");
     triggerImages = await res.json();
     console.log("Loaded trigger images:", triggerImages);
   } catch (err) {
@@ -176,10 +158,27 @@ async function loadTriggerImages() {
 
 loadTriggerImages();
 
+let avatars = {};
+
+async function loadAvatars() {
+  try {
+    const res = await fetch("lists/internals/avatars.json");
+    avatars = await res.json();
+    console.log("Loaded avatars:", avatars);
+  } catch (err) {
+    console.error("Failed to load avatars:", err);
+  }
+}
+
+loadAvatars();
+
+
 // Load available user lists on page load
-window.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("DOMContentLoaded", async () => {
+  await loadTriggerImages();
   displayUserLists();
 });
+
 
 function displayUserLists() {
   const container = document.getElementById("list");
@@ -192,13 +191,10 @@ function displayUserLists() {
 
     // Twitch avatar
     const twitchImg = document.createElement("img");
+    twitchImg.src = avatars[user] || "https://static.twitchcdn.net/assets/favicon-32-e29e246c157142c94346.png";
     twitchImg.alt = user;
-    twitchImg.onerror = () => {
-      twitchImg.src = "https://static.twitchcdn.net/assets/favicon-32-e29e246c157142c94346.png";
-};
 
 // Fetch avatar from Twitch API
-getTwitchAvatar(user).then(url => twitchImg.src = url);
 
 
     // Twitch profile link (clickable avatar)
@@ -315,7 +311,6 @@ function displayList(list, user) {
     container.appendChild(div);
   });
 }
-</script>
 
 </script>
 </body>
