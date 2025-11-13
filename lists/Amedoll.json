@@ -1,0 +1,252 @@
+{
+    "sounds": [
+        {
+            "trigger_word": "HUH",
+            "sound": "https://files.catbox.moe/3tnsit.mp3",
+            "volume": 0.4,
+            "chance": "20%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "borpaSpin",
+            "sound": "https://files.catbox.moe/btgovr.mp3",
+            "volume": 0.5,
+            "chance": "20%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "SNIFFA",
+            "sound": "https://files.catbox.moe/gsd6cv.mp3",
+            "volume": 0.4,
+            "chance": "20%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "catClap",
+            "sound": "https://files.catbox.moe/vmuuuc.mp3",
+            "volume": 0.8,
+            "chance": "20%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "KEKW",
+            "sound": "https://files.catbox.moe/o7iapi.mp3",
+            "volume": 0.5,
+            "chance": "20%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "AmeShake",
+            "sound": "https://files.catbox.moe/5oul5o.mp3",
+            "volume": 0.4,
+            "chance": "20%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "Meow",
+            "sound": "https://files.catbox.moe/78ji7b.mp3",
+            "volume": 0.5,
+            "chance": "20%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "MYAA",
+            "sound": "https://files.catbox.moe/2umwk6.mp3",
+            "volume": 0.5,
+            "chance": "20%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "Boshii",
+            "sound": "https://files.catbox.moe/bq8vw8.mp3",
+            "volume": 0.4,
+            "chance": "20%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "SUBSCRIBE",
+            "sound": "https://files.catbox.moe/6heisx.mp3",
+            "volume": 0.4,
+            "chance": "20%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "xqcSmash",
+            "sound": "https://files.catbox.moe/j1ut9i.mp3",
+            "volume": 0.4,
+            "chance": "20%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "plonk",
+            "sound": "https://files.catbox.moe/uw9by3.mp3",
+            "volume": 0.4,
+            "chance": "20%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "plink",
+            "sound": "https://files.catbox.moe/d82l4m.mp3",
+            "volume": 0.4,
+            "chance": "20%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "LMAO",
+            "sound": "https://files.catbox.moe/f4lb61.mp3",
+            "volume": 0.3,
+            "chance": "20%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "Looking",
+            "sound": "https://files.catbox.moe/m9a2kc.mp3",
+            "volume": 0.5,
+            "chance": "20%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "NICECOCK",
+            "sound": "https://files.catbox.moe/pjwvji.mp3",
+            "volume": 0.5,
+            "chance": "20%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "Yitty",
+            "sound": "https://files.catbox.moe/2c590u.mp3",
+            "volume": 0.4,
+            "chance": "20%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "lookingR",
+            "sound": "https://files.catbox.moe/m9a2kc.mp3",
+            "volume": 0.4,
+            "chance": "20%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "AmeYAY",
+            "sound": "https://files.catbox.moe/nkb2bo.mp3",
+            "volume": 0.2,
+            "chance": "20%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "peepoLickBowserFeet",
+            "sound": "https://files.catbox.moe/usg705.mp3",
+            "volume": 0.8,
+            "chance": "20%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "would",
+            "sound": "https://files.catbox.moe/04ihnc.mp3",
+            "volume": 0.5,
+            "chance": "10%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "WOULD",
+            "sound": "https://files.catbox.moe/04ihnc.mp3",
+            "volume": 0.5,
+            "chance": "10%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "o7",
+            "sound": "https://files.catbox.moe/894yr3.mp3",
+            "volume": 0.5,
+            "chance": "0.05%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "O7",
+            "sound": "https://files.catbox.moe/894yr3.mp3",
+            "volume": 0.5,
+            "chance": "0.05%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "peepo7",
+            "sound": "https://files.catbox.moe/894yr3.mp3",
+            "volume": 0.5,
+            "chance": "0.05%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "owo7",
+            "sound": "https://files.catbox.moe/894yr3.mp3",
+            "volume": 0.5,
+            "chance": "0.05%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "xdding",
+            "sound": "https://files.catbox.moe/dys50l.mp3",
+            "volume": 0.1,
+            "chance": "20%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "Nyehehehe",
+            "sound": "https://files.catbox.moe/9lj7i2.mp3",
+            "volume": 0.7,
+            "chance": "20%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "french",
+            "sound": "https://files.catbox.moe/kyx0mu.mp3",
+            "volume": 0.2,
+            "chance": "20%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "YIPPEE",
+            "sound": "https://files.catbox.moe/7llcq9.mp3",
+            "volume": 0.8,
+            "chance": "20%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "NOW",
+            "sound": "https://files.catbox.moe/nyx7w5.mp3",
+            "volume": 0.7,
+            "chance": "20%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        }
+	]
+}

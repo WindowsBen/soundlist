@@ -1,0 +1,52 @@
+{
+    "sounds": [
+        {
+            "trigger_word": "wiwiwi",
+            "sound": "https://files.catbox.moe/10unmm.mp3",
+            "volume": 0.5,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "meow_?",
+            "sound": "https://files.catbox.moe/1f0nkf.mp3",
+            "volume": 0.5,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "woof",
+            "sound": "https://files.catbox.moe/32kvru.mp3",
+            "volume": 0.7,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "fish",
+            "sound": "https://files.catbox.moe/ey7pj9.mp3",
+            "volume": 0.5,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "!fish",
+            "sound": "https://files.catbox.moe/ey7pj9.mp3",
+            "volume": 0.5,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "LIZARD",
+            "sound": "https://files.catbox.moe/z4tbs6.mp3",
+            "volume": 0.8,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        }
+    ]
+}
