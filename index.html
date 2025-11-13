@@ -29,24 +29,47 @@ body.lightmode {
   color: #000;
 }
 
-/* Make sound cards adapt to dark/light mode */
+/* Sound item cards with frosted glass effect */
 .sound-item {
   display: flex;
   align-items: center;
   margin: 10px 0;
   padding: 10px;
-  border: 1px solid rgba(255,255,255,0.2);
-  border-radius: 8px;
-  background: rgba(0,0,0,0.4);
-  transition: background 0.5s ease, border-color 0.5s ease;
+  border: 2px solid #000; /* black border */
+  border-radius: 12px;    /* rounded edges */
+  background: rgba(0,0,0,0.3); /* semi-transparent dark overlay */
+  backdrop-filter: blur(6px);   /* frosted glass effect */
+  transition: background 0.5s ease, border-color 0.5s ease, color 0.5s ease;
 }
 
+/* Light mode override for cards */
 body.lightmode .sound-item {
-  background: rgba(255,255,255,0.7);
-  border-color: rgba(0,0,0,0.2);
+  background: rgba(255,255,255,0.6); /* semi-transparent light overlay */
+  border-color: #000;
 }
 
-/* Button hover effect */
+/* Text inside cards */
+.sound-item div {
+  color: #fff; /* dark mode */
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.7); /* improves readability */
+}
+
+body.lightmode .sound-item div {
+  color: #000; /* light mode text */
+  text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+}
+
+/* Links inside cards */
+.sound-item a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+body.lightmode .sound-item a {
+  color: #000;
+}
+
+/* Play button hover effect */
 .sound-item button {
   margin-left: auto;
   padding: 5px 10px;
@@ -57,6 +80,7 @@ body.lightmode .sound-item {
 .sound-item button:hover {
   transform: scale(1.2);
 }
+
   .container { max-width: 900px; margin: 0 auto; }
   .sound-item { display: flex; align-items: center; margin: 10px 0; padding: 10px; border: 1px solid #ccc; border-radius: 8px; background: #fff; }
   .sound-item img { 
