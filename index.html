@@ -25,7 +25,7 @@
   body.lightmode {
     background: linear-gradient(270deg in oklab, #e2d522, #3b27f0, #cc26e2, #18d821);
     background-size: 400% 400%;
-    animation: gradientBG 40s linear infinite alternate;
+    animation: gradientBG 60s linear infinite alternate;
     color: transparent;
   }
 
@@ -241,7 +241,13 @@ async function loadList(user) {
 // Display the actual emote sound list
 function displayList(list, user) {
   const container = document.getElementById("list");
-  container.innerHTML = `<button id="backButton" style="margin-bottom:15px;">⬅ Back</button>`;
+  container.innerHTML = ''; // clear the list but keep the header outside
+    const backButton = document.createElement("button");
+    backButton.id = "backButton";
+    backButton.style.marginBottom = "15px";
+    backButton.textContent = "⬅ Back";
+    container.appendChild(backButton);
+
 
   // Back button to return to user list
   document.getElementById("backButton").addEventListener("click", () => displayUserLists());
@@ -283,7 +289,7 @@ function displayList(list, user) {
     // Make the whole div clickable to play sound
 div.style.cursor = "pointer";
 div.addEventListener("click", (e) => {
-  // prevent triggering when clicking the download link
+  // prevent triggering when clicking the emote link
   if (e.target.tagName.toLowerCase() === 'a') return;
 
   const audioSrc = Array.isArray(item.sound)
