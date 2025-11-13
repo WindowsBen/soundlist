@@ -11,7 +11,7 @@
   .sound-item img { 
     width: 50px; 
     height: 50px; 
-    object-fit: contain; /* scales animated emotes without cropping important content */ 
+    object-fit: contain; 
     margin-right: 15px; 
     border-radius: 5px; 
     background: #fff; 
@@ -32,10 +32,10 @@
 </div>
 
 <script>
-// Pastebin JSON URLs for each user/list
-const pastebinUrls = {
-  Test: "https://pastebin.com/raw/518Mfsgf",
-  Test2: "https://pastebin.com/raw/LjTZQwji"
+// Local JSON files stored in the repo
+const userFiles = {
+  Test1: "TestJson1.json",
+  Test2: "TestJson2.json"
 };
 
 // Mapping trigger words to images (7TV emotes, GIFs, AVIFs, etc.)
@@ -45,11 +45,11 @@ const triggerImages = {
   Boom: "https://cdn.7tv.app/emote/01ZZZZZZ0000ABC/4x.webp"
 };
 
-const defaultImage = "https://via.placeholder.com/50";
+const defaultImage = "https://cdn.7tv.app/emote/01JZZX4XDJYKZ7E5WZKSF7AN55/4x.avif";
 
 // Populate dropdown
 const userSelect = document.getElementById("userSelect");
-Object.keys(pastebinUrls).forEach(user => {
+Object.keys(userFiles).forEach(user => {
   const option = document.createElement("option");
   option.value = user;
   option.textContent = user;
@@ -61,11 +61,16 @@ userSelect.addEventListener("change", () => {
   if(user) loadList(user);
 });
 
-// Fetch JSON from Pastebin and display
+// Fetch JSON from local file and display
 async function loadList(user) {
-  const res = await fetch(pastebinUrls[user]);
-  const data = await res.json();
-  displayList(data);
+  try {
+    const res = await fetch(userFiles[user]);
+    const data = await res.json();
+    displayList(data);
+  } catch (error) {
+    console.error("Error loading list:", error);
+    document.getElementById("list").innerHTML = "<p style='color:red;'>Failed to load list.</p>";
+  }
 }
 
 // Display list in the container
