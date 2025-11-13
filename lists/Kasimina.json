@@ -1,0 +1,68 @@
+{
+    "sounds": [
+        {
+            "trigger_word": "wiwiwi",
+            "sound": "https://files.catbox.moe/10unmm.mp3",
+            "volume": 0.4,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "meow_?",
+            "sound": "https://files.catbox.moe/1f0nkf.mp3",
+            "volume": 0.5,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "SUSSY",
+            "sound": "https://files.catbox.moe/nahwuf.mp3",
+            "volume": 0.4,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "lizard",
+            "sound": "https://files.catbox.moe/z4tbs6.mp3",
+            "volume": 0.7,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "tiger",
+            "sound": "https://files.catbox.moe/ilc98g.mp3",
+            "volume": 0.4,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "Banana",
+            "sound": "https://files.catbox.moe/brj5yn.mp3",
+            "volume": 0.4,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "fish",
+            "sound": "https://files.catbox.moe/ey7pj9.mp3",
+            "volume": 0.4,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "Rawr",
+            "sound": "https://files.catbox.moe/vfx3o1.mp3",
+            "volume": 0.7,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        }
+	]
+}

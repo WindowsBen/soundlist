@@ -1,0 +1,36 @@
+{
+    "sounds": [
+        {
+            "trigger_word": "wiwiwi",
+            "sound": "https://files.catbox.moe/10unmm.mp3",
+            "volume": 0.5,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "LMAO",
+            "sound": "https://files.catbox.moe/f4lb61.mp3",
+            "volume": 0.2,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "xdd",
+            "sound": "https://files.catbox.moe/dys50l.mp3",
+            "volume": 0.2,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "clappi",
+            "sound": "https://files.catbox.moe/ue4pys.mp3",
+            "volume": 0.3,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        }
+	]
+}
