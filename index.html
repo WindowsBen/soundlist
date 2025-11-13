@@ -94,7 +94,6 @@
   }
 
   .container { max-width: 900px; margin: 0 auto; }
-  .dropdown { margin-bottom: 20px; padding: 5px; }
   
   /* Header color and light/dark mode support */
 .container > h1 {
@@ -256,40 +255,51 @@ function displayList(list, user) {
     const container = document.getElementById("list");
     container.innerHTML = ''; // clear the container first
 
-    // 1️⃣ Back button
-    const backButton = document.createElement("button");
-    backButton.id = "backButton";
-    backButton.style.marginBottom = "15px";
-    backButton.style.padding = "8px 12px";
-    backButton.style.fontSize = "16px";
-    backButton.style.color = "#fff"
-    backButton.style.borderRadius = "8px";
-    backButton.style.border = "2px solid #000";
-    backButton.style.background = "rgba(0,0,0,0.3)";
-    backButton.style.backdropFilter = "blur(6px)";
-    backButton.style.cursor = "pointer";
-    backButton.textContent = "⬅ Back";
-    container.appendChild(backButton);
-    backButton.addEventListener("click", () => displayUserLists());
+    // 1️⃣ Create a flex wrapper for back button + search
+const headerWrapper = document.createElement("div");
+headerWrapper.style.display = "flex";
+headerWrapper.style.alignItems = "center";
+headerWrapper.style.justifyContent = "space-between"; // back on left, search on right
+headerWrapper.style.marginBottom = "15px"; // only one margin for the row
 
-    // 2️⃣ Styled Search bar
-    const searchInput = document.createElement("input");
-    searchInput.type = "text";
-    searchInput.placeholder = "Search emotes...";
-    searchInput.style.marginBottom = "15px";
-    searchInput.style.padding = "10px";
-    searchInput.style.width = "100%";
-    searchInput.style.fontSize = "16px";
-    searchInput.style.borderRadius = "12px";
-    searchInput.style.border = "2px solid #000";
-    searchInput.style.background = "rgba(0,0,0,0.3)";
-    searchInput.style.backdropFilter = "blur(6px)";
-    searchInput.style.color = "#fff";
-    searchInput.style.outline = "none";
-    searchInput.style.transition = "all 0.3s ease";
-    searchInput.addEventListener("focus", () => searchInput.style.borderColor = "#fff");
-    searchInput.addEventListener("blur", () => searchInput.style.borderColor = "#000");
-    container.appendChild(searchInput);
+// Back button
+const backButton = document.createElement("button");
+backButton.id = "backButton";
+backButton.style.padding = "8px 12px";
+backButton.style.fontSize = "16px";
+backButton.style.color = "#fff"
+backButton.style.borderRadius = "8px";
+backButton.style.border = "2px solid #000";
+backButton.style.background = "rgba(0,0,0,0.3)";
+backButton.style.backdropFilter = "blur(6px)";
+backButton.style.cursor = "pointer";
+backButton.textContent = "⬅ Back";
+backButton.addEventListener("click", () => displayUserLists());
+
+// Search input
+const searchInput = document.createElement("input");
+searchInput.type = "text";
+searchInput.placeholder = "Search emotes...";
+searchInput.style.padding = "10px";
+searchInput.style.width = "300px"; // adjust width to your preference
+searchInput.style.fontSize = "16px";
+searchInput.style.borderRadius = "12px";
+searchInput.style.border = "2px solid #000";
+searchInput.style.background = "rgba(0,0,0,0.3)";
+searchInput.style.backdropFilter = "blur(6px)";
+searchInput.style.color = "#fff";
+searchInput.style.outline = "none";
+searchInput.style.transition = "all 0.3s ease";
+searchInput.addEventListener("focus", () => searchInput.style.borderColor = "#fff");
+searchInput.addEventListener("blur", () => searchInput.style.borderColor = "#000");
+
+// Append back button and search to the wrapper
+headerWrapper.appendChild(backButton);
+headerWrapper.appendChild(searchInput);
+
+// Append wrapper to container
+container.appendChild(headerWrapper);
+
 
     if (list.length === 0) {
         container.innerHTML += "<p>No sounds found in this list.</p>";
