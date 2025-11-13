@@ -142,12 +142,21 @@ toggleBtn.addEventListener("click", () => {
   }
 });
 
-// Mapping trigger words to images (7TV emotes, GIFs, AVIFs, etc.)
-const triggerImages = {
-  wiwiwi: "https://cdn.7tv.app/emote/01J5FX1J30000CF26Z25SJ6MZW/4x.avif",
-  PogChamp: "https://cdn.7tv.app/emote/01ABCDEF0000XYZ/4x.gif",
-  Boom: "https://cdn.7tv.app/emote/01ZZZZZZ0000ABC/4x.webp"
-};
+let triggerImages = {};
+
+async function loadTriggerImages() {
+  try {
+    const res = await fetch("triggers.json"); // path to your JSON
+    triggerImages = await res.json();
+    console.log("Loaded trigger images:", triggerImages);
+  } catch (err) {
+    console.error("Failed to load trigger images:", err);
+  }
+}
+
+// Call it at the start
+loadTriggerImages();
+
 
 const defaultImage = "https://cdn.7tv.app/emote/01FMT8FX5800071FCSB63SA4SJ/4x.avif";
 
