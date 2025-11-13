@@ -8,7 +8,7 @@
   body {
     font-family: Arial, sans-serif;
     padding: 20px;
-    background: linear-gradient(270deg, #0d1b2a, #1b263b, #243447, #1b263b);
+    background: linear-gradient(270deg, #726b10, #1a1079, #5f1169, #055209);
     background-size: 800% 800%;
     animation: gradientBG 20s ease infinite;
     transition: background 0.5s ease, color 0.5s ease;
@@ -23,7 +23,7 @@
 
   /* Light mode override */
   body.lightmode {
-    background: linear-gradient(270deg, #a8edea, #fed6e3, #fbc2eb, #a6c1ee);
+    background: linear-gradient(270deg, #e2d522, #3b27f0, #cc26e2, #18d821);
     background-size: 800% 800%;
     animation: gradientBG 20s ease infinite;
     color: #000;
@@ -191,15 +191,26 @@ function displayList(list) {
     text.innerHTML = `<strong>${item.trigger_word}</strong><br><a href="${item.sound}" target="_blank">Sound Link</a>`;
     div.appendChild(text);
 
+    // Create button for play
     const btn = document.createElement("button");
+
+    // Remove all button styling so it wraps the image tightly
+      btn.style.background = "none";
+      btn.style.border = "none";
+      btn.style.padding = "0";
+      btn.style.marginLeft = "auto"; // keeps it right-aligned
+      btn.style.cursor = "pointer";
+      btn.style.display = "inline-flex"; // shrink-wrap to content
+
     // Create an <img> element inside the button
       const playIcon = document.createElement("img");
-      img.src = "https://files.catbox.moe/o17kpq.png";
-      img.alt = "Play sound";
-      img.style.width = "24px"; // adjust size as needed
-      img.style.height = "24px";
-      img.style.pointerEvents = "none"; // so click passes to button
-      btn.appendChild(img);
+        playIcon.src = "https://example.com/play-icon.png"; // your PNG link
+        playIcon.alt = "Play sound";
+        playIcon.style.width = "24px"; // adjust as needed
+        playIcon.style.height = "24px";
+        playIcon.style.display = "block"; // remove inline spacing
+      btn.appendChild(playIcon);
+
     btn.onclick = () => {
       let audioSrc;
       if (Array.isArray(item.sound)) {
