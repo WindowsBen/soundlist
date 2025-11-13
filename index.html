@@ -185,6 +185,13 @@ Object.keys(userFiles).forEach(user => {
   userSelect.appendChild(option);
 });
 
+// Disable dropdown until triggerImages are loaded
+userSelect.disabled = true;
+
+loadTriggerImages().then(() => {
+  userSelect.disabled = false;
+})
+
 userSelect.addEventListener("change", () => {
   const user = userSelect.value;
   const twitchLink = document.getElementById("twitchLink");
@@ -267,9 +274,27 @@ function displayList(list) {
     const div = document.createElement("div");
     div.className = "sound-item";
     
-    const img = document.createElement("img");
-    img.src = triggerImages[item.trigger_word] || defaultImage;
-    div.appendChild(img);
+    // Create clickable emote image
+
+      // Get emote data (image + link)
+      const emoteData = triggerImages[item.trigger_word];
+      const emoteImgSrc = emoteData?.image || defaultImage;
+      const emoteLink = emoteData?.link || "#";
+
+      // Create clickable emote image
+      const emoteAnchor = document.createElement("a");
+      emoteAnchor.href = emoteLink;
+      emoteAnchor.target = "_blank"; // open in new tab
+
+      const emoteImg = document.createElement("img");
+      emoteImg.src = emoteImgSrc;
+      emoteImg.alt = item.trigger_word;
+      emoteImg.style.cursor = "pointer";
+
+      emoteAnchor.appendChild(emoteImg);
+      div.appendChild(emoteAnchor);
+
+
     
     const text = document.createElement("div");
     text.innerHTML = `<strong>${item.trigger_word}</strong><br><a href="${item.sound}" target="_blank">Sound Link</a>`;
