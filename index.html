@@ -169,7 +169,8 @@ userSelect.addEventListener("change", () => {
     loadList(user);
 
     // Update URL without reloading
-    history.pushState(null, "", `/${user}`);
+    history.pushState(null, "", `?list=${user}`); // when a user is selected
+
 
     // Show Twitch avatar and link
     twitchLink.href = `https://twitch.tv/${user}`;
@@ -191,7 +192,7 @@ userSelect.addEventListener("change", () => {
       favicon.href = twitchImg.src;
     };
 } else {
-    history.pushState(null, "", "/");
+    history.pushState(null, "", "./"); // when no user is selected (reset to base)
     twitchLink.style.display = "none";
 
     // Reset favicon to default Twitch icon
@@ -295,19 +296,25 @@ function displayList(list) {
 
   // On page load, check URL to auto-load selected list
 window.addEventListener("DOMContentLoaded", () => {
-  const pathUser = window.location.pathname.split("/").pop();
-  if (userFiles[pathUser]) {
-    userSelect.value = pathUser;
-    loadList(pathUser);
+  // Get the selected list from URL query parameter
+  const params = new URLSearchParams(window.location.search);
+  const listName = params.get("list");
+
+  if (userFiles[listName]) {
+    // Set dropdown to match URL
+    userSelect.value = listName;
+
+    // Load the selected list
+    loadList(listName);
 
     // Show Twitch avatar and link
     const twitchLink = document.getElementById("twitchLink");
     const twitchImg = document.getElementById("twitchImg");
-    twitchLink.href = `https://twitch.tv/${pathUser}`;
+    twitchLink.href = `https://twitch.tv/${listName}`;
     twitchLink.style.display = "inline-block";
-    twitchImg.src = `https://static-cdn.jtvnw.net/jtv_user_pictures/${pathUser}-profile_image-70x70.png`;
+    twitchImg.src = `https://static-cdn.jtvnw.net/jtv_user_pictures/${listName}-profile_image-70x70.png`;
 
-    // Update favicon
+    // Update favicon dynamically
     let favicon = document.querySelector("link[rel='icon']");
     if (!favicon) {
       favicon = document.createElement("link");
@@ -315,8 +322,15 @@ window.addEventListener("DOMContentLoaded", () => {
       document.head.appendChild(favicon);
     }
     favicon.href = twitchImg.src;
+
+    // Fallback if avatar fails
+    twitchImg.onerror = () => {
+      twitchImg.src = "https://static.twitchcdn.net/assets/favicon-32-e29e246c157142c94346.png";
+      favicon.href = twitchImg.src;
+    };
   }
 });
+
 
 }
 </script>
