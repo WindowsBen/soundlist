@@ -146,7 +146,7 @@ let triggerImages = {};
 
 async function loadTriggerImages() {
   try {
-    const res = await fetch("triggers.json"); // path to your JSON
+    const res = await fetch("IconTriggers.json"); // path to your JSON
     triggerImages = await res.json();
     console.log("Loaded trigger images:", triggerImages);
   } catch (err) {
