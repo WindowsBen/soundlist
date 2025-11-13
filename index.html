@@ -45,7 +45,7 @@ const triggerImages = {
   Boom: "https://cdn.7tv.app/emote/01ZZZZZZ0000ABC/4x.webp"
 };
 
-const defaultImage = "https://cdn.7tv.app/emote/01JZZX4XDJYKZ7E5WZKSF7AN55/4x.avif";
+const defaultImage = "https://cdn.7tv.app/emote/01FMT8FX5800071FCSB63SA4SJ/4x.avif";
 
 // Populate dropdown
 const userSelect = document.getElementById("userSelect");
@@ -66,7 +66,13 @@ async function loadList(user) {
   try {
     const res = await fetch(userFiles[user]);
     const data = await res.json();
-    displayList(data);
+
+    // Detect whether data is an array or an object with an array property
+    const list = Array.isArray(data)
+      ? data
+      : Object.values(data).find(v => Array.isArray(v)) || [];
+
+    displayList(list);
   } catch (error) {
     console.error("Error loading list:", error);
     document.getElementById("list").innerHTML = "<p style='color:red;'>Failed to load list.</p>";
@@ -78,6 +84,11 @@ function displayList(list) {
   const container = document.getElementById("list");
   container.innerHTML = "";
   
+  if(list.length === 0){
+    container.innerHTML = "<p>No sounds found in this list.</p>";
+    return;
+  }
+
   list.forEach(item => {
     if(!item.enabled || item.enabled !== "true") return;
     
