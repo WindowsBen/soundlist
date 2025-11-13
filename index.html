@@ -12,7 +12,7 @@
     background-size: 400% 400%;
     animation: gradientBG 60s linear infinite alternate;
     transition: background 0.5s ease, color 0.5s ease;
-    color: #fff;
+    color: transparent;
   }
 
   @keyframes gradientBG {
@@ -25,8 +25,8 @@
   body.lightmode {
     background: linear-gradient(270deg in oklab, #e2d522, #3b27f0, #cc26e2, #18d821);
     background-size: 400% 400%;
-    animation: gradientBG 40s linear infinite alternate;
-    color: #000;
+    animation: gradientBG 60s linear infinite alternate;
+    color: transparent;
   }
 
   /* Sound item cards with frosted glass effect */
@@ -294,24 +294,6 @@ div.addEventListener("click", (e) => {
   audio.play();
 });
 
-// Create download button as an image
-const downloadBtn = document.createElement("a");
-downloadBtn.href = Array.isArray(item.sound) ? item.sound[0] : item.sound; // first sound if array
-downloadBtn.download = ""; // forces download
-downloadBtn.style.marginLeft = "auto";
-downloadBtn.style.display = "inline-flex";
-downloadBtn.style.cursor = "pointer";
-
-// Image inside the button
-const downloadImg = document.createElement("img");
-downloadImg.src = "https://files.catbox.moe/y0ijhy.png"; // replace with your PNG link
-downloadImg.alt = "Download sound";
-downloadImg.style.width = "24px"; // adjust as needed
-downloadImg.style.height = "24px";
-downloadImg.style.display = "block";
-downloadImg.style.background = "transparent"
-
-downloadBtn.appendChild(downloadImg);
 div.appendChild(downloadBtn);
 
     container.appendChild(div);
