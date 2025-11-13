@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Twitch Sound List</title>
+<style>
+  body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; }
+  .container { max-width: 900px; margin: 0 auto; }
+  .sound-item { display: flex; align-items: center; margin: 10px 0; padding: 10px; border: 1px solid #ccc; border-radius: 8px; background: #fff; }
+  .sound-item img { 
+    width: 50px; 
+    height: 50px; 
+    object-fit: contain; /* scales animated emotes without cropping important content */ 
+    margin-right: 15px; 
+    border-radius: 5px; 
+    background: #fff; 
+  }
+  .sound-item button { margin-left: auto; padding: 5px 10px; cursor: pointer; }
+  .dropdown { margin-bottom: 20px; padding: 5px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Twitch Sounds</h1>
+  
+  <select id="userSelect" class="dropdown">
+    <option value="">Select a user/list</option>
+  </select>
+  
+  <div id="list"></div>
+</div>
+
+<script>
+// Pastebin JSON URLs for each user/list
+const pastebinUrls = {
+  alice: "https://pastebin.com/raw/XXXX",
+  bob: "https://pastebin.com/raw/YYYY"
+};
+
+// Mapping trigger words to images (7TV emotes, GIFs, AVIFs, etc.)
+const triggerImages = {
+  Airhorn: "https://cdn.7tv.app/emote/01J5FX1J30000CF26Z25SJ6MZW/4x.avif",
+  PogChamp: "https://cdn.7tv.app/emote/01ABCDEF0000XYZ/4x.gif",
+  Boom: "https://cdn.7tv.app/emote/01ZZZZZZ0000ABC/4x.webp"
+};
+
+const defaultImage = "https://via.placeholder.com/50";
+
+// Populate dropdown
+const userSelect = document.getElementById("userSelect");
+Object.keys(pastebinUrls).forEach(user => {
+  const option = document.createElement("option");
+  option.value = user;
+  option.textContent = user;
+  userSelect.appendChild(option);
+});
+
+userSelect.addEventListener("change", () => {
+  const user = userSelect.value;
+  if(user) loadList(user);
+});
+
+// Fetch JSON from Pastebin and display
+async function loadList(user) {
+  const res = await fetch(pastebinUrls[user]);
+  const data = await res.json();
+  displayList(data);
+}
+
+// Display list in the container
+function displayList(list) {
+  const container = document.getElementById("list");
+  container.innerHTML = "";
+  
+  list.forEach(item => {
+    if(!item.enabled || item.enabled !== "true") return;
+    
+    const div = document.createElement("div");
+    div.className = "sound-item";
+    
+    const img = document.createElement("img");
+    img.src = triggerImages[item.trigger_word] || defaultImage;
+    div.appendChild(img);
+    
+    const text = document.createElement("div");
+    text.innerHTML = `<strong>${item.trigger_word}</strong><br><a href="${item.sound}" target="_blank">Sound Link</a>`;
+    div.appendChild(text);
+
+    const btn = document.createElement("button");
+    btn.textContent = "▶️";
+    btn.onclick = () => {
+      const audio = new Audio(item.sound);
+      audio.volume = item.volume || 0.05;
+      audio.play();
+    };
+    div.appendChild(btn);
+    
+    container.appendChild(div);
+  });
+}
+</script>
+</body>
+</html>
