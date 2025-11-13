@@ -8,7 +8,7 @@
   body {
     font-family: Arial, sans-serif;
     padding: 20px;
-    background: linear-gradient(270deg, #4d480a, #120b49, #410d47, #043306);
+    background: linear-gradient(270deg in oklab, #4d480a, #120b49, #410d47, #043306);
     background-size: 400% 400%;
     animation: gradientBG 60s linear infinite alternate;
     transition: background 0.5s ease, color 0.5s ease;
@@ -23,7 +23,7 @@
 
   /* Light mode override */
   body.lightmode {
-    background: linear-gradient(270deg, #e2d522, #3b27f0, #cc26e2, #18d821);
+    background: linear-gradient(270deg in oklab, #e2d522, #3b27f0, #cc26e2, #18d821);
     background-size: 400% 400%;
     animation: gradientBG 40s linear infinite alternate;
     color: #000;
@@ -279,35 +279,41 @@ function displayList(list, user) {
     text.innerHTML = `<strong>${item.trigger_word}</strong><br><a href="${item.sound}" target="_blank">Sound Link</a>`;
     div.appendChild(text);
 
-    // Play button
-    const btn = document.createElement("button");
-    btn.style.background = "transparent";
-    btn.style.border = "none";
-    btn.style.padding = "0";
-    btn.style.marginLeft = "auto";
-    btn.style.cursor = "pointer";
-    btn.style.display = "inline-flex";
+    // Make the whole div clickable to play sound
+div.style.cursor = "pointer";
+div.addEventListener("click", (e) => {
+  // prevent triggering when clicking the download link
+  if (e.target.tagName.toLowerCase() === 'a') return;
 
-    const playIcon = document.createElement("img");
-    playIcon.src = "https://files.catbox.moe/o17kpq.png";
-    playIcon.alt = "Play sound";
-    playIcon.style.width = "24px";
-    playIcon.style.height = "24px";
-    playIcon.style.display = "block";
-    playIcon.style.pointerEvents = "none";
-    btn.appendChild(playIcon);
+  const audioSrc = Array.isArray(item.sound)
+    ? item.sound[Math.floor(Math.random() * item.sound.length)]
+    : item.sound;
 
-    btn.onclick = () => {
-      const audioSrc = Array.isArray(item.sound)
-        ? item.sound[Math.floor(Math.random() * item.sound.length)]
-        : item.sound;
+  const audio = new Audio(audioSrc);
+  audio.volume = item.volume || 0.05;
+  audio.play();
+});
 
-      const audio = new Audio(audioSrc);
-      audio.volume = item.volume || 0.05;
-      audio.play();
-    };
+// Create download button as an image
+const downloadBtn = document.createElement("a");
+downloadBtn.href = Array.isArray(item.sound) ? item.sound[0] : item.sound; // first sound if array
+downloadBtn.download = ""; // forces download
+downloadBtn.style.marginLeft = "auto";
+downloadBtn.style.display = "inline-flex";
+downloadBtn.style.cursor = "pointer";
 
-    div.appendChild(btn);
+// Image inside the button
+const downloadImg = document.createElement("img");
+downloadImg.src = "https://files.catbox.moe/y0ijhy.png"; // replace with your PNG link
+downloadImg.alt = "Download sound";
+downloadImg.style.width = "24px"; // adjust as needed
+downloadImg.style.height = "24px";
+downloadImg.style.display = "block";
+downloadImg.style.background = "transparent"
+
+downloadBtn.appendChild(downloadImg);
+div.appendChild(downloadBtn);
+
     container.appendChild(div);
   });
 }
