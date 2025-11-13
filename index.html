@@ -95,7 +95,10 @@
 <div class="container">
   <h1>Twitch Sounds</h1>
   
-  <button id="toggleMode" style="margin-bottom:15px;padding:5px 10px;cursor:pointer;">Toggle Light Mode</button>
+  <button id="toggleMode" aria-label="Toggle light/dark mode" style="margin-bottom:15px;padding:5px;cursor:pointer;font-size:20px;background:none;border:none;">
+  🌙
+</button>
+
 
   <select id="userSelect" class="dropdown">
     <option value="">Select a user/list</option>
@@ -114,6 +117,13 @@ const userFiles = {
 const toggleBtn = document.getElementById("toggleMode");
 toggleBtn.addEventListener("click", () => {
   document.body.classList.toggle("lightmode");
+
+  // Change icon
+  if (document.body.classList.contains("lightmode")) {
+    toggleBtn.textContent = "☀️"; // sun icon for light mode
+  } else {
+    toggleBtn.textContent = "🌙"; // moon icon for dark mode
+  }
 });
 
 // Mapping trigger words to images (7TV emotes, GIFs, AVIFs, etc.)
