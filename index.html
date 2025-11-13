@@ -93,7 +93,7 @@
 </head>
 <body>
 <div class="container">
-  <h1>Twitch Sounds</h1>
+  <h1>Emote Sounds</h1>
   
   <button id="toggleMode" aria-label="Toggle light/dark mode" style="margin-bottom:15px;padding:5px;cursor:pointer;font-size:20px;background:none;border:none;">
   🌙
@@ -193,7 +193,7 @@ function displayList(list) {
 
     const btn = document.createElement("button");
     // Create an <img> element inside the button
-      const img = document.createElement("img");
+      const playIcon = document.createElement("img");
       img.src = "https://files.catbox.moe/o17kpq.png";
       img.alt = "Play sound";
       img.style.width = "24px"; // adjust size as needed
