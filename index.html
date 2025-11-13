@@ -95,6 +95,19 @@
 
   .container { max-width: 900px; margin: 0 auto; }
   .dropdown { margin-bottom: 20px; padding: 5px; }
+  
+  /* Header color and light/dark mode support */
+.container > h1 {
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+    margin-bottom: 15px;
+}
+
+body.lightmode .container > h1 {
+    color: #000;
+    text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+}
+
 </style>
 </head>
 <body>
