@@ -101,21 +101,24 @@
   <h1>Emote Sounds</h1>
 
   <button id="toggleMode" aria-label="Toggle light/dark mode" 
-          style="margin-bottom:15px;padding:5px;cursor:pointer;font-size:20px;background:none;border:none;">
-    🌙
-  </button>
+        style="margin-bottom:15px;padding:5px;cursor:pointer;font-size:20px;background:none;border:none;">
+  🌙
+</button>
+
 
   <!-- Dropdown + Twitch avatar flex row -->
   <div style="display:flex; align-items:center; margin-bottom:20px;">
-    <select id="userSelect" class="dropdown">
-      <option value="">Select a user/list</option>
-    </select>
+    <div style="display:flex; align-items:center; margin-bottom:20px;">
+  <select id="userSelect" class="dropdown">
+    <option value="">Select a user/list</option>
+  </select>
 
-    <a id="twitchLink" href="#" target="_blank" style="display:none; margin-left:10px;">
-      <img id="twitchImg" alt="Twitch Profile" 
-           style="width:40px; height:40px; border-radius:50%; vertical-align:middle; cursor:pointer;">
-    </a>
-  </div>
+  <a id="twitchLink" href="#" target="_blank" style="display:none; margin-left:10px;">
+    <img id="twitchImg" alt="Twitch Profile" 
+         style="width:40px; height:40px; border-radius:50%; vertical-align:middle; cursor:pointer;">
+  </a>
+</div>
+
 
   <!-- This MUST exist -->
   <div id="list"></div>
@@ -167,46 +170,29 @@ userSelect.addEventListener("change", () => {
 
   if(user) {
     loadList(user);
+    history.pushState(null, "", `?list=${user}`);
 
-    // Update URL without reloading
-    history.pushState(null, "", `?list=${user}`); // when a user is selected
-
-
-    // Show Twitch avatar and link
     twitchLink.href = `https://twitch.tv/${user}`;
     twitchLink.style.display = "inline-block";
     twitchImg.src = `https://static-cdn.jtvnw.net/jtv_user_pictures/${user}-profile_image-70x70.png`;
 
-    // Update favicon dynamically
     let favicon = document.querySelector("link[rel='icon']");
-    if (!favicon) {
-      favicon = document.createElement("link");
-      favicon.rel = "icon";
-      document.head.appendChild(favicon);
-    }
+    if (!favicon) { favicon = document.createElement("link"); favicon.rel = "icon"; document.head.appendChild(favicon); }
     favicon.href = twitchImg.src;
 
-    // Fallback if avatar fails
     twitchImg.onerror = () => {
       twitchImg.src = "https://static.twitchcdn.net/assets/favicon-32-e29e246c157142c94346.png";
       favicon.href = twitchImg.src;
     };
-} else {
-    history.pushState(null, "", "./"); // when no user is selected (reset to base)
+  } else {
+    history.pushState(null, "", "./");
     twitchLink.style.display = "none";
-
-    // Reset favicon to default Twitch icon
     let favicon = document.querySelector("link[rel='icon']");
-    if (!favicon) {
-      favicon = document.createElement("link");
-      favicon.rel = "icon";
-      document.head.appendChild(favicon);
-    }
+    if (!favicon) { favicon = document.createElement("link"); favicon.rel = "icon"; document.head.appendChild(favicon); }
     favicon.href = "https://static.twitchcdn.net/assets/favicon-32-e29e246c157142c94346.png";
-}
-
-
+  }
 });
+
 
 
 // Fetch JSON from local file and display
@@ -296,40 +282,30 @@ function displayList(list) {
 
   // On page load, check URL to auto-load selected list
 window.addEventListener("DOMContentLoaded", () => {
-  // Get the selected list from URL query parameter
   const params = new URLSearchParams(window.location.search);
   const listName = params.get("list");
 
-  if (userFiles[listName]) {
-    // Set dropdown to match URL
+  if(listName && userFiles[listName]){
     userSelect.value = listName;
-
-    // Load the selected list
     loadList(listName);
 
-    // Show Twitch avatar and link
     const twitchLink = document.getElementById("twitchLink");
     const twitchImg = document.getElementById("twitchImg");
     twitchLink.href = `https://twitch.tv/${listName}`;
     twitchLink.style.display = "inline-block";
     twitchImg.src = `https://static-cdn.jtvnw.net/jtv_user_pictures/${listName}-profile_image-70x70.png`;
 
-    // Update favicon dynamically
     let favicon = document.querySelector("link[rel='icon']");
-    if (!favicon) {
-      favicon = document.createElement("link");
-      favicon.rel = "icon";
-      document.head.appendChild(favicon);
-    }
+    if(!favicon){ favicon = document.createElement("link"); favicon.rel = "icon"; document.head.appendChild(favicon);}
     favicon.href = twitchImg.src;
 
-    // Fallback if avatar fails
     twitchImg.onerror = () => {
       twitchImg.src = "https://static.twitchcdn.net/assets/favicon-32-e29e246c157142c94346.png";
       favicon.href = twitchImg.src;
     };
   }
 });
+
 
 
 }
