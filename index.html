@@ -104,13 +104,24 @@ function displayList(list) {
     div.appendChild(text);
 
     const btn = document.createElement("button");
-    btn.textContent = "▶️";
-    btn.onclick = () => {
-      const audio = new Audio(item.sound);
-      audio.volume = item.volume || 0.05;
-      audio.play();
-    };
-    div.appendChild(btn);
+btn.textContent = "▶️";
+btn.onclick = () => {
+  let audioSrc;
+  
+  if (Array.isArray(item.sound)) {
+    // Pick a random sound from the array
+    const randomIndex = Math.floor(Math.random() * item.sound.length);
+    audioSrc = item.sound[randomIndex];
+  } else {
+    audioSrc = item.sound;
+  }
+
+  const audio = new Audio(audioSrc);
+  audio.volume = item.volume || 0.05;
+  audio.play();
+};
+div.appendChild(btn);
+
     
     container.appendChild(div);
   });
