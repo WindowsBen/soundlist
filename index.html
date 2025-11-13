@@ -195,7 +195,7 @@ function displayList(list) {
     const btn = document.createElement("button");
 
     // Remove all button styling so it wraps the image tightly
-      btn.style.background = "none";
+      btn.style.background = "transparent";
       btn.style.border = "none";
       btn.style.padding = "0";
       btn.style.marginLeft = "auto"; // keeps it right-aligned
@@ -209,6 +209,8 @@ function displayList(list) {
         playIcon.style.width = "24px"; // adjust as needed
         playIcon.style.height = "24px";
         playIcon.style.display = "block"; // remove inline spacing
+        playIcon.style.background = "transparent"
+        playIcon.style.pointerEvents = "none"
       btn.appendChild(playIcon);
 
     btn.onclick = () => {
