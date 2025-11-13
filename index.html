@@ -116,6 +116,13 @@ body.lightmode .container > h1 {
     text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
 }
 
+.emote-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 items per row */
+  gap: 15px; /* spacing between emote cards */
+  margin-top: 10px;
+}
+
 </style>
 </head>
 <body>
@@ -278,6 +285,18 @@ function displayList(list, user) {
     return;
   }
 
+ // NEW GRID WRAPPER
+  const gridWrapper = document.createElement("div");
+  gridWrapper.className = "emote-grid";
+  container.appendChild(gridWrapper);
+
+  list.forEach(item => {
+    if (!item.enabled || item.enabled !== "true") return;
+
+    const div = document.createElement("div");
+    div.className = "sound-item";
+
+  
   list.forEach(item => {
     if (!item.enabled || item.enabled !== "true") return;
 
