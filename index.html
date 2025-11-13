@@ -105,17 +105,6 @@
     🌙
   </button>
 
-  <!-- Dropdown + Twitch avatar flex row -->
-  <div style="display:flex; align-items:center; margin-bottom:20px;">
-    <select id="userSelect" class="dropdown">
-      <option value="">Select a user/list</option>
-    </select>
-
-    <a id="twitchLink" href="#" target="_blank" style="display:none; margin-left:10px;">
-      <img id="twitchImg" alt="Twitch Profile" 
-           style="width:40px; height:40px; border-radius:50%; vertical-align:middle; cursor:pointer;">
-    </a>
-  </div>
 
   <!-- This MUST exist -->
   <div id="list"></div>
@@ -146,23 +135,18 @@ const userFiles = {
   Totless: "lists/Totless.json"
 };
 
+// Toggle dark/light mode
 const toggleBtn = document.getElementById("toggleMode");
 toggleBtn.addEventListener("click", () => {
   document.body.classList.toggle("lightmode");
-
-  // Change icon
-  if (document.body.classList.contains("lightmode")) {
-    toggleBtn.textContent = "☀️"; // sun icon for light mode
-  } else {
-    toggleBtn.textContent = "🌙"; // moon icon for dark mode
-  }
+  toggleBtn.textContent = document.body.classList.contains("lightmode") ? "☀️" : "🌙";
 });
 
 let triggerImages = {};
 
 async function loadTriggerImages() {
   try {
-    const res = await fetch("lists/IconTriggers.json"); // path to your JSON
+    const res = await fetch("lists/IconTriggers.json");
     triggerImages = await res.json();
     console.log("Loaded trigger images:", triggerImages);
   } catch (err) {
@@ -170,177 +154,146 @@ async function loadTriggerImages() {
   }
 }
 
-// Call it at the start
 loadTriggerImages();
 
-
-const defaultImage = "https://cdn.7tv.app/emote/01FMT8FX5800071FCSB63SA4SJ/4x.avif";
-
-// Populate dropdown
-const userSelect = document.getElementById("userSelect");
-Object.keys(userFiles).forEach(user => {
-  const option = document.createElement("option");
-  option.value = user;
-  option.textContent = user;
-  userSelect.appendChild(option);
+// Load available user lists on page load
+window.addEventListener("DOMContentLoaded", () => {
+  displayUserLists();
 });
 
-// Disable dropdown until triggerImages are loaded
-userSelect.disabled = true;
+function displayUserLists() {
+  const container = document.getElementById("list");
+  container.innerHTML = "";
 
-loadTriggerImages().then(() => {
-  userSelect.disabled = false;
-})
+  Object.keys(userFiles).forEach(user => {
+    const div = document.createElement("div");
+    div.className = "sound-item";
+    div.style.cursor = "pointer";
 
-userSelect.addEventListener("change", () => {
-  const user = userSelect.value;
-  const twitchLink = document.getElementById("twitchLink");
-  const twitchImg = document.getElementById("twitchImg");
-
-  if(user) {
-    loadList(user);
-
-    // Show Twitch avatar and link
-    twitchLink.href = `https://twitch.tv/${user}`;
-    twitchLink.style.display = "inline-block";
+    // Twitch avatar
+    const twitchImg = document.createElement("img");
     twitchImg.src = `https://static-cdn.jtvnw.net/jtv_user_pictures/${user}-profile_image-70x70.png`;
-
-    // Update favicon dynamically
-    let favicon = document.querySelector("link[rel='icon']");
-    if (!favicon) {
-      favicon = document.createElement("link");
-      favicon.rel = "icon";
-      document.head.appendChild(favicon);
-    }
-    favicon.href = twitchImg.src;
-
-    // Fallback if avatar fails
+    twitchImg.alt = user;
     twitchImg.onerror = () => {
       twitchImg.src = "https://static.twitchcdn.net/assets/favicon-32-e29e246c157142c94346.png";
-      favicon.href = twitchImg.src;
     };
-} else {
-    twitchLink.style.display = "none";
 
-    // Reset favicon to default Twitch icon
-    let favicon = document.querySelector("link[rel='icon']");
-    if (!favicon) {
-      favicon = document.createElement("link");
-      favicon.rel = "icon";
-      document.head.appendChild(favicon);
-    }
-    favicon.href = "https://static.twitchcdn.net/assets/favicon-32-e29e246c157142c94346.png";
+    // Twitch profile link (clickable avatar)
+    const twitchLink = document.createElement("a");
+    twitchLink.href = `https://twitch.tv/${user}`;
+    twitchLink.target = "_blank";
+    twitchLink.appendChild(twitchImg);
+    div.appendChild(twitchLink);
+
+    // Text label
+    const text = document.createElement("div");
+    text.innerHTML = `<strong>${user}</strong><br><span>Click to view sounds</span>`;
+    div.appendChild(text);
+
+    // Click the container to load user’s sound list
+    div.addEventListener("click", (e) => {
+      // prevent triggering when clicking twitch link
+      if (e.target.tagName.toLowerCase() === 'img' || e.target.closest('a')) return;
+      loadList(user);
+    });
+
+    container.appendChild(div);
+  });
 }
 
-
-});
-
-
-// Fetch JSON from local file and display
+// Load list for selected user
 async function loadList(user) {
   try {
     const res = await fetch(userFiles[user]);
     const data = await res.json();
 
-    // Detect whether data is an array or an object with an array property
     const list = Array.isArray(data)
       ? data
       : Object.values(data).find(v => Array.isArray(v)) || [];
 
-    displayList(list);
+    displayList(list, user);
   } catch (error) {
     console.error("Error loading list:", error);
     document.getElementById("list").innerHTML = "<p style='color:red;'>Failed to load list.</p>";
   }
 }
 
-// Display list in the container
-function displayList(list) {
+// Display the actual emote sound list
+function displayList(list, user) {
   const container = document.getElementById("list");
-  if (!container) {
-    console.error("#list container not found in DOM");
-    return;
-  }
-  container.innerHTML = "";
-  
-  if(list.length === 0){
-    container.innerHTML = "<p>No sounds found in this list.</p>";
+  container.innerHTML = `<button id="backButton" style="margin-bottom:15px;">⬅ Back</button>`;
+
+  // Back button to return to user list
+  document.getElementById("backButton").addEventListener("click", () => displayUserLists());
+
+  if (list.length === 0) {
+    container.innerHTML += "<p>No sounds found in this list.</p>";
     return;
   }
 
   list.forEach(item => {
-    if(!item.enabled || item.enabled !== "true") return;
-    
+    if (!item.enabled || item.enabled !== "true") return;
+
     const div = document.createElement("div");
     div.className = "sound-item";
-    
-    // Create clickable emote image
 
-      // Get emote data (image + link)
-      const emoteData = triggerImages[item.trigger_word];
-      const emoteImgSrc = emoteData?.image || defaultImage;
-      const emoteLink = emoteData?.link || "#";
+    // Emote image (from triggerImages or default)
+    const emoteData = triggerImages[item.trigger_word];
+    const emoteImgSrc = emoteData?.image || "https://cdn.7tv.app/emote/01FMT8FX5800071FCSB63SA4SJ/4x.avif";
+    const emoteLink = emoteData?.link || "#";
 
-      // Create clickable emote image
-      const emoteAnchor = document.createElement("a");
-      emoteAnchor.href = emoteLink;
-      emoteAnchor.target = "_blank"; // open in new tab
+    const emoteAnchor = document.createElement("a");
+    emoteAnchor.href = emoteLink;
+    emoteAnchor.target = "_blank";
 
-      const emoteImg = document.createElement("img");
-      emoteImg.src = emoteImgSrc;
-      emoteImg.alt = item.trigger_word;
-      emoteImg.style.cursor = "pointer";
+    const emoteImg = document.createElement("img");
+    emoteImg.src = emoteImgSrc;
+    emoteImg.alt = item.trigger_word;
+    emoteImg.style.cursor = "pointer";
+    emoteImg.style.background = "transparent";
 
-      emoteAnchor.appendChild(emoteImg);
-      div.appendChild(emoteAnchor);
+    emoteAnchor.appendChild(emoteImg);
+    div.appendChild(emoteAnchor);
 
-
-    
+    // Text
     const text = document.createElement("div");
     text.innerHTML = `<strong>${item.trigger_word}</strong><br><a href="${item.sound}" target="_blank">Sound Link</a>`;
     div.appendChild(text);
 
-    // Create button for play
+    // Play button
     const btn = document.createElement("button");
+    btn.style.background = "transparent";
+    btn.style.border = "none";
+    btn.style.padding = "0";
+    btn.style.marginLeft = "auto";
+    btn.style.cursor = "pointer";
+    btn.style.display = "inline-flex";
 
-    // Remove all button styling so it wraps the image tightly
-      btn.style.background = "transparent";
-      btn.style.border = "none";
-      btn.style.padding = "0";
-      btn.style.marginLeft = "auto"; // keeps it right-aligned
-      btn.style.cursor = "pointer";
-      btn.style.display = "inline-flex"; // shrink-wrap to content
-
-    // Create an <img> element inside the button
-      const playIcon = document.createElement("img");
-        playIcon.src = "https://files.catbox.moe/o17kpq.png"; // your PNG link
-        playIcon.alt = "Play sound";
-        playIcon.style.width = "24px"; // adjust as needed
-        playIcon.style.height = "24px";
-        playIcon.style.display = "block"; // remove inline spacing
-        playIcon.style.background = "transparent"
-        playIcon.style.pointerEvents = "none"
-      btn.appendChild(playIcon);
+    const playIcon = document.createElement("img");
+    playIcon.src = "https://files.catbox.moe/o17kpq.png";
+    playIcon.alt = "Play sound";
+    playIcon.style.width = "24px";
+    playIcon.style.height = "24px";
+    playIcon.style.display = "block";
+    playIcon.style.pointerEvents = "none";
+    btn.appendChild(playIcon);
 
     btn.onclick = () => {
-      let audioSrc;
-      if (Array.isArray(item.sound)) {
-        const randomIndex = Math.floor(Math.random() * item.sound.length);
-        audioSrc = item.sound[randomIndex];
-      } else {
-        audioSrc = item.sound;
-      }
+      const audioSrc = Array.isArray(item.sound)
+        ? item.sound[Math.floor(Math.random() * item.sound.length)]
+        : item.sound;
+
       const audio = new Audio(audioSrc);
       audio.volume = item.volume || 0.05;
       audio.play();
     };
+
     div.appendChild(btn);
-    
     container.appendChild(div);
   });
-
-
 }
+</script>
+
 </script>
 </body>
 </html>
