@@ -253,70 +253,106 @@ async function loadList(user) {
 
 // Display the actual emote sound list
 function displayList(list, user) {
-  const container = document.getElementById("list");
-  container.innerHTML = ''; // clear the list but keep the header outside
+    const container = document.getElementById("list");
+    container.innerHTML = ''; // clear the container first
+
+    // 1️⃣ Back button
     const backButton = document.createElement("button");
     backButton.id = "backButton";
     backButton.style.marginBottom = "15px";
+    backButton.style.padding = "8px 12px";
+    backButton.style.fontSize = "16px";
+    backButton.style.borderRadius = "8px";
+    backButton.style.border = "2px solid #000";
+    backButton.style.background = "rgba(0,0,0,0.3)";
+    backButton.style.backdropFilter = "blur(6px)";
+    backButton.style.cursor = "pointer";
     backButton.textContent = "⬅ Back";
     container.appendChild(backButton);
+    backButton.addEventListener("click", () => displayUserLists());
 
+    // 2️⃣ Styled Search bar
+    const searchInput = document.createElement("input");
+    searchInput.type = "text";
+    searchInput.placeholder = "Search emotes...";
+    searchInput.style.marginBottom = "15px";
+    searchInput.style.padding = "10px";
+    searchInput.style.width = "100%";
+    searchInput.style.fontSize = "16px";
+    searchInput.style.borderRadius = "12px";
+    searchInput.style.border = "2px solid #000";
+    searchInput.style.background = "rgba(0,0,0,0.3)";
+    searchInput.style.backdropFilter = "blur(6px)";
+    searchInput.style.color = "#fff";
+    searchInput.style.outline = "none";
+    searchInput.style.transition = "all 0.3s ease";
+    searchInput.addEventListener("focus", () => searchInput.style.borderColor = "#fff");
+    searchInput.addEventListener("blur", () => searchInput.style.borderColor = "#000");
+    container.appendChild(searchInput);
 
-  // Back button to return to user list
-  document.getElementById("backButton").addEventListener("click", () => displayUserLists());
+    if (list.length === 0) {
+        container.innerHTML += "<p>No sounds found in this list.</p>";
+        return;
+    }
 
-  if (list.length === 0) {
-    container.innerHTML += "<p>No sounds found in this list.</p>";
-    return;
-  }
+    // 3️⃣ Store emote divs for filtering
+    const emoteDivs = [];
 
-  list.forEach(item => {
-    if (!item.enabled || item.enabled !== "true") return;
+    // 4️⃣ Create emote divs
+    list.forEach(item => {
+        if (!item.enabled || item.enabled !== "true") return;
 
-    const div = document.createElement("div");
-    div.className = "sound-item";
+        const div = document.createElement("div");
+        div.className = "sound-item";
 
-    // Emote image (from triggerImages or default)
-    const emoteData = triggerImages[item.trigger_word];
-    const emoteImgSrc = emoteData?.image || "https://cdn.7tv.app/emote/01FMT8FX5800071FCSB63SA4SJ/4x.avif";
-    const emoteLink = emoteData?.link || "#";
+        const emoteData = triggerImages[item.trigger_word];
+        const emoteImgSrc = emoteData?.image || "https://cdn.7tv.app/emote/01FMT8FX5800071FCSB63SA4SJ/4x.avif";
+        const emoteLink = emoteData?.link || "#";
 
-    const emoteAnchor = document.createElement("a");
-    emoteAnchor.href = emoteLink;
-    emoteAnchor.target = "_blank";
+        const emoteAnchor = document.createElement("a");
+        emoteAnchor.href = emoteLink;
+        emoteAnchor.target = "_blank";
 
-    const emoteImg = document.createElement("img");
-    emoteImg.src = emoteImgSrc;
-    emoteImg.alt = item.trigger_word;
-    emoteImg.style.cursor = "pointer";
-    emoteImg.style.background = "transparent";
+        const emoteImg = document.createElement("img");
+        emoteImg.src = emoteImgSrc;
+        emoteImg.alt = item.trigger_word;
+        emoteImg.style.cursor = "pointer";
+        emoteImg.style.background = "transparent";
 
-    emoteAnchor.appendChild(emoteImg);
-    div.appendChild(emoteAnchor);
+        emoteAnchor.appendChild(emoteImg);
+        div.appendChild(emoteAnchor);
 
-    // Text
-    const text = document.createElement("div");
-    text.innerHTML = `<strong>${item.trigger_word}</strong><br><a href="${item.sound}" target="_blank">Sound Link</a>`;
-    div.appendChild(text);
+        const text = document.createElement("div");
+        text.innerHTML = `<strong>${item.trigger_word}</strong><br><a href="${item.sound}" target="_blank">Sound Link</a>`;
+        div.appendChild(text);
 
-    // Make the whole div clickable to play sound
-div.style.cursor = "pointer";
-div.addEventListener("click", (e) => {
-  // prevent triggering when clicking the emote link
-  if (e.target.tagName.toLowerCase() === 'a') return;
+        // Make the whole div clickable to play sound
+        div.style.cursor = "pointer";
+        div.addEventListener("click", (e) => {
+            if (e.target.tagName.toLowerCase() === 'a') return;
+            const audioSrc = Array.isArray(item.sound)
+                ? item.sound[Math.floor(Math.random() * item.sound.length)]
+                : item.sound;
+            const audio = new Audio(audioSrc);
+            audio.volume = item.volume || 0.05;
+            audio.play();
+        });
 
-  const audioSrc = Array.isArray(item.sound)
-    ? item.sound[Math.floor(Math.random() * item.sound.length)]
-    : item.sound;
+        container.appendChild(div);
 
-  const audio = new Audio(audioSrc);
-  audio.volume = item.volume || 0.05;
-  audio.play();
-});
+        // Add to emoteDivs array for search filtering
+        emoteDivs.push({div, trigger_word: item.trigger_word.toLowerCase()});
+    });
 
-    container.appendChild(div);
-  });
+    // 5️⃣ Filter on input
+    searchInput.addEventListener("input", () => {
+        const query = searchInput.value.toLowerCase();
+        emoteDivs.forEach(obj => {
+            obj.div.style.display = obj.trigger_word.includes(query) ? "flex" : "none";
+        });
+    });
 }
+
 
 </script>
 </body>
