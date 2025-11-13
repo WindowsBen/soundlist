@@ -10,7 +10,7 @@
     padding: 20px;
     background: linear-gradient(270deg, #4d480a, #120b49, #410d47, #043306);
     background-size: 800% 800%;
-    animation: gradientBG 20s ease infinite;
+    animation: gradientBG 40s ease infinite;
     transition: background 0.5s ease, color 0.5s ease;
     color: #fff;
   }
@@ -25,7 +25,7 @@
   body.lightmode {
     background: linear-gradient(270deg, #e2d522, #3b27f0, #cc26e2, #18d821);
     background-size: 800% 800%;
-    animation: gradientBG 20s ease infinite;
+    animation: gradientBG 40s ease infinite;
     color: #000;
   }
 
@@ -168,20 +168,43 @@ userSelect.addEventListener("change", () => {
   if(user) {
     loadList(user);
 
+    // Update URL without reloading
+    history.pushState(null, "", `/${user}`);
+
     // Show Twitch avatar and link
     twitchLink.href = `https://twitch.tv/${user}`;
     twitchLink.style.display = "inline-block";
-
-    // Load Twitch avatar
     twitchImg.src = `https://static-cdn.jtvnw.net/jtv_user_pictures/${user}-profile_image-70x70.png`;
+
+    // Update favicon dynamically
+    let favicon = document.querySelector("link[rel='icon']");
+    if (!favicon) {
+      favicon = document.createElement("link");
+      favicon.rel = "icon";
+      document.head.appendChild(favicon);
+    }
+    favicon.href = twitchImg.src;
 
     // Fallback if avatar fails
     twitchImg.onerror = () => {
       twitchImg.src = "https://static.twitchcdn.net/assets/favicon-32-e29e246c157142c94346.png";
+      favicon.href = twitchImg.src;
     };
-  } else {
+} else {
+    history.pushState(null, "", "/");
     twitchLink.style.display = "none";
-  }
+
+    // Reset favicon to default Twitch icon
+    let favicon = document.querySelector("link[rel='icon']");
+    if (!favicon) {
+      favicon = document.createElement("link");
+      favicon.rel = "icon";
+      document.head.appendChild(favicon);
+    }
+    favicon.href = "https://static.twitchcdn.net/assets/favicon-32-e29e246c157142c94346.png";
+}
+
+
 });
 
 
@@ -269,6 +292,32 @@ function displayList(list) {
     
     container.appendChild(div);
   });
+
+  // On page load, check URL to auto-load selected list
+window.addEventListener("DOMContentLoaded", () => {
+  const pathUser = window.location.pathname.split("/").pop();
+  if (userFiles[pathUser]) {
+    userSelect.value = pathUser;
+    loadList(pathUser);
+
+    // Show Twitch avatar and link
+    const twitchLink = document.getElementById("twitchLink");
+    const twitchImg = document.getElementById("twitchImg");
+    twitchLink.href = `https://twitch.tv/${pathUser}`;
+    twitchLink.style.display = "inline-block";
+    twitchImg.src = `https://static-cdn.jtvnw.net/jtv_user_pictures/${pathUser}-profile_image-70x70.png`;
+
+    // Update favicon
+    let favicon = document.querySelector("link[rel='icon']");
+    if (!favicon) {
+      favicon = document.createElement("link");
+      favicon.rel = "icon";
+      document.head.appendChild(favicon);
+    }
+    favicon.href = twitchImg.src;
+  }
+});
+
 }
 </script>
 </body>
