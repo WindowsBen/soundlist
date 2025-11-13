@@ -5,7 +5,58 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Twitch Sound List</title>
 <style>
-  body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; }
+  body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background: linear-gradient(270deg, #0d1b2a, #1b263b, #243447, #1b263b);
+  background-size: 800% 800%;
+  animation: gradientBG 20s ease infinite;
+  transition: background 0.5s ease, color 0.5s ease;
+  color: #fff;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Light mode override */
+body.lightmode {
+  background: linear-gradient(270deg, #a8edea, #fed6e3, #fbc2eb, #a6c1ee);
+  background-size: 800% 800%;
+  animation: gradientBG 20s ease infinite;
+  color: #000;
+}
+
+/* Make sound cards adapt to dark/light mode */
+.sound-item {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 8px;
+  background: rgba(0,0,0,0.4);
+  transition: background 0.5s ease, border-color 0.5s ease;
+}
+
+body.lightmode .sound-item {
+  background: rgba(255,255,255,0.7);
+  border-color: rgba(0,0,0,0.2);
+}
+
+/* Button hover effect */
+.sound-item button {
+  margin-left: auto;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.sound-item button:hover {
+  transform: scale(1.2);
+}
   .container { max-width: 900px; margin: 0 auto; }
   .sound-item { display: flex; align-items: center; margin: 10px 0; padding: 10px; border: 1px solid #ccc; border-radius: 8px; background: #fff; }
   .sound-item img { 
@@ -24,6 +75,8 @@
 <div class="container">
   <h1>Twitch Sounds</h1>
   
+  <button id="toggleMode" style="margin-bottom:15px;padding:5px 10px;cursor:pointer;">Toggle Light Mode</button>
+
   <select id="userSelect" class="dropdown">
     <option value="">Select a user/list</option>
   </select>
@@ -37,6 +90,12 @@ const userFiles = {
   Test1: "TestJson1.json",
   Test2: "TestJson2.json"
 };
+
+const toggleBtn = document.getElementById("toggleMode");
+toggleBtn.addEventListener("click", () => {
+  document.body.classList.toggle("lightmode");
+});
+
 
 // Mapping trigger words to images (7TV emotes, GIFs, AVIFs, etc.)
 const triggerImages = {
