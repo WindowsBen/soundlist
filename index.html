@@ -99,21 +99,26 @@
 <body>
 <div class="container">
   <h1>Emote Sounds</h1>
-  
-  <button id="toggleMode" aria-label="Toggle light/dark mode" style="margin-bottom:15px;padding:5px;cursor:pointer;font-size:20px;background:none;border:none;">
-  🌙
-</button>
 
+  <button id="toggleMode" aria-label="Toggle light/dark mode" 
+          style="margin-bottom:15px;padding:5px;cursor:pointer;font-size:20px;background:none;border:none;">
+    🌙
+  </button>
 
-<div style="display:flex; align-items:center; margin-bottom:20px;">
-  <select id="userSelect" class="dropdown">
-    <option value="">Select a user/list</option>
-  </select>
+  <!-- Dropdown + Twitch avatar flex row -->
+  <div style="display:flex; align-items:center; margin-bottom:20px;">
+    <select id="userSelect" class="dropdown">
+      <option value="">Select a user/list</option>
+    </select>
 
-  <a id="twitchLink" href="#" target="_blank" style="display:none; margin-left:10px;">
-    <img id="twitchImg" alt="Twitch Profile" 
-         style="width:40px; height:40px; border-radius:50%; cursor:pointer;">
-  </a>
+    <a id="twitchLink" href="#" target="_blank" style="display:none; margin-left:10px;">
+      <img id="twitchImg" alt="Twitch Profile" 
+           style="width:40px; height:40px; border-radius:50%; vertical-align:middle; cursor:pointer;">
+    </a>
+  </div>
+
+  <!-- This MUST exist -->
+  <div id="list"></div>
 </div>
 
 
