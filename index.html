@@ -192,7 +192,14 @@ function displayList(list) {
     div.appendChild(text);
 
     const btn = document.createElement("button");
-    btn.textContent = "▶️";
+    // Create an <img> element inside the button
+      const img = document.createElement("img");
+      img.src = "https://files.catbox.moe/o17kpq.png";
+      img.alt = "Play sound";
+      img.style.width = "24px"; // adjust size as needed
+      img.style.height = "24px";
+      img.style.pointerEvents = "none"; // so click passes to button
+      btn.appendChild(img);
     btn.onclick = () => {
       let audioSrc;
       if (Array.isArray(item.sound)) {
