@@ -418,14 +418,17 @@ container.appendChild(headerWrapper);
         // Make the whole div clickable to play sound
         div.style.cursor = "pointer";
         div.addEventListener("click", (e) => {
-            if (e.target.tagName.toLowerCase() === 'a') return;
-            const audioSrc = Array.isArray(item.sound)
-                ? item.sound[Math.floor(Math.random() * item.sound.length)]
-                : item.sound;
-            const audio = new Audio(audioSrc);
-            audio.volume = item.volume || 0.05;
-            audio.play();
-        });
+    if (e.target.closest('a')) return;  // prevents sound when clicking emote image/link
+
+    const audioSrc = Array.isArray(item.sound)
+        ? item.sound[Math.floor(Math.random() * item.sound.length)]
+        : item.sound;
+
+    const audio = new Audio(audioSrc);
+    audio.volume = item.volume || 0.05;
+    audio.play();
+});
+
 
         container.appendChild(div);
 
