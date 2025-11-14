@@ -65,14 +65,6 @@
             "enabled": "true"
         },
         {
-            "trigger_word": "jorkin",
-            "sound": "https://files.catbox.moe/vmuuuc.mp3",
-            "volume": 0.8,
-            "chance": "100%",
-            "trigger_cooldown": 0,
-            "enabled": "true"
-        },
-        {
             "trigger_word": "xdd",
             "sound": "https://files.catbox.moe/dys50l.mp3",
             "volume": 0.2,
