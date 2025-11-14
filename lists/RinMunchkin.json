@@ -258,7 +258,7 @@
         {
             "trigger_word": "xdd",
             "sound": "https://files.catbox.moe/dys50l.mp3",
-            "volume": 0.05,
+            "volume": 0.2,
             "chance": "100%",
             "trigger_cooldown": 0,
             "enabled": "true"
@@ -374,6 +374,14 @@
             "trigger_word": "rinmunLOOKING",
             "sound": "https://files.catbox.moe/m9a2kc.mp3",
             "volume": 0.15,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "Wigglecat",
+            "sound": "https://files.catbox.moe/m3m66j.mp3",
+            "volume": 0.5,
             "chance": "100%",
             "trigger_cooldown": 0,
             "enabled": "true"
