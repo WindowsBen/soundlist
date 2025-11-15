@@ -570,6 +570,7 @@ function displayList(list, user) {
                     }
                 }
               spinner.style.display = "none"; // hide spinner after decode
+              overlay.style.display = "none"
             } catch (err) {
                 console.error("Failed to load/prepare audio for", item.trigger_word, err);
                 spinner.style.display = "none"; // hide spinner if failed
