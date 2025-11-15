@@ -145,6 +145,41 @@ body.lightmode #toggleMode {
   background: none !important;
 }
 
+/* Animated loading spinner */
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255,255,255,0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-left: auto;
+  display: none;
+}
+
+body.lightmode .spinner {
+  border: 3px solid rgba(0,0,0,0.3);
+  border-top-color: black;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+/* Blurred transparent overlay for loading */
+.spinner-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(4px);
+  border-radius: 12px;
+  display: none;
+}
+
+body.lightmode .spinner-overlay {
+  background: rgba(255,255,255,0.4);
+}
+
+
 
 </style>
 </head>
@@ -230,6 +265,17 @@ async function loadAvatars() {
 }
 
 loadAvatars();
+
+// Shared AudioContext for per-item playback/reverse operations
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+// Helper: fetch + decode to AudioBuffer (cached per URL by caller)
+async function fetchAndDecode(url) {
+  const res = await fetch(url);
+  const arrayBuffer = await res.arrayBuffer();
+  return await audioCtx.decodeAudioData(arrayBuffer);
+}
+
 
 
 // Load available user lists on page load
@@ -328,72 +374,83 @@ async function loadList(user) {
   }
 }
 
-// Display the actual emote sound list
 function displayList(list, user) {
     const container = document.getElementById("list");
     container.innerHTML = ''; // clear the container first
 
-    // 1️⃣ Create a flex wrapper for back button + search
-const headerWrapper = document.createElement("div");
-headerWrapper.style.display = "flex";
-headerWrapper.style.alignItems = "center";
-headerWrapper.style.justifyContent = "space-between"; // back on left, search on right
-headerWrapper.style.marginBottom = "15px"; // only one margin for the row
+    // 1️⃣ Back button + search wrapper
+    const headerWrapper = document.createElement("div");
+    headerWrapper.style.display = "flex";
+    headerWrapper.style.alignItems = "center";
+    headerWrapper.style.justifyContent = "space-between";
+    headerWrapper.style.gap = "12px";
+    headerWrapper.style.marginBottom = "15px";
 
-// Back button
-const backButton = document.createElement("button");
-backButton.id = "backButton";
-backButton.style.padding = "8px 12px";
-backButton.style.fontSize = "16px";
-backButton.style.color = "#fff"
-backButton.style.borderRadius = "8px";
-backButton.style.border = "2px solid #000";
-backButton.style.background = "rgba(0,0,0,0.3)";
-backButton.style.backdropFilter = "blur(6px)";
-backButton.style.cursor = "pointer";
-backButton.textContent = "⬅ Back";
-backButton.addEventListener("click", () => displayUserLists());
+    // Back button
+    const backButton = document.createElement("button");
+    backButton.id = "backButton";
+    backButton.style.padding = "8px 12px";
+    backButton.style.fontSize = "16px";
+    backButton.style.color = "#fff";
+    backButton.style.borderRadius = "8px";
+    backButton.style.border = "2px solid #000";
+    backButton.style.background = "rgba(0,0,0,0.3)";
+    backButton.style.backdropFilter = "blur(6px)";
+    backButton.style.cursor = "pointer";
+    backButton.textContent = "⬅ Back";
+    backButton.addEventListener("click", () => displayUserLists());
 
-// Search input
-const searchInput = document.createElement("input");
-searchInput.type = "text";
-searchInput.placeholder = "Search emotes...";
-searchInput.style.padding = "10px";
-searchInput.style.width = "300px"; // adjust width to your preference
-searchInput.style.fontSize = "16px";
-searchInput.style.borderRadius = "12px";
-searchInput.style.border = "2px solid #000";
-searchInput.style.background = "rgba(0,0,0,0.3)";
-searchInput.style.backdropFilter = "blur(6px)";
-searchInput.style.color = "#fff";
-searchInput.style.outline = "none";
-searchInput.style.transition = "all 0.3s ease";
-searchInput.addEventListener("focus", () => searchInput.style.borderColor = "#fff");
-searchInput.addEventListener("blur", () => searchInput.style.borderColor = "#000");
+    // Search input
+    const searchInput = document.createElement("input");
+    searchInput.type = "text";
+    searchInput.placeholder = "Search emotes...";
+    searchInput.style.padding = "10px";
+    searchInput.style.width = "300px";
+    searchInput.style.fontSize = "16px";
+    searchInput.style.borderRadius = "12px";
+    searchInput.style.border = "2px solid #000";
+    searchInput.style.background = "rgba(0,0,0,0.3)";
+    searchInput.style.backdropFilter = "blur(6px)";
+    searchInput.style.color = "#fff";
+    searchInput.style.outline = "none";
+    searchInput.style.transition = "all 0.3s ease";
+    searchInput.addEventListener("focus", () => searchInput.style.borderColor = "#fff");
+    searchInput.addEventListener("blur", () => searchInput.style.borderColor = "#000");
 
-// Append back button and search to the wrapper
-headerWrapper.appendChild(backButton);
-headerWrapper.appendChild(searchInput);
-
-// Append wrapper to container
-container.appendChild(headerWrapper);
-
+    headerWrapper.appendChild(backButton);
+    headerWrapper.appendChild(searchInput);
+    container.appendChild(headerWrapper);
 
     if (list.length === 0) {
         container.innerHTML += "<p>No sounds found in this list.</p>";
         return;
     }
 
-    // 3️⃣ Store emote divs for filtering
+    // store emote nodes for search filtering
     const emoteDivs = [];
 
-    // 4️⃣ Create emote divs
+    // For each item create UI and per-item audio handling
     list.forEach(item => {
         if (!item.enabled || item.enabled !== "true") return;
 
         const div = document.createElement("div");
         div.className = "sound-item";
+        div.style.position = "relative";
+        // Loading overlay
+          const overlay = document.createElement("div");
+          overlay.className = "spinner-overlay";
+          div.appendChild(overlay);
 
+        // CSS spinner
+          const spinner = document.createElement("div");
+          spinner.className = "spinner";
+          overlay.appendChild(spinner);
+
+        div.style.display = "flex";
+        div.style.alignItems = "center";
+        div.style.gap = "10px";
+
+        // Emote image/anchor
         const emoteData = triggerImages[item.trigger_word];
         const emoteImgSrc = emoteData?.image || "https://files.catbox.moe/ab5icu.png";
         const emoteLink = emoteData?.link || "#";
@@ -411,30 +468,200 @@ container.appendChild(headerWrapper);
         emoteAnchor.appendChild(emoteImg);
         div.appendChild(emoteAnchor);
 
+        // Text column
         const text = document.createElement("div");
+        text.style.flex = "1";
         text.innerHTML = `<strong>${item.trigger_word}</strong><br><a href="${item.sound}" target="_blank">Sound Link</a>`;
         div.appendChild(text);
 
-        // Make the whole div clickable to play sound
-        div.style.cursor = "pointer";
-        div.addEventListener("click", (e) => {
-    if (e.target.closest('a')) return;  // prevents sound when clicking emote image/link
+        // ---- Per-item controls container (volume slider, reverse button, pitch input) ----
+        const controls = document.createElement("div");
+        controls.style.display = "flex";
+        controls.style.flexDirection = "column";
+        controls.style.alignItems = "flex-end";
+        controls.style.gap = "6px";
+        controls.style.minWidth = "120px";
 
-    const audioSrc = Array.isArray(item.sound)
-        ? item.sound[Math.floor(Math.random() * item.sound.length)]
-        : item.sound;
+        // Volume slider (0-100)
+        const volLabel = document.createElement("label");
+        volLabel.style.fontSize = "12px";
+        volLabel.style.marginBottom = "2px";
+        volLabel.textContent = "Vol";
 
-    const audio = new Audio(audioSrc);
-    audio.volume = item.volume || 0.05;
-    audio.play();
-});
+        const volInput = document.createElement("input");
+        volInput.type = "range";
+        volInput.min = "0";
+        volInput.max = "100";
+        // initial value: use item.volume if present (0-1), else 5 (5%)
+        volInput.value = (typeof item.volume === "number") ? Math.round(item.volume * 100) : 50;
+        volInput.style.width = "100px";
 
+        // Reverse play button
+        const reverseBtn = document.createElement("button");
+        reverseBtn.textContent = "Reverse ▶";
+        reverseBtn.title = "Play reversed";
+        reverseBtn.style.padding = "6px 8px";
+        reverseBtn.style.fontSize = "12px";
+        reverseBtn.style.cursor = "pointer";
 
+        // Pitch/speed input (%) - Option B: playbackRate
+        const pitchRow = document.createElement("div");
+        pitchRow.style.display = "flex";
+        pitchRow.style.alignItems = "center";
+        pitchRow.style.gap = "6px";
+
+        const pitchLabel = document.createElement("label");
+        pitchLabel.style.fontSize = "12px";
+        pitchLabel.textContent = "Speed";
+
+        const pitchInput = document.createElement("input");
+        pitchInput.type = "number";
+        pitchInput.min = "50";
+        pitchInput.max = "200";
+        pitchInput.value = "100"; // default 100%
+        pitchInput.style.width = "60px";
+        pitchInput.style.fontSize = "12px";
+
+        pitchRow.appendChild(pitchLabel);
+        pitchRow.appendChild(pitchInput);
+
+        // Append controls
+        const volWrapper = document.createElement("div");
+        volWrapper.style.display = "flex";
+        volWrapper.style.flexDirection = "column";
+        volWrapper.style.alignItems = "flex-end";
+        volWrapper.appendChild(volLabel);
+        volWrapper.appendChild(volInput);
+
+        controls.appendChild(volWrapper);
+        controls.appendChild(pitchRow);
+        controls.appendChild(reverseBtn);
+
+        div.appendChild(controls);
+
+        // ---------- Per-item audio state & helpers ----------
+        // cache decoded forward and reversed buffers per item
+        let forwardBuffer = null;
+        let reversedBuffer = null;
+        let currentSource = null;
+        let currentGain = null;
+
+        // helper: ensure buffer is decoded (first element of item.sound or string)
+        async function ensureBuffers() {
+            if (forwardBuffer) return;
+              spinner.style.display = "block"; // show spinner while decoding
+              overlay.style.display = "block"; 
+            try {
+                // handle item.sound as string or array
+                const srcUrl = Array.isArray(item.sound) ? item.sound[0] : item.sound;
+                forwardBuffer = await fetchAndDecode(srcUrl);
+                // build reversed buffer now too for quick reverse playback
+                const numChannels = forwardBuffer.numberOfChannels;
+                reversedBuffer = audioCtx.createBuffer(
+                    numChannels,
+                    forwardBuffer.length,
+                    forwardBuffer.sampleRate
+                );
+                for (let c = 0; c < numChannels; c++) {
+                    const chData = forwardBuffer.getChannelData(c);
+                    const revCh = reversedBuffer.getChannelData(c);
+                    for (let i = 0, L = chData.length; i < L; i++) {
+                        revCh[i] = chData[L - 1 - i];
+                    }
+                }
+              spinner.style.display = "none"; // hide spinner after decode
+            } catch (err) {
+                console.error("Failed to load/prepare audio for", item.trigger_word, err);
+                spinner.style.display = "none"; // hide spinner if failed
+                overlay.style.display = "none";
+                throw err;
+            }
+        }
+
+        // helper: stop currently playing node for this item
+        function stopCurrent() {
+            try {
+                if (currentSource) {
+                    currentSource.stop(0);
+                    currentSource.disconnect();
+                    currentSource = null;
+                }
+                if (currentGain) {
+                    currentGain.disconnect();
+                    currentGain = null;
+                }
+            } catch (e) {
+                // ignore
+            }
+        }
+
+        // play buffer (forward or reversed) with current settings
+        async function playBuffer(bufferToPlay) {
+            await ensureBuffers();
+            stopCurrent();
+
+            const src = audioCtx.createBufferSource();
+            src.buffer = bufferToPlay;
+            // pitch input is percent: 100 -> 1.0
+            const rate = Math.max(0.01, (parseFloat(pitchInput.value) || 100) / 100);
+            src.playbackRate.value = rate;
+
+            const gainNode = audioCtx.createGain();
+            gainNode.gain.value = (parseFloat(volInput.value) || 50) / 100;
+
+            src.connect(gainNode).connect(audioCtx.destination);
+            src.start(0);
+
+            currentSource = src;
+            currentGain = gainNode;
+
+            // auto-clear when done
+            src.onended = () => {
+                if (currentSource === src) {
+                    currentSource = null;
+                    if (currentGain) { currentGain.disconnect(); currentGain = null; }
+                }
+            };
+        }
+
+        // container click: play forward (unless clicking the emote link)
+        div.addEventListener("click", async (e) => {
+            if (e.target.closest('a')) return; // clicking emote link should only navigate
+            try {
+                await ensureBuffers();
+                await playBuffer(forwardBuffer);
+            } catch (err) {
+                console.error("Play error:", err);
+            }
+        });
+
+        // reverse button: play reversed buffer
+        reverseBtn.addEventListener("click", async (e) => {
+            e.stopPropagation(); // prevent container click
+            try {
+                await ensureBuffers();
+                await playBuffer(reversedBuffer);
+            } catch (err) {
+                console.error("Reverse play error:", err);
+            }
+        });
+
+        // Volume slider live update (affects currently playing, and future plays)
+        volInput.addEventListener("input", () => {
+            if (currentGain) currentGain.gain.value = (parseFloat(volInput.value) || 50) / 100;
+        });
+
+        // Pitch input change only affects next play (source.playbackRate is set when starting)
+        pitchInput.addEventListener("keydown", (ev) => {
+            if (ev.key === "Enter") ev.target.blur();
+        });
+
+        // Add to DOM
         container.appendChild(div);
 
         // Add to emoteDivs array for search filtering
         emoteDivs.push({div, trigger_word: item.trigger_word.toLowerCase()});
-    });
+    }); // end list.forEach
 
     // 5️⃣ Filter on input
     searchInput.addEventListener("input", () => {
