@@ -598,32 +598,28 @@ function displayList(list, user) {
 
         // play buffer (forward or reversed) with current settings
         async function playBuffer(bufferToPlay) {
-            await ensureBuffers();
-            stopCurrent();
+    await ensureBuffers();
+    
+    const src = audioCtx.createBufferSource();
+    src.buffer = bufferToPlay;
 
-            const src = audioCtx.createBufferSource();
-            src.buffer = bufferToPlay;
-            // pitch input is percent: 100 -> 1.0
-            const rate = Math.max(0.01, (parseFloat(pitchInput.value) || 100) / 100);
-            src.playbackRate.value = rate;
+    // pitch input is percent: 100 -> 1.0
+    const rate = Math.max(0.01, (parseFloat(pitchInput.value) || 100) / 100);
+    src.playbackRate.value = rate;
 
-            const gainNode = audioCtx.createGain();
-            gainNode.gain.value = (parseFloat(volInput.value) || 50) / 100;
+    const gainNode = audioCtx.createGain();
+    gainNode.gain.value = (parseFloat(volInput.value) || 50) / 100;
 
-            src.connect(gainNode).connect(audioCtx.destination);
-            src.start(0);
+    src.connect(gainNode).connect(audioCtx.destination);
+    src.start(0);
 
-            currentSource = src;
-            currentGain = gainNode;
+    // auto-clear when done
+    src.onended = () => {
+        src.disconnect();
+        gainNode.disconnect();
+    };
+}
 
-            // auto-clear when done
-            src.onended = () => {
-                if (currentSource === src) {
-                    currentSource = null;
-                    if (currentGain) { currentGain.disconnect(); currentGain = null; }
-                }
-            };
-        }
 
         // container click: play forward (unless clicking the emote link)
         div.addEventListener("click", async (e) => {
