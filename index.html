@@ -179,26 +179,36 @@ body.lightmode .spinner-overlay {
   background: rgba(255,255,255,0.4);
 }
 
-/* Stop Button */
-.stop-btn {
-    background: rgba(255, 255, 255, 0.15);
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+/* Stop and Reverse Buttons - Dark mode */
+.stop-btn,
+.reverse-btn {
     padding: 6px 10px;
-    border-radius: 6px;
-    font-size: 12px;
-    cursor: pointer;
+    border-radius: 8px;
     backdrop-filter: blur(6px);
+    background: rgba(255,255,255,0.1);
+    border: 1px solid #fff;
+    color: #fff;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.2s ease;
+}
+.stop-btn:hover,
+.reverse-btn:hover {
+    background: rgba(255,255,255,0.25);
 }
 
-body.light-mode .stop-btn {
-    background: rgba(0, 0, 0, 0.15);
-    color: black;
-    border: 1px solid rgba(0, 0, 0, 0.3);
+/* Light mode override */
+body.lightmode .stop-btn,
+body.lightmode .reverse-btn {
+    background: rgba(0,0,0,0.1);
+    border: 1px solid #000;
+    color: #000;
 }
-.stop-btn:hover {
-    background: var(--card-bg-hover);
+body.lightmode .stop-btn:hover,
+body.lightmode .reverse-btn:hover {
+    background: rgba(0,0,0,0.25);
 }
+
 
 
 
@@ -537,6 +547,7 @@ function displayList(list, user) {
         reverseBtn.style.padding = "6px 8px";
         reverseBtn.style.fontSize = "12px";
         reverseBtn.style.cursor = "pointer";
+        reverseBtn.className = "reverse-btn";
 
         // Stop button
         const stopBtn = document.createElement("button");
