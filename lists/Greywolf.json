@@ -35,7 +35,7 @@
         {
             "trigger_word": "LMAO",
             "sound": "https://files.catbox.moe/f4lb61.mp3",
-            "volume": 0.3,
+            "volume": 0.1,
             "chance": "100%",
             "trigger_cooldown": 0,
             "enabled": "true"
@@ -43,7 +43,7 @@
         {
             "trigger_word": "SUSSY",
             "sound": "https://files.catbox.moe/nahwuf.mp3",
-            "volume": 0.7,
+            "volume": 0.5,
             "chance": "100%",
             "trigger_cooldown": 0,
             "enabled": "true"
@@ -59,7 +59,7 @@
         {
             "trigger_word": "borpaSpin",
             "sound": "https://files.catbox.moe/btgovr.mp3",
-            "volume": 0.7,
+            "volume": 0.5,
             "chance": "100%",
             "trigger_cooldown": 0,
             "enabled": "true"
@@ -67,7 +67,7 @@
         {
             "trigger_word": "Pootsive",
             "sound": "https://files.catbox.moe/x3sanr.mp3",
-            "volume": 0.8,
+            "volume": 0.6,
             "chance": "100%",
             "trigger_cooldown": 0,
             "enabled": "true"
@@ -91,7 +91,7 @@
         {
             "trigger_word": "YODA",
             "sound": "https://files.catbox.moe/sgm6a7.wav",
-            "volume": 1,
+            "volume": 0.6,
             "chance": "100%",
             "trigger_cooldown": 0,
             "enabled": "true"
@@ -99,7 +99,7 @@
         {
             "trigger_word": "xdd",
             "sound": "https://files.catbox.moe/dys50l.mp3",
-            "volume": 0.3,
+            "volume": 0.1,
             "chance": "100%",
             "trigger_cooldown": 0,
             "enabled": "true"
