@@ -530,6 +530,12 @@ function displayList(list, user) {
         reverseBtn.style.fontSize = "12px";
         reverseBtn.style.cursor = "pointer";
 
+        // Stop button
+        const stopBtn = document.createElement("button");
+        stopBtn.textContent = "Stop All";
+        stopBtn.className = "stop-btn";
+
+
         // Pitch/speed input (%) - Option B: playbackRate
         const pitchRow = document.createElement("div");
         pitchRow.style.display = "flex";
@@ -564,12 +570,9 @@ function displayList(list, user) {
         controls.appendChild(reverseBtn);
         controls.appendChild(stopBtn);
 
+
         div.appendChild(controls);
 
-        // Stop button
-        const stopBtn = document.createElement("button");
-        stopBtn.textContent = "Stop All";
-        stopBtn.className = "stop-btn";
 
 
 // ---------- Per-item audio state & helpers ----------
