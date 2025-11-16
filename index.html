@@ -239,20 +239,27 @@ body.lightmode .reverse-btn:hover {
 
 <script>
 // Local JSON files stored in the repo
-// userFiles.json will be generated automatically
-let userFiles = {};
-
-async function loadUserFiles() {
-  try {
-    const res = await fetch("lists/userFiles.json");
-    userFiles = await res.json();
-    console.log("Loaded userFiles:", userFiles);
-  } catch (err) {
-    console.error("Failed to load userFiles:", err);
-  }
-}
-
-loadUserFiles();
+const userFiles = {
+  Amedoll: "lists/Amedoll.json",
+  Boshiitime: "lists/BoshiiTime.json",
+  Favorite: "lists/Favorite.json",
+  Fubuki_Vr: "lists/Fubuki_Vr.json",
+  Greywolf: "lists/Greywolf.json",
+  HeyImRadiant: "lists/HeyImRadiant.json",
+  Jakkuba_VR: "lists/Jakkuba_VR.json",
+  Kasimina: "lists/Kasimina.json",
+  Kohrean: "lists/Kohrean.json",
+  Krisuna: "lists/Krisuna.json",
+  Kromia: "lists/Kromia.json",
+  La_Wafflez: "lists/La_Wafflez.json",
+  Luuna: "lists/Luuna.json",
+  Puck: "lists/Puck.json",
+  RadiantSoul_Tv: "lists/RadiantSoul_Tv.json",
+  RinMunchkin: "lists/RinMunchkin.json",
+  SKTKawaiiNeko: "lists/SKTKawaiiNeko.json",
+  Taletrap: "lists/Taletrap.json",
+  Totless: "lists/Totless.json"
+};
 
 
 // Toggle dark/light mode
