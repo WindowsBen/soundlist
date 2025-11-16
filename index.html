@@ -282,7 +282,6 @@ async function loadTriggerImages() {
   }
 }
 
-loadTriggerImages();
 
 let avatars = {};
 
@@ -296,7 +295,6 @@ async function loadAvatars() {
   }
 }
 
-loadAvatars();
 
 // Shared AudioContext for per-item playback/reverse operations
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -310,11 +308,29 @@ async function fetchAndDecode(url) {
 
 
 
-// Load available user lists on page load
-window.addEventListener("DOMContentLoaded", async () => {
-  await loadTriggerImages();
-  displayUserLists();
-});
+// Load both avatars and trigger images before showing the user list
+async function loadResources() {
+  try {
+    // load trigger images
+    const resTriggers = await fetch("lists/internals/IconTriggers.json");
+    triggerImages = await resTriggers.json();
+    console.log("Loaded trigger images:", triggerImages);
+
+    // load avatars
+    const resAvatars = await fetch("lists/internals/avatars.json");
+    avatars = await resAvatars.json();
+    console.log("Loaded avatars:", avatars);
+
+    // now display the users
+    displayUserLists();
+  } catch (err) {
+    console.error("Failed to load resources:", err);
+    document.getElementById("list").innerHTML = "<p style='color:red;'>Failed to load resources.</p>";
+  }
+}
+
+window.addEventListener("DOMContentLoaded", loadResources);
+
 
 
 function displayUserLists() {
