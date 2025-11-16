@@ -179,6 +179,19 @@ body.lightmode .spinner-overlay {
   background: rgba(255,255,255,0.4);
 }
 
+/* Stop Button */
+.stop-btn {
+    padding: 4px 8px;
+    border-radius: 6px;
+    backdrop-filter: blur(6px);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    cursor: pointer;
+}
+.stop-btn:hover {
+    background: var(--card-bg-hover);
+}
+
 
 
 </style>
@@ -374,6 +387,18 @@ async function loadList(user) {
     document.getElementById("list").innerHTML = "<p style='color:red;'>Failed to load list.</p>";
   }
 }
+// 🔴 STOP ALL SOUNDS — global
+function stopAllSounds() {
+    if (!window.__GLOBAL_SOURCES__) return;
+
+    window.__GLOBAL_SOURCES__.forEach(src => {
+        try { src.stop(); } catch(e) {}
+        try { src.disconnect(); } catch(e) {}
+    });
+
+    window.__GLOBAL_SOURCES__ = [];
+}
+
 
 function displayList(list, user) {
     const container = document.getElementById("list");
@@ -537,81 +562,102 @@ function displayList(list, user) {
         controls.appendChild(volWrapper);
         controls.appendChild(pitchRow);
         controls.appendChild(reverseBtn);
+        controls.appendChild(stopBtn);
 
         div.appendChild(controls);
 
-        // ---------- Per-item audio state & helpers ----------
-        // cache decoded forward and reversed buffers per item
-        let forwardBuffer = null;
-        let reversedBuffer = null;
-        let currentSource = null;
-        let currentGain = null;
+        // Stop button
+        const stopBtn = document.createElement("button");
+        stopBtn.textContent = "Stop All";
+        stopBtn.className = "stop-btn";
 
-        // helper: ensure buffer is decoded (first element of item.sound or string)
-        async function ensureBuffers() {
-            if (forwardBuffer) return;
-              spinner.style.display = "block"; // show spinner while decoding
-              overlay.style.display = "block"; 
-            try {
-              // Pick a random URL
-                let srcUrl;
-              if (Array.isArray(item.sound)) {
-                const idx = Math.floor(Math.random() * item.sound.length);
-                srcUrl = item.sound[idx];
-              } else {
-            srcUrl = item.sound;
-           }
 
-        forwardBuffer = await fetchAndDecode(srcUrl);
-                // build reversed buffer now too for quick reverse playback
-                const numChannels = forwardBuffer.numberOfChannels;
-                reversedBuffer = audioCtx.createBuffer(
-                    numChannels,
-                    forwardBuffer.length,
-                    forwardBuffer.sampleRate
-                );
-                for (let c = 0; c < numChannels; c++) {
-                    const chData = forwardBuffer.getChannelData(c);
-                    const revCh = reversedBuffer.getChannelData(c);
-                    for (let i = 0, L = chData.length; i < L; i++) {
-                        revCh[i] = chData[L - 1 - i];
-                    }
-                }
-              spinner.style.display = "none"; // hide spinner after decode
-              overlay.style.display = "none"
-            } catch (err) {
-                console.error("Failed to load/prepare audio for", item.trigger_word, err);
-                spinner.style.display = "none"; // hide spinner if failed
-                overlay.style.display = "none";
-                throw err;
-            }
-        }
+// ---------- Per-item audio state & helpers ----------
+/*
+  New approach:
+  - pick a random URL at play-time
+  - cache decoded AudioBuffer per URL in bufferCache
+  - cache reversed AudioBuffer per URL in reversedCache
+  - create a NEW AudioBufferSourceNode for each play (allows overlap)
+*/
 
-        // helper: stop currently playing node for this item
-        function stopCurrent() {
-            try {
-                if (currentSource) {
-                    currentSource.stop(0);
-                    currentSource.disconnect();
-                    currentSource = null;
-                }
-                if (currentGain) {
-                    currentGain.disconnect();
-                    currentGain = null;
-                }
-            } catch (e) {
-                // ignore
-            }
-        }
+const bufferCache = new Map();     // url -> AudioBuffer
+const reversedCache = new Map();   // url -> reversed AudioBuffer
+const activeSources = [];   // holds currently playing AudioBufferSourceNodes for THIS item only
 
-        // play buffer (forward or reversed) with current settings
-        async function playBuffer(bufferToPlay) {
-    await ensureBuffers();
-    
+// create reversed buffer synchronously from decoded buffer
+function createReversedBuffer(srcBuffer) {
+  const numChannels = srcBuffer.numberOfChannels;
+  const rev = audioCtx.createBuffer(numChannels, srcBuffer.length, srcBuffer.sampleRate);
+  for (let c = 0; c < numChannels; c++) {
+    const ch = srcBuffer.getChannelData(c);
+    const revCh = rev.getChannelData(c);
+    for (let i = 0, L = ch.length; i < L; i++) {
+      revCh[i] = ch[L - 1 - i];
+    }
+  }
+  return rev;
+}
+
+// fetch+decode once per URL, show overlay while decoding
+async function getBufferForUrl(url) {
+  if (bufferCache.has(url)) return bufferCache.get(url);
+
+  // show loading UI
+  overlay.style.display = "block";
+  spinner.style.display = "block";
+
+  try {
+    const decoded = await fetchAndDecode(url);
+    bufferCache.set(url, decoded);
+    // hide loading UI
+    spinner.style.display = "none";
+    overlay.style.display = "none";
+    return decoded;
+  } catch (err) {
+    spinner.style.display = "none";
+    overlay.style.display = "none";
+    throw err;
+  }
+}
+
+// Play function: picks random URL, decodes if needed, optionally use reversed buffer
+async function playRandomBuffer({ reversed = false } = {}) {
+  try {
+    // pick random url if item.sound is array
+    const srcUrl = Array.isArray(item.sound)
+      ? item.sound[Math.floor(Math.random() * item.sound.length)]
+      : item.sound;
+
+    const buf = await getBufferForUrl(srcUrl);
+
+    let bufferToPlay;
+    if (reversed) {
+      if (reversedCache.has(srcUrl)) {
+        bufferToPlay = reversedCache.get(srcUrl);
+      } else {
+        const rev = createReversedBuffer(buf);
+        reversedCache.set(srcUrl, rev);
+        bufferToPlay = rev;
+      }
+    } else {
+      bufferToPlay = buf;
+    }
+
+    // create a fresh source so multiple plays overlap
     const src = audioCtx.createBufferSource();
     src.buffer = bufferToPlay;
 
-    // pitch input is percent: 100 -> 1.0
+    // track the source so “stop all” can stop it
+    activeSources.push(src);
+
+    // also push into global list so Stop All works across ALL items
+      if (!window.__GLOBAL_SOURCES__) window.__GLOBAL_SOURCES__ = [];
+      window.__GLOBAL_SOURCES__.push(src);
+
+
+
+    // playbackRate from pitch input
     const rate = Math.max(0.01, (parseFloat(pitchInput.value) || 100) / 100);
     src.playbackRate.value = rate;
 
@@ -621,35 +667,48 @@ function displayList(list, user) {
     src.connect(gainNode).connect(audioCtx.destination);
     src.start(0);
 
-    // auto-clear when done
+    // cleanup when finished
     src.onended = () => {
-        src.disconnect();
-        gainNode.disconnect();
+      try { src.disconnect(); } catch (e) {}
+      try { gainNode.disconnect(); } catch (e) {}
+
+      //remove finished source from active list
+      const i = activeSources.indexOf(src);
+      if (i !== -1) activeSources.splice(i,1);
     };
+
+    // done
+    return src;
+  } catch (err) {
+    console.error("Playback error for", item.trigger_word, err);
+    throw err;
+  }
+}
+
+// Keep stopCurrent (no-op for global overlap) — we leave it if you want to stop all plays in future
+function stopCurrent() {
+  // intentionally empty: we allow overlapping playback across clicks
 }
 
 
-        // container click: play forward (unless clicking the emote link)
-        div.addEventListener("click", async (e) => {
-            if (e.target.closest('a')) return; // clicking emote link should only navigate
-            try {
-                await ensureBuffers();
-                await playBuffer(forwardBuffer);
-            } catch (err) {
-                console.error("Play error:", err);
-            }
-        });
 
-        // reverse button: play reversed buffer
-        reverseBtn.addEventListener("click", async (e) => {
-            e.stopPropagation(); // prevent container click
-            try {
-                await ensureBuffers();
-                await playBuffer(reversedBuffer);
-            } catch (err) {
-                console.error("Reverse play error:", err);
-            }
-        });
+        // container click: play a random forward sound for this item (overlapping allowed)
+div.addEventListener("click", (e) => {
+  if (e.target.closest('a')) return; // clicking emote link should only navigate
+  playRandomBuffer({ reversed: false }).catch(err => console.error("Play error:", err));
+});
+
+// reverse button: play a random reversed sound for this item
+reverseBtn.addEventListener("click", (e) => {
+  e.stopPropagation(); // prevent container click
+  playRandomBuffer({ reversed: true }).catch(err => console.error("Reverse play error:", err));
+});
+stopBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    stopAllSounds();
+});
+
+
 
         // Volume slider live update (affects currently playing, and future plays)
         volInput.addEventListener("input", () => {
