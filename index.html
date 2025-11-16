@@ -553,9 +553,16 @@ function displayList(list, user) {
               spinner.style.display = "block"; // show spinner while decoding
               overlay.style.display = "block"; 
             try {
-                // handle item.sound as string or array
-                const srcUrl = Array.isArray(item.sound) ? item.sound[0] : item.sound;
-                forwardBuffer = await fetchAndDecode(srcUrl);
+              // Pick a random URL
+                let srcUrl;
+              if (Array.isArray(item.sound)) {
+                const idx = Math.floor(Math.random() * item.sound.length);
+                srcUrl = item.sound[idx];
+              } else {
+            srcUrl = item.sound;
+           }
+
+        forwardBuffer = await fetchAndDecode(srcUrl);
                 // build reversed buffer now too for quick reverse playback
                 const numChannels = forwardBuffer.numberOfChannels;
                 reversedBuffer = audioCtx.createBuffer(

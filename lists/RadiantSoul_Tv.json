@@ -194,7 +194,7 @@
         },
         {
             "trigger_word": "TheVoices",
-            "sound": "https://files.catbox.moe/ki7bgw.ogg",
+            "sound": "https://files.catbox.moe/80jibw.ogg",
             "volume": 0.39,
             "chance": "100%",
             "trigger_cooldown": 0,
