@@ -759,7 +759,7 @@
         "image": "https://cdn.7tv.app/emote/01J6SYFZ9R0003R88FPG3QZYDN/4x.avif",
         "link": "https://7tv.app/emotes/01J6SYFZ9R0003R88FPG3QZYDN"
     },
-    "Filipiowkyy": {
+    "Filipiowskyy": {
         "image": "https://cdn.7tv.app/emote/01JQSB24RE5VKV4EYNRQ6QD03J/4x.avif",
         "link": "https://7tv.app/emotes/01JQSB24RE5VKV4EYNRQ6QD03J"
     },
@@ -774,5 +774,13 @@
     "Rune": {
         "image": "https://cdn.7tv.app/emote/01F987RVPG0005PQAG2RRXFWNT/4x.avif",
         "link": "https://7tv.app/emotes/01F987RVPG0005PQAG2RRXFWNT"
+    },
+    "boom": {
+        "image": "https://cdn.7tv.app/emote/01K7DCCFZP0HZND2Y84Z1EFG6B/4x.avif",
+        "link": "https://7tv.app/emotes/01K7DCCFZP0HZND2Y84Z1EFG6B"
+    },
+    "BBnolikey": {
+        "image": "https://cdn.7tv.app/emote/01K5P9N17TR9334KBA95F8SHQS/4x.avif",
+        "link": "https://7tv.app/emotes/01K5P9N17TR9334KBA95F8SHQS"
     }
 }
