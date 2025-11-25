@@ -779,8 +779,64 @@
         "image": "https://cdn.7tv.app/emote/01K7DCCFZP0HZND2Y84Z1EFG6B/4x.avif",
         "link": "https://7tv.app/emotes/01K7DCCFZP0HZND2Y84Z1EFG6B"
     },
-    "BBnolikey": {
-        "image": "https://cdn.7tv.app/emote/01K5P9N17TR9334KBA95F8SHQS/4x.avif",
-        "link": "https://7tv.app/emotes/01K5P9N17TR9334KBA95F8SHQS"
+    "ssoulWOULD": {
+        "image": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_fa64cc6db12e47b2a2128e1482291ecc/default/dark/3.0",
+        "link": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_fa64cc6db12e47b2a2128e1482291ecc/default/dark/3.0"
+    },
+    "ssoulJAJAJA": {
+        "image": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_bed3820827664f2492c2f5bedcb11248/default/dark/3.0",
+        "link": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_bed3820827664f2492c2f5bedcb11248/default/dark/3.0"
+    },
+    "ssoulDeadlole": {
+        "image": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_c76795d8b09b4a8cb7fcf2b8b78afa28/default/dark/3.0",
+        "link": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_c76795d8b09b4a8cb7fcf2b8b78afa28/default/dark/3.0"
+    },
+    "ssoulEr": {
+        "image": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_44f97396d91744adb41a405eb0fc034d/default/dark/3.0",
+        "link": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_44f97396d91744adb41a405eb0fc034d/default/dark/3.0"
+    },
+    "ssoulDoinDaCatJiggleThing": {
+        "image": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_2917d34eb7fe47f1a66079bcbc495dfb/default/dark/3.0",
+        "link": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_2917d34eb7fe47f1a66079bcbc495dfb/default/dark/3.0"
+    },
+    "ssoulBark": {
+        "image": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_02569b9584d1427b9742a8e1f6fa507e/default/dark/3.0",
+        "link": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_02569b9584d1427b9742a8e1f6fa507e/default/dark/3.0"
+    },
+    "ssoulMeow": {
+        "image": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_561500fb14f64e54b87a9e30b14e5728/default/dark/3.0",
+        "link": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_561500fb14f64e54b87a9e30b14e5728/default/dark/3.0"
+    },
+    "ssoulBedge": {
+        "image": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_51b885c0e1a84891bc194008c3f92336/default/dark/3.0",
+        "link": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_51b885c0e1a84891bc194008c3f92336/default/dark/3.0"
+    },
+    "ssoulFlashBang": {
+        "image": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_9ca3029d35c54d698c96476b4a49e0b9/default/dark/3.0",
+        "link": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_9ca3029d35c54d698c96476b4a49e0b9/default/dark/3.0"
+    },
+    "ssoulSniffa": {
+        "image": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_28e8697c85de48aa8a882a90f91444f9/default/dark/3.0",
+        "link": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_28e8697c85de48aa8a882a90f91444f9/default/dark/3.0"
+    },
+    "ssoulNOOOOO": {
+        "image": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_88ca3654a2094697a3de70a42e609bc2/default/dark/3.0",
+        "link": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_88ca3654a2094697a3de70a42e609bc2/default/dark/3.0"
+    },
+    "ssoulKissAHomie": {
+        "image": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_89ef4cb8f99641a0a1893678d982ae80/default/dark/3.0",
+        "link": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_89ef4cb8f99641a0a1893678d982ae80/default/dark/3.0"
+    },
+    "ssoulRizz": {
+        "image": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_0442b3de90654440a73249b6dd1b5ffc/default/dark/3.0",
+        "link": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_0442b3de90654440a73249b6dd1b5ffc/default/dark/3.0"
+    },
+    "ssoulMonka": {
+        "image": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_200354f081af41a398d4c03a4f450785/default/dark/3.0",
+        "link": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_200354f081af41a398d4c03a4f450785/default/dark/3.0"
+    },
+    "ssoul4k": {
+        "image": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_4a0e4546d042452b817e93e4f4c61ce4/default/dark/3.0",
+        "link": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_4a0e4546d042452b817e93e4f4c61ce4/default/dark/3.0"
     }
 }
