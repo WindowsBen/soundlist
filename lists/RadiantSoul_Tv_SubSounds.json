@@ -127,7 +127,7 @@
         },
         {
             "trigger_word": "ssoulKissAHomie",
-            "sounds" : [
+            "sound" : [
                 {
                 "clip": "https://files.catbox.moe/fawrjk.ogg",
                 "volume": 0.29,
