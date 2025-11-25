@@ -1,0 +1,168 @@
+{
+    "sounds": [
+        {
+            "trigger_word": "ssoulWOULD",
+            "sound": "https://files.catbox.moe/7hg8zt.ogg",
+            "volume": 0.3,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "ssoulJAJAJA",
+            "sound": "https://files.catbox.moe/gi9zy9.ogg",
+            "volume": 0.25,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "ssoulDeadlole",
+            "sound": "https://files.catbox.moe/kx7mrj.ogg",
+            "volume": 0.45,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "ssoulEr",
+            "sound": "https://files.catbox.moe/dl1ls3.ogg",
+            "volume": 0.32,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "ssoulDoinDaCatJiggleThing",
+            "sound": [
+                {
+                "clip": "https://files.catbox.moe/f7x8cw.ogg",
+                "volume": 0.2,
+                "chance": "3.3%"
+                },
+                {
+                "clip": "https://files.catbox.moe/zan966.ogg",
+                "volume": 0.54,
+                "chance": "3.3%"
+                },
+                {    
+                "clip": "https://files.catbox.moe/nd2wz3.ogg",
+                "volume": 0.29,
+                "chance": "3.3%"
+                },
+                {    
+                "clip": "https://files.catbox.moe/8k0kca.ogg",
+                "volume": 0.3,
+                "chance": "3.3%"
+                },
+                {    
+                "clip": "https://files.catbox.moe/mlw8ju.ogg",
+                "volume": 0.3,
+                "chance": "86.8%"
+                }
+            ],
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "ssoulBark",
+            "sound": [
+                        "https://files.catbox.moe/t82ghv.ogg",
+                        "https://files.catbox.moe/k31knu.ogg",
+                        "https://files.catbox.moe/ouvz23.ogg"
+                     ],
+            "volume": 0.3,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "ssoulMeow",
+            "sound":  [
+                        "https://files.catbox.moe/6r03h6.ogg",
+                        "https://files.catbox.moe/1voscg.ogg",
+                        "https://files.catbox.moe/bgur2i.ogg"
+                      ],
+            "volume": 0.3,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "ssoulBedge",
+            "sound": "https://files.catbox.moe/90jvgd.ogg",
+            "volume": 0.09,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "ssoulFlashBang",
+            "sound": "https://files.catbox.moe/laemis.ogg",
+            "volume": 0.19,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "ssoulSniffa",
+            "sound": [
+                        "https://files.catbox.moe/k2jsv5.ogg",
+                        "https://files.catbox.moe/4xwpag.ogg"
+                ],
+            "volume": 0.25,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "ssoulNOOOOO",
+            "sound": "https://files.catbox.moe/5opsgy.ogg",
+            "volume": 0.16,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "ssoulKissAHomie",
+            "sounds" : [
+                {
+                "clip": "https://files.catbox.moe/fawrjk.ogg",
+                "volume": 0.29,
+                "chance": "5%"
+                },
+                {
+                "clip": "https://files.catbox.moe/fwjts4.ogg",
+                "volume": 0.35,
+                "chance": "95%"
+                }
+            ],
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "ssoulRizz",
+            "sound": "https://files.catbox.moe/4e4y8a.ogg",
+            "volume": 0.17,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "ssoulMonka",
+            "sound": "https://files.catbox.moe/yx8y2d.ogg",
+            "volume": 0.3,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "ssoul4k",
+            "sound": "https://files.catbox.moe/eorsog.ogg",
+            "volume": 0.45,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        }
+    ]
+}
