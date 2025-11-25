@@ -61,6 +61,8 @@
                 "chance": "86.8%"
                 }
             ],
+            "volume": 0.5,
+            "chance": "100%",
             "trigger_cooldown": 0,
             "enabled": "true"
         },
@@ -137,6 +139,8 @@
                 "chance": "95%"
                 }
             ],
+            "volume": 0.5,
+            "chance": "100%",
             "trigger_cooldown": 0,
             "enabled": "true"
         },
