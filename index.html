@@ -640,6 +640,30 @@ function createReversedBuffer(srcBuffer) {
   return rev;
 }
 
+// weighted choice helper for {clip, volume, chance}
+function pickWeighted(subSounds) {
+  const table = [];
+  subSounds.forEach(s => {
+    const pct = parseFloat(s.chance);
+    if (!isNaN(pct) && pct > 0) {
+      table.push({ url: s.clip, weight: pct, vol: s.volume });
+    }
+  });
+  if (!table.length) {
+    const f = subSounds[0];
+    return { url: f.clip, perSoundVolume: f.volume };
+  }
+  const total = table.reduce((a,b)=>a+b.weight,0);
+  let roll = Math.random() * total;
+  for (const row of table) {
+    if ((roll -= row.weight) <= 0) {
+      return { url: row.url, perSoundVolume: row.vol };
+    }
+  }
+  const last = table[table.length-1];
+  return { url: last.url, perSoundVolume: last.vol };
+}
+
 // fetch+decode once per URL, show overlay while decoding
 async function getBufferForUrl(url) {
   if (bufferCache.has(url)) return bufferCache.get(url);
@@ -665,20 +689,31 @@ async function getBufferForUrl(url) {
 // Play function: picks random URL, decodes if needed, optionally use reversed buffer
 async function playRandomBuffer({ reversed = false } = {}) {
   try {
-    // pick random url if item.sound is array
-    const srcUrl = Array.isArray(item.sound)
-      ? item.sound[Math.floor(Math.random() * item.sound.length)]
-      : item.sound;
+    let chosenUrl = null;
+    let perSoundVolume = null;
 
-    const buf = await getBufferForUrl(srcUrl);
+    // ----- NEW WEIGHTED LOGIC -----
+    if (Array.isArray(item.sound)) {
+      if (item.sound.length > 0 && typeof item.sound[0] === "object") {
+        const picked = pickWeighted(item.sound);
+        chosenUrl = picked.url;
+        perSoundVolume = picked.perSoundVolume;
+      } else {
+        chosenUrl = item.sound[Math.floor(Math.random() * item.sound.length)];
+      }
+    } else {
+      chosenUrl = item.sound;
+    }
+
+    const buf = await getBufferForUrl(chosenUrl);
 
     let bufferToPlay;
     if (reversed) {
-      if (reversedCache.has(srcUrl)) {
-        bufferToPlay = reversedCache.get(srcUrl);
+      if (reversedCache.has(chosenUrl)) {
+        bufferToPlay = reversedCache.get(chosenUrl);
       } else {
         const rev = createReversedBuffer(buf);
-        reversedCache.set(srcUrl, rev);
+        reversedCache.set(chosenUrl, rev);
         bufferToPlay = rev;
       }
     } else {
@@ -693,17 +728,20 @@ async function playRandomBuffer({ reversed = false } = {}) {
     activeSources.push(src);
 
     // also push into global list so Stop All works across ALL items
-      if (!window.__GLOBAL_SOURCES__) window.__GLOBAL_SOURCES__ = [];
-      window.__GLOBAL_SOURCES__.push(src);
-
-
+    if (!window.__GLOBAL_SOURCES__) window.__GLOBAL_SOURCES__ = [];
+    window.__GLOBAL_SOURCES__.push(src);
 
     // playbackRate from pitch input
     const rate = Math.max(0.01, (parseFloat(pitchInput.value) || 100) / 100);
     src.playbackRate.value = rate;
 
     const gainNode = audioCtx.createGain();
-    gainNode.gain.value = (parseFloat(volInput.value) || 50) / 100;
+
+    const localVol = (parseFloat(volInput.value) || 50) / 100;
+    const weightedVol = perSoundVolume != null ? perSoundVolume : 1;
+    const finalGain = localVol * weightedVol;
+
+    gainNode.gain.value = finalGain;
 
     src.connect(gainNode).connect(audioCtx.destination);
     src.start(0);
@@ -713,12 +751,10 @@ async function playRandomBuffer({ reversed = false } = {}) {
       try { src.disconnect(); } catch (e) {}
       try { gainNode.disconnect(); } catch (e) {}
 
-      //remove finished source from active list
       const i = activeSources.indexOf(src);
       if (i !== -1) activeSources.splice(i,1);
     };
 
-    // done
     return src;
   } catch (err) {
     console.error("Playback error for", item.trigger_word, err);
@@ -733,7 +769,7 @@ function stopCurrent() {
 
 
 
-        // container click: play a random forward sound for this item (overlapping allowed)
+// container click: play a random forward sound for this item (overlapping allowed)
 div.addEventListener("click", (e) => {
   if (e.target.closest('a')) return; // clicking emote link should only navigate
   playRandomBuffer({ reversed: false }).catch(err => console.error("Play error:", err));
@@ -751,31 +787,32 @@ stopBtn.addEventListener("click", (e) => {
 
 
 
-        // Volume slider live update (affects currently playing, and future plays)
-        volInput.addEventListener("input", () => {
-            if (currentGain) currentGain.gain.value = (parseFloat(volInput.value) || 50) / 100;
-        });
+// Volume slider live update (affects currently playing, and future plays)
+volInput.addEventListener("input", () => {
+    if (currentGain) currentGain.gain.value = (parseFloat(volInput.value) || 50) / 100;
+});
 
-        // Pitch input change only affects next play (source.playbackRate is set when starting)
-        pitchInput.addEventListener("keydown", (ev) => {
-            if (ev.key === "Enter") ev.target.blur();
-        });
+// Pitch input change only affects next play (source.playbackRate is set when starting)
+pitchInput.addEventListener("keydown", (ev) => {
+    if (ev.key === "Enter") ev.target.blur();
+});
 
-        // Add to DOM
-        container.appendChild(div);
+// Add to DOM
+container.appendChild(div);
 
-        // Add to emoteDivs array for search filtering
-        emoteDivs.push({div, trigger_word: item.trigger_word.toLowerCase()});
-    }); // end list.forEach
+// Add to emoteDivs array for search filtering
+emoteDivs.push({div, trigger_word: item.trigger_word.toLowerCase()});
+}); // end list.forEach
 
-    // 5️⃣ Filter on input
-    searchInput.addEventListener("input", () => {
-        const query = searchInput.value.toLowerCase();
-        emoteDivs.forEach(obj => {
-            obj.div.style.display = obj.trigger_word.includes(query) ? "flex" : "none";
-        });
+// 5️⃣ Filter on input
+searchInput.addEventListener("input", () => {
+    const query = searchInput.value.toLowerCase();
+    emoteDivs.forEach(obj => {
+        obj.div.style.display = obj.trigger_word.includes(query) ? "flex" : "none";
     });
+});
 }
+
 
 
 </script>
