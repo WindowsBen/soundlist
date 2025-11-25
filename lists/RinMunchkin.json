@@ -385,6 +385,14 @@
             "chance": "100%",
             "trigger_cooldown": 0,
             "enabled": "true"
+        },
+        {
+            "trigger_word": "moo",
+            "sound": "https://files.catbox.moe/fals5a.mp3",
+            "volume": 0.8,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
         }
     ]
 }
