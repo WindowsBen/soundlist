@@ -205,24 +205,19 @@ body.lightmode .spinner {
   }
 }
 
-#blur-overlay {
+/* Blurred transparent overlay for loading */
+.spinner-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  backdrop-filter: blur(8px);
-  background: rgba(0,0,0,0.15);
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.2s ease;
-  z-index: 50;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(4px);
+  border-radius: 12px;
+  display: none;
 }
 
-#blur-overlay.active {
-  opacity: 1;
+body.lightmode .spinner-overlay {
+  background: rgba(255,255,255,0.4);
 }
-
 
 /* Stop and Reverse Buttons - Dark mode */
 .stop-btn,
@@ -261,7 +256,6 @@ body.lightmode .reverse-btn:hover {
 </head>
 <body>
 <div class="container">
-    <div id="blur-overlay"></div>
   <h1>Emote Sounds</h1>
   <button id="toggleMode">🌙</button>
 
@@ -716,27 +710,24 @@ function pickWeighted(subSounds) {
   return { url: last.url, perSoundVolume: last.vol };
 }
 
-// fetch+decode once per URL, show loader while decoding
+// fetch+decode once per URL, show overlay while decoding
 async function getBufferForUrl(url) {
   if (bufferCache.has(url)) return bufferCache.get(url);
 
-  // show new loader
+  // show loading UI
   loader.style.display = "flex";
 
   try {
     const decoded = await fetchAndDecode(url);
     bufferCache.set(url, decoded);
-
-    // hide new loader
+    // hide loading UI
     loader.style.display = "none";
-
     return decoded;
   } catch (err) {
     loader.style.display = "none";
     throw err;
   }
 }
-
 
 // Play function: picks random URL, decodes if needed, optionally use reversed buffer
 async function playRandomBuffer({ reversed = false } = {}) {
