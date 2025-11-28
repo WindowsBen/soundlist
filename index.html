@@ -4,116 +4,110 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Twitch Sound List</title>
-
 <style>
-/* ====================== */
-/*      GENERAL STYLES     */
-/* ====================== */
-body {
-  font-family: Arial, sans-serif;
-  padding: 20px;
-  background: linear-gradient(270deg in oklab, #4d480a, #120b49, #410d47, #043306);
-  background-size: 400% 400%;
-  animation: gradientBG 60s linear infinite alternate;
-  transition: background 0.5s ease, color 0.5s ease;
-  color: transparent;
-}
+  body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background: linear-gradient(270deg in oklab, #4d480a, #120b49, #410d47, #043306);
+    background-size: 400% 400%;
+    animation: gradientBG 60s linear infinite alternate;
+    transition: background 0.5s ease, color 0.5s ease;
+    color: transparent;
+  }
 
-@keyframes gradientBG {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
+  @keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
 
-/* Light mode */
-body.lightmode {
-  background: linear-gradient(270deg in oklab, #e2d522, #3b27f0, #cc26e2, #18d821);
-  background-size: 400% 400%;
-  animation: gradientBG 60s linear infinite alternate;
-  color: transparent;
-}
+  /* Light mode override */
+  body.lightmode {
+    background: linear-gradient(270deg in oklab, #e2d522, #3b27f0, #cc26e2, #18d821);
+    background-size: 400% 400%;
+    animation: gradientBG 60s linear infinite alternate;
+    color: transparent;
+  }
 
-/* ====================== */
-/*       CONTAINERS        */
-/* ====================== */
-.container {
-  max-width: 900px;
-  margin: 0 auto;
-}
+  /* Sound item cards with frosted glass effect */
+  .sound-item {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    padding: 10px;
+    border: 2px solid #000; /* default border */
+    border-radius: 12px;    /* rounded edges */
+    background: rgba(0,0,0,0.3); /* dark overlay */
+    backdrop-filter: blur(6px);   /* frosted glass effect */
+    transition: background 0.5s ease, border-color 0.5s ease, color 0.5s ease;
+  }
 
-.container > h1 {
-  color: #fff;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
-  margin-bottom: 15px;
-}
-body.lightmode .container > h1 {
-  color: #000;
-  text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
-}
+  .sound-item img { 
+    width: 50px; 
+    height: 50px; 
+    object-fit: contain; 
+    margin-right: 15px; 
+    border-radius: 5px; 
+    background: transparent; 
+  }
 
-/* ====================== */
-/*      SOUND ITEMS        */
-/* ====================== */
-.sound-item {
-  display: flex;
-  align-items: center;
-  margin: 10px 0;
-  padding: 10px;
-  border: 2px solid #000;
-  border-radius: 12px;
-  background: rgba(0,0,0,0.3);
-  backdrop-filter: blur(6px);
-  transition: background 0.5s ease, border-color 0.5s ease, color 0.5s ease;
-}
+  .sound-item button { 
+    margin-left: auto; 
+    padding: 5px 10px; 
+    cursor: pointer; 
+    transition: transform 0.2s ease; 
+  }
 
-.sound-item img {
-  width: 50px;
-  height: 50px;
-  object-fit: contain;
-  margin-right: 15px;
-  border-radius: 5px;
-  background: transparent;
-}
+  .sound-item button:hover {
+    transform: scale(1.2);
+  }
 
-.sound-item button {
-  margin-left: auto;
-  padding: 5px 10px;
-  cursor: pointer;
+  #twitchImg:hover {
+  transform: scale(1.2);
   transition: transform 0.2s ease;
 }
 
-.sound-item button:hover {
-  transform: scale(1.2);
+  .sound-item div {
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+  }
+
+  /* Light mode override for cards */
+  body.lightmode .sound-item {
+    border: 5px solid #000;
+    background: rgba(255,255,255,0.6); 
+    border-color: #000;
+  }
+
+  body.lightmode .sound-item div {
+    color: #000; 
+    text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+  }
+
+  body.lightmode .sound-item a {
+    color: #000;
+  }
+
+  .sound-item a {
+    color: #fff;
+    text-decoration: underline;
+  }
+
+  .container { max-width: 900px; margin: 0 auto; }
+  
+  /* Header color and light/dark mode support */
+.container > h1 {
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+    margin-bottom: 15px;
 }
 
-.sound-item div {
-  color: #fff;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+body.lightmode .container > h1 {
+    color: #000;
+    text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
 }
 
-.sound-item a {
-  color: #fff;
-  text-decoration: underline;
-}
-
-/* Light mode for cards */
-body.lightmode .sound-item {
-  border: 5px solid #000;
-  background: rgba(255,255,255,0.6);
-}
-
-body.lightmode .sound-item div {
-  color: #000;
-  text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
-}
-
-body.lightmode .sound-item a {
-  color: #000;
-}
-
-/* ====================== */
-/*      CONTACT CARD       */
-/* ====================== */
+/* Contact Button Wrapper */
 .contact-card {
   display: inline-block;
   padding: 15px;
@@ -124,11 +118,13 @@ body.lightmode .sound-item a {
   transition: all 0.3s ease;
 }
 
+/* Glow on hover */
 .contact-card:hover {
   box-shadow: 0 0 20px rgba(255,255,255,0.8);
   transform: scale(1.05);
 }
 
+/* Light mode override */
 body.lightmode .contact-card {
   background: rgba(255,255,255,0.6);
   border: 2px solid #000;
@@ -138,9 +134,6 @@ body.lightmode .contact-card:hover {
   box-shadow: 0 0 20px rgba(0,0,0,0.7);
 }
 
-/* ====================== */
-/*   TOGGLE DARK MODE      */
-/* ====================== */
 #toggleMode {
   background: none !important;
   border: none !important;
@@ -148,9 +141,11 @@ body.lightmode .contact-card:hover {
   backdrop-filter: none !important;
 }
 
-/* ====================== */
-/*       LOADING UI        */
-/* ====================== */
+body.lightmode #toggleMode {
+  background: none !important;
+}
+
+/* Animated loading spinner */
 .spinner {
   width: 20px;
   height: 20px;
@@ -161,12 +156,17 @@ body.lightmode .contact-card:hover {
   margin-left: auto;
   display: none;
 }
+
 body.lightmode .spinner {
   border: 3px solid rgba(0,0,0,0.3);
   border-top-color: black;
 }
-@keyframes spin { to { transform: rotate(360deg); } }
 
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Custom loading animation */
 .loading {
   position: absolute;
   inset: 0;
@@ -175,23 +175,37 @@ body.lightmode .spinner {
   align-items: center;
   pointer-events: none;
 }
+
 .loading svg polyline {
   fill: none;
   stroke-width: 3;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-.loading svg polyline#back { stroke: #ff4d5033; }
+
+.loading svg polyline#back {
+  fill: none;
+  stroke: #ff4d5033;
+}
+
 .loading svg polyline#front {
+  fill: none;
   stroke: #ff4d4f;
   stroke-dasharray: 48, 144;
   stroke-dashoffset: 192;
   animation: dash_682 1.4s linear infinite;
 }
+
 @keyframes dash_682 {
-  72.5% { opacity: 0; }
-  to { stroke-dashoffset: 0; }
+  72.5% {
+    opacity: 0;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
 }
+
+/* Blurred transparent overlay for loading */
 .spinner-overlay {
   position: absolute;
   inset: 0;
@@ -200,33 +214,43 @@ body.lightmode .spinner {
   border-radius: 12px;
   display: none;
 }
+
 body.lightmode .spinner-overlay {
   background: rgba(255,255,255,0.4);
 }
 
-/* ====================== */
-/*    STOP / REVERSE BTN   */
-/* ====================== */
-.stop-btn, .reverse-btn {
-  padding: 6px 10px;
-  border-radius: 8px;
-  backdrop-filter: blur(6px);
-  background: rgba(255,255,255,0.1);
-  border: 1px solid #fff;
-  color: #fff;
-  cursor: pointer;
-  font-size: 12px;
-  transition: all 0.2s ease;
+/* Stop and Reverse Buttons - Dark mode */
+.stop-btn,
+.reverse-btn {
+    padding: 6px 10px;
+    border-radius: 8px;
+    backdrop-filter: blur(6px);
+    background: rgba(255,255,255,0.1);
+    border: 1px solid #fff;
+    color: #fff;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.2s ease;
 }
-.stop-btn:hover, .reverse-btn:hover { background: rgba(255,255,255,0.25); }
-body.lightmode .stop-btn, body.lightmode .reverse-btn {
-  background: rgba(0,0,0,0.1);
-  border: 1px solid #000;
-  color: #000;
+.stop-btn:hover,
+.reverse-btn:hover {
+    background: rgba(255,255,255,0.25);
 }
-body.lightmode .stop-btn:hover, body.lightmode .reverse-btn:hover {
-  background: rgba(0,0,0,0.25);
+
+/* Light mode override */
+body.lightmode .stop-btn,
+body.lightmode .reverse-btn {
+    background: rgba(0,0,0,0.1);
+    border: 1px solid #000;
+    color: #000;
 }
+body.lightmode .stop-btn:hover,
+body.lightmode .reverse-btn:hover {
+    background: rgba(0,0,0,0.25);
+}
+
+
+
 
 </style>
 </head>
@@ -234,20 +258,27 @@ body.lightmode .stop-btn:hover, body.lightmode .reverse-btn:hover {
 <div class="container">
   <h1>Emote Sounds</h1>
   <button id="toggleMode">🌙</button>
-  <div id="list"></div>
+
+    <div id="list"></div>
 
   <!-- Contact Me Button -->
   <div style="text-align:center; margin-top:40px;">
     <a href="https://twitch.tv/windowsben" target="_blank" class="contact-card">
-      <img src="https://files.catbox.moe/c65dyt.png" alt="Contact Me" style="width:120px; height:auto; border-radius:12px; cursor:pointer;">
+      <img 
+        src="https://files.catbox.moe/c65dyt.png"
+        alt="Contact Me"
+        style="width:120px; height:auto; border-radius:12px; cursor:pointer;">
     </a>
   </div>
+
 </div>
 
+
+
+
+
 <script>
-/* ====================== */
-/*       USER FILES        */
-/* ====================== */
+// Local JSON files stored in the repo
 const userFiles = {
   Amedoll: "lists/Amedoll.json",
   Boshiitime: "lists/BoshiiTime.json",
@@ -272,276 +303,592 @@ const userFiles = {
   Totless: "lists/Totless.json"
 };
 
-/* ====================== */
-/*   AUDIO CONTEXT & CACHE */
-/* ====================== */
-const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-const bufferCache = new Map();
-const reversedCache = new Map();
+// Handle browser back/forward navigation
+window.addEventListener('hashchange', () => {
+    const hashUser = window.location.hash.slice(1); // remove #
+    
+    if (hashUser && userFiles[hashUser]) {
+        loadList(hashUser);
+    } else {
+        displayUserLists(); // go back to main list when hash is empty
+    }
+});
 
-/* ====================== */
-/*     GLOBAL VARIABLES    */
-/* ====================== */
-let avatars = {};
+
+
+// Toggle dark/light mode
+const toggleBtn = document.getElementById("toggleMode");
+toggleBtn.addEventListener("click", () => {
+  document.body.classList.toggle("lightmode");
+  toggleBtn.textContent = document.body.classList.contains("lightmode") ? "☀️" : "🌙";
+});
+
 let triggerImages = {};
-window.__GLOBAL_SOURCES__ = [];
 
-/* ====================== */
-/*     UTILITY FUNCTIONS   */
-/* ====================== */
-function createElement(tag, options = {}) {
-  const el = document.createElement(tag);
-  Object.entries(options).forEach(([key, val]) => el[key] = val);
-  return el;
+
+
+async function loadTriggerImages() {
+  try {
+    const res = await fetch("lists/internals/IconTriggers.json");
+    triggerImages = await res.json();
+    console.log("Loaded trigger images:", triggerImages);
+  } catch (err) {
+    console.error("Failed to load trigger images:", err);
+  }
 }
 
-async function fetchJSON(url) {
-  const res = await fetch(url);
-  return await res.json();
+
+let avatars = {};
+
+async function loadAvatars() {
+  try {
+    const res = await fetch("lists/internals/avatars.json");
+    avatars = await res.json();
+    console.log("Loaded avatars:", avatars);
+  } catch (err) {
+    console.error("Failed to load avatars:", err);
+  }
 }
 
+
+// Shared AudioContext for per-item playback/reverse operations
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+// Helper: fetch + decode to AudioBuffer (cached per URL by caller)
 async function fetchAndDecode(url) {
-  const buffer = await fetch(url).then(r => r.arrayBuffer());
-  return await audioCtx.decodeAudioData(buffer);
+  const res = await fetch(url);
+  const arrayBuffer = await res.arrayBuffer();
+  return await audioCtx.decodeAudioData(arrayBuffer);
 }
 
-/* ====================== */
-/*      INIT RESOURCES      */
-/* ====================== */
+
+
+// Load both avatars and trigger images before showing the user list
 async function loadResources() {
   try {
-    triggerImages = await fetchJSON("lists/internals/IconTriggers.json");
-    avatars = await fetchJSON("lists/internals/avatars.json");
+    // load trigger images
+    const resTriggers = await fetch("lists/internals/IconTriggers.json");
+    triggerImages = await resTriggers.json();
+    console.log("Loaded trigger images:", triggerImages);
+
+    // load avatars
+    const resAvatars = await fetch("lists/internals/avatars.json");
+    avatars = await resAvatars.json();
+    console.log("Loaded avatars:", avatars);
+
+    // now display the users
     displayUserLists();
-  } catch(e) {
-    console.error("Failed to load resources", e);
+  } catch (err) {
+    console.error("Failed to load resources:", err);
     document.getElementById("list").innerHTML = "<p style='color:red;'>Failed to load resources.</p>";
   }
 }
 
-/* ====================== */
-/*       HASH HANDLER       */
-/* ====================== */
-window.addEventListener("hashchange", () => {
-  const user = window.location.hash.slice(1);
-  if (user && userFiles[user]) loadList(user);
-  else displayUserLists();
+window.addEventListener("DOMContentLoaded", async () => {
+    await loadResources(); // load avatars & triggers
+
+    // Check if a hash exists in the URL
+    const hashUser = window.location.hash.slice(1); // removes the #
+    if (hashUser && userFiles[hashUser]) {
+        loadList(hashUser); // open the specific user's sound list
+    } else {
+        displayUserLists(); // default to main list
+    }
 });
 
-/* ====================== */
-/*      DARK/LIGHT MODE     */
-/* ====================== */
-document.getElementById("toggleMode").addEventListener("click", () => {
-  document.body.classList.toggle("lightmode");
-  document.getElementById("toggleMode").textContent = document.body.classList.contains("lightmode") ? "☀️" : "🌙";
-});
 
-/* ====================== */
-/*   DISPLAY USER LISTS     */
-/* ====================== */
+
+
 function displayUserLists() {
-  const container = document.getElementById("list");
-  container.innerHTML = "";
+    const container = document.getElementById("list");
+    container.innerHTML = ""; // clear previous content
 
-  const searchInput = createElement("input", {
-    type: "text",
-    placeholder: "Search users..."
-  });
-  Object.assign(searchInput.style, {
-    marginBottom: "15px",
-    padding: "8px 12px",
-    width: "300px",
-    fontSize: "16px",
-    borderRadius: "12px",
-    border: "2px solid #000",
-    background: "rgba(0,0,0,0.3)",
-    backdropFilter: "blur(6px)",
-    color: "#fff",
-    outline: "none",
-    transition: "all 0.3s ease"
-  });
-  searchInput.addEventListener("focus", () => searchInput.style.borderColor = "#fff");
-  searchInput.addEventListener("blur", () => searchInput.style.borderColor = "#000");
-  container.appendChild(searchInput);
+    // 1️⃣ Create search input at the top of the user list
+    const searchInput = document.createElement("input");
+    searchInput.type = "text";
+    searchInput.placeholder = "Search users...";
+    searchInput.style.marginBottom = "15px";
+    searchInput.style.padding = "8px 12px";
+    searchInput.style.width = "300px"; // adjust as needed
+    searchInput.style.fontSize = "16px";
+    searchInput.style.borderRadius = "12px";
+    searchInput.style.border = "2px solid #000";
+    searchInput.style.background = "rgba(0,0,0,0.3)";
+    searchInput.style.backdropFilter = "blur(6px)";
+    searchInput.style.color = "#fff";
+    searchInput.style.outline = "none";
+    searchInput.style.transition = "all 0.3s ease";
+    searchInput.addEventListener("focus", () => searchInput.style.borderColor = "#fff");
+    searchInput.addEventListener("blur", () => searchInput.style.borderColor = "#000");
 
-  const userDivs = Object.keys(userFiles).map(user => {
-    const div = createElement("div", { className: "sound-item", style: "cursor:pointer;" });
+    container.appendChild(searchInput);
 
-    const twitchImg = createElement("img", { src: avatars[user] || "https://static.twitchcdn.net/assets/favicon-32-e29e246c157142c94346.png", alt: user });
-    const link = createElement("a", { href: `https://twitch.tv/${user}`, target: "_blank" });
-    link.appendChild(twitchImg);
-    div.appendChild(link);
+    // 2️⃣ Array to store user divs for filtering
+    const userDivs = [];
 
-    const text = createElement("div");
-    text.innerHTML = `<strong>${user}</strong><br><span>Click to view sounds</span>`;
-    div.appendChild(text);
+    // 3️⃣ Create the user divs
+    Object.keys(userFiles).forEach(user => {
+        const div = document.createElement("div");
+        div.className = "sound-item";
+        div.style.cursor = "pointer";
 
-    div.addEventListener("click", e => {
-      if (e.target.closest('a')) return;
-      loadList(user);
+        // Twitch avatar
+        const twitchImg = document.createElement("img");
+        twitchImg.src = avatars[user] || "https://static.twitchcdn.net/assets/favicon-32-e29e246c157142c94346.png";
+        twitchImg.alt = user;
+
+        // Twitch profile link
+        const twitchLink = document.createElement("a");
+        twitchLink.href = `https://twitch.tv/${user}`;
+        twitchLink.target = "_blank";
+        twitchLink.appendChild(twitchImg);
+        div.appendChild(twitchLink);
+
+        // Text label
+        const text = document.createElement("div");
+        text.innerHTML = `<strong>${user}</strong><br><span>Click to view sounds</span>`;
+        div.appendChild(text);
+
+        // Click container to load user's sounds
+        div.addEventListener("click", (e) => {
+            if (e.target.tagName.toLowerCase() === 'img' || e.target.closest('a')) return;
+            loadList(user);
+        });
+
+        container.appendChild(div);
+
+        // Add to array for filtering
+        userDivs.push({div, name: user.toLowerCase()});
     });
 
-    container.appendChild(div);
-    return { div, name: user.toLowerCase() };
-  });
-
-  searchInput.addEventListener("input", () => {
-    const query = searchInput.value.toLowerCase();
-    userDivs.forEach(obj => obj.div.style.display = obj.name.includes(query) ? "flex" : "none");
-  });
+    // 4️⃣ Filter users on input
+    searchInput.addEventListener("input", () => {
+        const query = searchInput.value.toLowerCase();
+        userDivs.forEach(obj => {
+            obj.div.style.display = obj.name.includes(query) ? "flex" : "none";
+        });
+    });
 }
 
-/* ====================== */
-/*       LOAD USER LIST     */
-/* ====================== */
+
+// Load list for selected user
 async function loadList(user) {
   try {
     const res = await fetch(userFiles[user]);
     const data = await res.json();
-    const list = Array.isArray(data) ? data : Object.values(data).find(v => Array.isArray(v)) || [];
+
+    // Update hash URL instead of full path
     window.location.hash = user;
+
+
+    const list = Array.isArray(data)
+      ? data
+      : Object.values(data).find(v => Array.isArray(v)) || [];
+
     displayList(list, user);
-  } catch (e) {
-    console.error("Failed to load list", e);
+  } catch (error) {
+    console.error("Error loading list:", error);
     document.getElementById("list").innerHTML = "<p style='color:red;'>Failed to load list.</p>";
   }
 }
+// 🔴 STOP ALL SOUNDS — global
+function stopAllSounds() {
+    if (!window.__GLOBAL_SOURCES__) return;
 
-/* ====================== */
-/*       DISPLAY LIST       */
-/* ====================== */
-function displayList(list, user) {
-  const container = document.getElementById("list");
-  container.innerHTML = "";
+    window.__GLOBAL_SOURCES__.forEach(src => {
+        try { src.stop(); } catch(e) {}
+        try { src.disconnect(); } catch(e) {}
+    });
 
-  /* Back + search wrapper */
-  const wrapper = createElement("div");
-  Object.assign(wrapper.style, { display: "flex", justifyContent: "space-between", alignItems: "center", gap: "12px", marginBottom: "15px" });
-
-  const backBtn = createElement("button", { textContent: "⬅ Back" });
-  Object.assign(backBtn.style, { padding:"8px 12px", fontSize:"16px", color:"#fff", borderRadius:"8px", border:"2px solid #000", background:"rgba(0,0,0,0.3)", cursor:"pointer" });
-  backBtn.addEventListener("click", () => window.location.hash = "");
-  wrapper.appendChild(backBtn);
-
-  const searchInput = createElement("input", { type:"text", placeholder:"Search emotes..." });
-  Object.assign(searchInput.style, { padding:"10px", width:"300px", fontSize:"16px", borderRadius:"12px", border:"2px solid #000", background:"rgba(0,0,0,0.3)", backdropFilter:"blur(6px)", color:"#fff", outline:"none" });
-  searchInput.addEventListener("focus", () => searchInput.style.borderColor="#fff");
-  searchInput.addEventListener("blur", () => searchInput.style.borderColor="#000");
-  wrapper.appendChild(searchInput);
-
-  container.appendChild(wrapper);
-
-  if (!list.length) { container.innerHTML += "<p>No sounds found.</p>"; return; }
-
-  const emoteDivs = [];
-
-  list.forEach(item => {
-    if (!item.enabled || item.enabled !== "true") return;
-
-    const div = createElement("div", { className: "sound-item", style: "position:relative; display:flex; align-items:center; gap:10px;" });
-
-    const emoteData = triggerImages[item.trigger_word];
-    const emoteAnchor = createElement("a", { href: emoteData?.link || "#", target: "_blank" });
-    const emoteImg = createElement("img", { src: emoteData?.image || "https://files.catbox.moe/ab5icu.png", alt: item.trigger_word, style:"cursor:pointer; background:transparent;" });
-    emoteAnchor.appendChild(emoteImg);
-    div.appendChild(emoteAnchor);
-
-    const text = createElement("div");
-    text.style.flex = "1";
-    text.style.overflow = "hidden";
-    text.innerHTML = `<strong>${item.trigger_word}</strong><br><a href="${item.sound}" target="_blank">Sound Link</a>`;
-    div.appendChild(text);
-
-    /* Controls container */
-    const controls = createElement("div");
-    Object.assign(controls.style, { display:"flex", flexDirection:"column", alignItems:"flex-end", gap:"6px", minWidth:"120px" });
-
-    const volLabel = createElement("label", { textContent:"Vol" });
-    volLabel.style.fontSize="12px";
-    const volInput = createElement("input", { type:"range", min:"0", max:"100", value:(typeof item.volume==="number"?Math.round(item.volume*100):50) });
-    volInput.style.width="100px";
-    const volWrapper = createElement("div");
-    volWrapper.style.display="flex"; volWrapper.style.flexDirection="column"; volWrapper.style.alignItems="flex-end";
-    volWrapper.append(volLabel, volInput);
-
-    const pitchRow = createElement("div");
-    pitchRow.style.display="flex"; pitchRow.style.alignItems="center"; pitchRow.style.gap="6px";
-    const pitchLabel = createElement("label", { textContent:"Speed" });
-    pitchLabel.style.fontSize="12px";
-    const pitchInput = createElement("input", { type:"number", min:"50", max:"200", value:"100" });
-    pitchInput.style.width="60px"; pitchInput.style.fontSize="12px";
-    pitchRow.append(pitchLabel, pitchInput);
-
-    const reverseBtn = createElement("button", { textContent:"Reverse ▶", className:"reverse-btn" });
-    const stopBtn = createElement("button", { textContent:"Stop All", className:"stop-btn" });
-
-    controls.append(volWrapper, pitchRow, reverseBtn, stopBtn);
-    div.appendChild(controls);
-
-    /* Per-item audio state */
-    const activeSources = [];
-
-    function createReversedBuffer(srcBuffer) {
-      const rev = audioCtx.createBuffer(srcBuffer.numberOfChannels, srcBuffer.length, srcBuffer.sampleRate);
-      for (let c=0;c<srcBuffer.numberOfChannels;c++){
-        const data = srcBuffer.getChannelData(c);
-        const revData = rev.getChannelData(c);
-        for (let i=0,L=data.length;i<L;i++) revData[i] = data[L-1-i];
-      }
-      return rev;
-    }
-
-    async function getBufferForUrl(url, loader) {
-      if (bufferCache.has(url)) return bufferCache.get(url);
-      loader.style.display = "flex";
-      const buf = await fetchAndDecode(url);
-      bufferCache.set(url, buf);
-      loader.style.display = "none";
-      return buf;
-    }
-
-    async function playRandomBuffer({reversed=false}={}) {
-      try {
-        let chosenUrl = Array.isArray(item.sound) ? item.sound[Math.floor(Math.random()*item.sound.length)] : item.sound;
-        const buf = await getBufferForUrl(chosenUrl, div);
-        const bufferToPlay = reversed ? (reversedCache.has(chosenUrl)?reversedCache.get(chosenUrl):reversedCache.set(chosenUrl,createReversedBuffer(buf)).get(chosenUrl)) : buf;
-
-        const src = audioCtx.createBufferSource();
-        src.buffer = bufferToPlay;
-        const gainNode = audioCtx.createGain();
-        gainNode.gain.value = (parseFloat(volInput.value)||50)/100;
-        src.connect(gainNode).connect(audioCtx.destination);
-        src.start();
-        src.onended = () => { src.disconnect(); gainNode.disconnect(); activeSources.splice(activeSources.indexOf(src),1); };
-        activeSources.push(src);
-        window.__GLOBAL_SOURCES__.push(src);
-      } catch(e){ console.error("Playback error", e); }
-    }
-
-    div.addEventListener("click", e => { if(e.target.closest('a')) return; playRandomBuffer(); });
-    reverseBtn.addEventListener("click", e=>{ e.stopPropagation(); playRandomBuffer({reversed:true}); });
-    stopBtn.addEventListener("click", e=>{ e.stopPropagation(); window.__GLOBAL_SOURCES__.forEach(s=>s.stop()); window.__GLOBAL_SOURCES__=[]; });
-
-    container.appendChild(div);
-    emoteDivs.push({div, trigger_word: item.trigger_word.toLowerCase()});
-  });
-
-  searchInput.addEventListener("input", ()=>{
-    const q = searchInput.value.toLowerCase();
-    emoteDivs.forEach(obj => obj.div.style.display = obj.trigger_word.includes(q)?"flex":"none");
-  });
+    window.__GLOBAL_SOURCES__ = [];
 }
 
-/* ====================== */
-/*      INITIAL LOAD       */
-/* ====================== */
-window.addEventListener("DOMContentLoaded", async ()=>{
-  await loadResources();
-  const user = window.location.hash.slice(1);
-  if(user && userFiles[user]) loadList(user);
-  else displayUserLists();
-});
-</script>
 
+function displayList(list, user) {
+    const container = document.getElementById("list");
+    container.innerHTML = ''; // clear the container first
+
+    // 1️⃣ Back button + search wrapper
+    const headerWrapper = document.createElement("div");
+    headerWrapper.style.display = "flex";
+    headerWrapper.style.alignItems = "center";
+    headerWrapper.style.justifyContent = "space-between";
+    headerWrapper.style.gap = "12px";
+    headerWrapper.style.marginBottom = "15px";
+
+    // Back button
+    const backButton = document.createElement("button");
+    backButton.id = "backButton";
+    backButton.style.padding = "8px 12px";
+    backButton.style.fontSize = "16px";
+    backButton.style.color = "#fff";
+    backButton.style.borderRadius = "8px";
+    backButton.style.border = "2px solid #000";
+    backButton.style.background = "rgba(0,0,0,0.3)";
+    backButton.style.backdropFilter = "blur(6px)";
+    backButton.style.cursor = "pointer";
+    backButton.textContent = "⬅ Back";
+    backButton.addEventListener("click", () => {
+      window.location.hash = "";  // clears the hash
+      displayUserLists();
+    });
+
+
+    // Search input
+    const searchInput = document.createElement("input");
+    searchInput.type = "text";
+    searchInput.placeholder = "Search emotes...";
+    searchInput.style.padding = "10px";
+    searchInput.style.width = "300px";
+    searchInput.style.fontSize = "16px";
+    searchInput.style.borderRadius = "12px";
+    searchInput.style.border = "2px solid #000";
+    searchInput.style.background = "rgba(0,0,0,0.3)";
+    searchInput.style.backdropFilter = "blur(6px)";
+    searchInput.style.color = "#fff";
+    searchInput.style.outline = "none";
+    searchInput.style.transition = "all 0.3s ease";
+    searchInput.addEventListener("focus", () => searchInput.style.borderColor = "#fff");
+    searchInput.addEventListener("blur", () => searchInput.style.borderColor = "#000");
+
+    headerWrapper.appendChild(backButton);
+    headerWrapper.appendChild(searchInput);
+    container.appendChild(headerWrapper);
+
+    if (list.length === 0) {
+        container.innerHTML += "<p>No sounds found in this list.</p>";
+        return;
+    }
+
+    // store emote nodes for search filtering
+    const emoteDivs = [];
+
+    // For each item create UI and per-item audio handling
+    list.forEach(item => {
+        if (!item.enabled || item.enabled !== "true") return;
+
+        const div = document.createElement("div");
+        div.className = "sound-item";
+        div.style.position = "relative";
+       // Custom loader wrapper
+        const loader = document.createElement("div");
+        loader.className = "loading";
+        loader.style.display = "none";
+
+        loader.innerHTML = `
+          <svg width="64px" height="48px">
+            <polyline points="0.157 23.954, 14 23.954, 21.843 48, 43 0, 50 24, 64 24" id="back"></polyline>
+            <polyline points="0.157 23.954, 14 23.954, 21.843 48, 43 0, 50 24, 64 24" id="front"></polyline>
+          </svg>
+        `;
+
+div.appendChild(loader);
+
+
+        div.style.display = "flex";
+        div.style.alignItems = "center";
+        div.style.gap = "10px";
+
+        // Emote image/anchor
+        const emoteData = triggerImages[item.trigger_word];
+        const emoteImgSrc = emoteData?.image || "https://files.catbox.moe/ab5icu.png";
+        const emoteLink = emoteData?.link || "#";
+
+        const emoteAnchor = document.createElement("a");
+        emoteAnchor.href = emoteLink;
+        emoteAnchor.target = "_blank";
+
+        const emoteImg = document.createElement("img");
+        emoteImg.src = emoteImgSrc;
+        emoteImg.alt = item.trigger_word;
+        emoteImg.style.cursor = "pointer";
+        emoteImg.style.background = "transparent";
+
+        emoteAnchor.appendChild(emoteImg);
+        div.appendChild(emoteAnchor);
+
+        // Text column
+        const text = document.createElement("div");
+        text.style.flex = "1";
+        text.style.overflow = "hidden";
+        text.innerHTML = `<strong>${item.trigger_word}</strong><br><a href="${item.sound}" target="_blank">Sound Link</a>`;
+        div.appendChild(text);
+
+        // ---- Per-item controls container (volume slider, reverse button, pitch input) ----
+        const controls = document.createElement("div");
+        controls.style.display = "flex";
+        controls.style.flexDirection = "column";
+        controls.style.alignItems = "flex-end";
+        controls.style.gap = "6px";
+        controls.style.minWidth = "120px";
+
+        // Volume slider (0-100)
+        const volLabel = document.createElement("label");
+        volLabel.style.fontSize = "12px";
+        volLabel.style.marginBottom = "2px";
+        volLabel.textContent = "Vol";
+
+        const volInput = document.createElement("input");
+        volInput.type = "range";
+        volInput.min = "0";
+        volInput.max = "100";
+        // initial value: use item.volume if present (0-1), else 5 (5%)
+        volInput.value = (typeof item.volume === "number") ? Math.round(item.volume * 100) : 50;
+        volInput.style.width = "100px";
+
+        // Reverse play button
+        const reverseBtn = document.createElement("button");
+        reverseBtn.textContent = "Reverse ▶";
+        reverseBtn.title = "Play reversed";
+        reverseBtn.style.padding = "6px 8px";
+        reverseBtn.style.fontSize = "12px";
+        reverseBtn.style.cursor = "pointer";
+        reverseBtn.className = "reverse-btn";
+
+        // Stop button
+        const stopBtn = document.createElement("button");
+        stopBtn.textContent = "Stop All";
+        stopBtn.className = "stop-btn";
+
+
+        // Pitch/speed input (%) - Option B: playbackRate
+        const pitchRow = document.createElement("div");
+        pitchRow.style.display = "flex";
+        pitchRow.style.alignItems = "center";
+        pitchRow.style.gap = "6px";
+
+        const pitchLabel = document.createElement("label");
+        pitchLabel.style.fontSize = "12px";
+        pitchLabel.textContent = "Speed";
+
+        const pitchInput = document.createElement("input");
+        pitchInput.type = "number";
+        pitchInput.min = "50";
+        pitchInput.max = "200";
+        pitchInput.value = "100"; // default 100%
+        pitchInput.style.width = "60px";
+        pitchInput.style.fontSize = "12px";
+
+        pitchRow.appendChild(pitchLabel);
+        pitchRow.appendChild(pitchInput);
+
+        // Append controls
+        const volWrapper = document.createElement("div");
+        volWrapper.style.display = "flex";
+        volWrapper.style.flexDirection = "column";
+        volWrapper.style.alignItems = "flex-end";
+        volWrapper.appendChild(volLabel);
+        volWrapper.appendChild(volInput);
+
+        controls.appendChild(volWrapper);
+        controls.appendChild(pitchRow);
+        controls.appendChild(reverseBtn);
+        controls.appendChild(stopBtn);
+
+
+        div.appendChild(controls);
+
+
+
+// ---------- Per-item audio state & helpers ----------
+/*
+  New approach:
+  - pick a random URL at play-time
+  - cache decoded AudioBuffer per URL in bufferCache
+  - cache reversed AudioBuffer per URL in reversedCache
+  - create a NEW AudioBufferSourceNode for each play (allows overlap)
+*/
+
+const bufferCache = new Map();     // url -> AudioBuffer
+const reversedCache = new Map();   // url -> reversed AudioBuffer
+const activeSources = [];   // holds currently playing AudioBufferSourceNodes for THIS item only
+
+// create reversed buffer synchronously from decoded buffer
+function createReversedBuffer(srcBuffer) {
+  const numChannels = srcBuffer.numberOfChannels;
+  const rev = audioCtx.createBuffer(numChannels, srcBuffer.length, srcBuffer.sampleRate);
+  for (let c = 0; c < numChannels; c++) {
+    const ch = srcBuffer.getChannelData(c);
+    const revCh = rev.getChannelData(c);
+    for (let i = 0, L = ch.length; i < L; i++) {
+      revCh[i] = ch[L - 1 - i];
+    }
+  }
+  return rev;
+}
+
+// weighted choice helper for {clip, volume, chance}
+function pickWeighted(subSounds) {
+  const table = [];
+  subSounds.forEach(s => {
+    const pct = parseFloat(s.chance);
+    if (!isNaN(pct) && pct > 0) {
+      table.push({ url: s.clip, weight: pct, vol: s.volume });
+    }
+  });
+  if (!table.length) {
+    const f = subSounds[0];
+    return { url: f.clip, perSoundVolume: f.volume };
+  }
+  const total = table.reduce((a,b)=>a+b.weight,0);
+  let roll = Math.random() * total;
+  for (const row of table) {
+    if ((roll -= row.weight) <= 0) {
+      return { url: row.url, perSoundVolume: row.vol };
+    }
+  }
+  const last = table[table.length-1];
+  return { url: last.url, perSoundVolume: last.vol };
+}
+
+// fetch+decode once per URL, show overlay while decoding
+async function getBufferForUrl(url) {
+  if (bufferCache.has(url)) return bufferCache.get(url);
+
+  // show loading UI
+  loader.style.display = "flex";
+
+  try {
+    const decoded = await fetchAndDecode(url);
+    bufferCache.set(url, decoded);
+    // hide loading UI
+    loader.style.display = "none";
+    return decoded;
+  } catch (err) {
+    loader.style.display = "none";
+    throw err;
+  }
+}
+
+// Play function: picks random URL, decodes if needed, optionally use reversed buffer
+async function playRandomBuffer({ reversed = false } = {}) {
+  try {
+    let chosenUrl = null;
+    let perSoundVolume = null;
+
+    // ----- NEW WEIGHTED LOGIC -----
+    if (Array.isArray(item.sound)) {
+      if (item.sound.length > 0 && typeof item.sound[0] === "object") {
+        const picked = pickWeighted(item.sound);
+        chosenUrl = picked.url;
+        perSoundVolume = picked.perSoundVolume;
+      } else {
+        chosenUrl = item.sound[Math.floor(Math.random() * item.sound.length)];
+      }
+    } else {
+      chosenUrl = item.sound;
+    }
+
+    const buf = await getBufferForUrl(chosenUrl);
+
+    let bufferToPlay;
+    if (reversed) {
+      if (reversedCache.has(chosenUrl)) {
+        bufferToPlay = reversedCache.get(chosenUrl);
+      } else {
+        const rev = createReversedBuffer(buf);
+        reversedCache.set(chosenUrl, rev);
+        bufferToPlay = rev;
+      }
+    } else {
+      bufferToPlay = buf;
+    }
+
+    // create a fresh source so multiple plays overlap
+    const src = audioCtx.createBufferSource();
+    src.buffer = bufferToPlay;
+
+    // track the source so “stop all” can stop it
+    activeSources.push(src);
+
+    // also push into global list so Stop All works across ALL items
+    if (!window.__GLOBAL_SOURCES__) window.__GLOBAL_SOURCES__ = [];
+    window.__GLOBAL_SOURCES__.push(src);
+
+    // playbackRate from pitch input
+    const rate = Math.max(0.01, (parseFloat(pitchInput.value) || 100) / 100);
+    src.playbackRate.value = rate;
+
+    const gainNode = audioCtx.createGain();
+
+    const localVol = (parseFloat(volInput.value) || 50) / 100;
+    const weightedVol = perSoundVolume != null ? perSoundVolume : 1;
+    const finalGain = localVol * weightedVol;
+
+    gainNode.gain.value = finalGain;
+
+    src.connect(gainNode).connect(audioCtx.destination);
+    src.start(0);
+
+    // cleanup when finished
+    src.onended = () => {
+      try { src.disconnect(); } catch (e) {}
+      try { gainNode.disconnect(); } catch (e) {}
+
+      const i = activeSources.indexOf(src);
+      if (i !== -1) activeSources.splice(i,1);
+    };
+
+    return src;
+  } catch (err) {
+    console.error("Playback error for", item.trigger_word, err);
+    throw err;
+  }
+}
+
+// Keep stopCurrent (no-op for global overlap) — we leave it if you want to stop all plays in future
+function stopCurrent() {
+  // intentionally empty: we allow overlapping playback across clicks
+}
+
+
+
+// container click: play a random forward sound for this item (overlapping allowed)
+div.addEventListener("click", (e) => {
+  if (e.target.closest('a')) return; // clicking emote link should only navigate
+  playRandomBuffer({ reversed: false }).catch(err => console.error("Play error:", err));
+});
+
+// reverse button: play a random reversed sound for this item
+reverseBtn.addEventListener("click", (e) => {
+  e.stopPropagation(); // prevent container click
+  playRandomBuffer({ reversed: true }).catch(err => console.error("Reverse play error:", err));
+});
+stopBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    stopAllSounds();
+});
+
+
+
+// Volume slider live update (affects currently playing, and future plays)
+volInput.addEventListener("input", () => {
+    if (currentGain) currentGain.gain.value = (parseFloat(volInput.value) || 50) / 100;
+});
+
+// Pitch input change only affects next play (source.playbackRate is set when starting)
+pitchInput.addEventListener("keydown", (ev) => {
+    if (ev.key === "Enter") ev.target.blur();
+});
+
+// Add to DOM
+container.appendChild(div);
+
+// Add to emoteDivs array for search filtering
+emoteDivs.push({div, trigger_word: item.trigger_word.toLowerCase()});
+}); // end list.forEach
+
+// 5️⃣ Filter on input
+searchInput.addEventListener("input", () => {
+    const query = searchInput.value.toLowerCase();
+    emoteDivs.forEach(obj => {
+        obj.div.style.display = obj.trigger_word.includes(query) ? "flex" : "none";
+    });
+});
+}
+
+
+
+</script>
 </body>
 </html>
