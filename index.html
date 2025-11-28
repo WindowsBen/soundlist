@@ -205,19 +205,24 @@ body.lightmode .spinner {
   }
 }
 
-/* Blurred transparent overlay for loading */
-.spinner-overlay {
+#blur-overlay {
   position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.4);
-  backdrop-filter: blur(4px);
-  border-radius: 12px;
-  display: none;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  backdrop-filter: blur(8px);
+  background: rgba(0,0,0,0.15);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 50;
 }
 
-body.lightmode .spinner-overlay {
-  background: rgba(255,255,255,0.4);
+#blur-overlay.active {
+  opacity: 1;
 }
+
 
 /* Stop and Reverse Buttons - Dark mode */
 .stop-btn,
@@ -256,6 +261,7 @@ body.lightmode .reverse-btn:hover {
 </head>
 <body>
 <div class="container">
+    <div id="blur-overlay"></div>
   <h1>Emote Sounds</h1>
   <button id="toggleMode">🌙</button>
 
