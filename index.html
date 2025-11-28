@@ -303,6 +303,15 @@ const userFiles = {
   Totless: "lists/Totless.json"
 };
 
+// Handle browser back/forward navigation
+window.addEventListener('popstate', (event) => {
+    if (event.state && event.state.user) {
+        loadList(event.state.user);
+    } else {
+        displayUserLists();
+    }
+});
+
 
 // Toggle dark/light mode
 const toggleBtn = document.getElementById("toggleMode");
@@ -372,7 +381,20 @@ async function loadResources() {
   }
 }
 
-window.addEventListener("DOMContentLoaded", loadResources);
+window.addEventListener("DOMContentLoaded", async () => {
+    await loadResources();
+
+    // Check URL for user
+    const pathParts = window.location.pathname.split('/').filter(p => p);
+    const userFromUrl = pathParts[1]; // adjust depending on /soundlist/ prefix
+
+    if (userFromUrl && userFiles[userFromUrl]) {
+        loadList(userFromUrl);
+    } else {
+        displayUserLists();
+    }
+});
+
 
 
 
@@ -453,6 +475,9 @@ async function loadList(user) {
   try {
     const res = await fetch(userFiles[user]);
     const data = await res.json();
+
+    // Update browser URL without reloading the page
+    history.pushState({ user }, '', `/soundlist/${user}`);
 
     const list = Array.isArray(data)
       ? data
