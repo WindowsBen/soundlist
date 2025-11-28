@@ -168,6 +168,38 @@ body.lightmode .spinner {
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 
+/* ===== Custom Loader ===== */
+    /* From Uiverse.io by aryamitra06 */ 
+.loader {
+  display: flex;
+  align-items: center;
+}
+.bar {
+  display: inline-block;
+  width: 3px;
+  height: 20px;
+  background-color: rgba(255, 255, 255, .5);
+  border-radius: 10px;
+  animation: scale-up4 1s linear infinite;
+}
+.bar:nth-child(2) {
+  height: 35px;
+  margin: 0 5px;
+  animation-delay: .25s;
+}
+.bar:nth-child(3) {
+  animation-delay: .5s;
+}
+@keyframes scale-up4 {
+  20% {
+    background-color: #ffff;
+    transform: scaleY(1.5);
+  }
+  40% {
+    transform: scaleY(1);
+  }
+}
+
 /* ===== Stop / Reverse Buttons ===== */
 .stop-btn, .reverse-btn {
     padding: 6px 10px;
@@ -426,14 +458,12 @@ function displaySoundList(list, user) {
         const div = document.createElement("div");
         div.className = "sound-item"; div.style.position="relative";
 
-        // Loading overlay
+        // Custom loader wrapper 
         const loader = document.createElement("div");
-        loader.className="loading"; loader.style.display="none";
-        loader.innerHTML=`<svg width="64px" height="48px">
-            <polyline points="0.157 23.954, 14 23.954, 21.843 48, 43 0, 50 24, 64 24" id="back"></polyline>
-            <polyline points="0.157 23.954, 14 23.954, 21.843 48, 43 0, 50 24, 64 24" id="front"></polyline>
-        </svg>`;
+        loader.className = "loader"; // matches your CSS
+        loader.style.display = "none"; // initially hidden
         div.appendChild(loader);
+
 
         div.style.display="flex"; div.style.alignItems="center"; div.style.gap="10px";
 
