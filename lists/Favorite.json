@@ -51,7 +51,7 @@
         {
             "trigger_word": "xdding",
             "sound": "https://files.catbox.moe/dys50l.mp3",
-            "volume": 0.4,
+            "volume": 0.15,
             "chance": "100%",
             "trigger_cooldown": 2,
             "enabled": "true"
