@@ -710,24 +710,27 @@ function pickWeighted(subSounds) {
   return { url: last.url, perSoundVolume: last.vol };
 }
 
-// fetch+decode once per URL, show overlay while decoding
+// fetch+decode once per URL, show loader while decoding
 async function getBufferForUrl(url) {
   if (bufferCache.has(url)) return bufferCache.get(url);
 
-  // show loading UI
+  // show new loader
   loader.style.display = "flex";
 
   try {
     const decoded = await fetchAndDecode(url);
     bufferCache.set(url, decoded);
-    // hide loading UI
+
+    // hide new loader
     loader.style.display = "none";
+
     return decoded;
   } catch (err) {
     loader.style.display = "none";
     throw err;
   }
 }
+
 
 // Play function: picks random URL, decodes if needed, optionally use reversed buffer
 async function playRandomBuffer({ reversed = false } = {}) {
