@@ -165,6 +165,46 @@ body.lightmode .spinner {
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
+
+/* Custom loading animation */
+.loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+}
+
+.loading svg polyline {
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.loading svg polyline#back {
+  fill: none;
+  stroke: #ff4d5033;
+}
+
+.loading svg polyline#front {
+  fill: none;
+  stroke: #ff4d4f;
+  stroke-dasharray: 48, 144;
+  stroke-dashoffset: 192;
+  animation: dash_682 1.4s linear infinite;
+}
+
+@keyframes dash_682 {
+  72.5% {
+    opacity: 0;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
 /* Blurred transparent overlay for loading */
 .spinner-overlay {
   position: absolute;
@@ -499,15 +539,20 @@ function displayList(list, user) {
         const div = document.createElement("div");
         div.className = "sound-item";
         div.style.position = "relative";
-        // Loading overlay
-          const overlay = document.createElement("div");
-          overlay.className = "spinner-overlay";
-          div.appendChild(overlay);
+       // Custom loader wrapper
+        const loader = document.createElement("div");
+        loader.className = "loading";
+        loader.style.display = "none";
 
-        // CSS spinner
-          const spinner = document.createElement("div");
-          spinner.className = "spinner";
-          overlay.appendChild(spinner);
+        loader.innerHTML = `
+          <svg width="64px" height="48px">
+            <polyline points="0.157 23.954, 14 23.954, 21.843 48, 43 0, 50 24, 64 24" id="back"></polyline>
+            <polyline points="0.157 23.954, 14 23.954, 21.843 48, 43 0, 50 24, 64 24" id="front"></polyline>
+          </svg>
+        `;
+
+div.appendChild(loader);
+
 
         div.style.display = "flex";
         div.style.alignItems = "center";
@@ -671,17 +716,17 @@ async function getBufferForUrl(url) {
 
   // show loading UI
   overlay.style.display = "block";
-  spinner.style.display = "block";
+  loader.style.display = "block";
 
   try {
     const decoded = await fetchAndDecode(url);
     bufferCache.set(url, decoded);
     // hide loading UI
-    spinner.style.display = "none";
+    loader.style.display = "none";
     overlay.style.display = "none";
     return decoded;
   } catch (err) {
-    spinner.style.display = "none";
+    loader.style.display = "none";
     overlay.style.display = "none";
     throw err;
   }
