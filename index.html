@@ -715,19 +715,16 @@ async function getBufferForUrl(url) {
   if (bufferCache.has(url)) return bufferCache.get(url);
 
   // show loading UI
-  overlay.style.display = "block";
-  loader.style.display = "block";
+  loader.style.display = "flex";
 
   try {
     const decoded = await fetchAndDecode(url);
     bufferCache.set(url, decoded);
     // hide loading UI
     loader.style.display = "none";
-    overlay.style.display = "none";
     return decoded;
   } catch (err) {
     loader.style.display = "none";
-    overlay.style.display = "none";
     throw err;
   }
 }
