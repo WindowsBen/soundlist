@@ -462,11 +462,22 @@ function displaySoundList(list, user) {
 
         // Custom loader wrapper
         const loader = document.createElement("div");
-        loader.className = "loader"; // matches your CSS
-        loader.style.display = "none"; // initially hidden
-        loader.style.margin = "0 auto"; // center horizontally
+        loader.className = "loader";
+        loader.style.display = "none";
+        loader.style.position = "absolute";
+        loader.style.top = "50%";
+        loader.style.left = "50%";
+        loader.style.transform = "translate(-50%, -50%)";
+        loader.style.zIndex = "10";
         div.appendChild(loader);
 
+
+        // Add bars
+        ['','', ''].forEach(() => {
+            const bar = document.createElement('span');
+            bar.className = 'bar';
+            loader.appendChild(bar);
+        });
 
 
         div.style.display="flex"; div.style.alignItems="center"; div.style.gap="10px";
