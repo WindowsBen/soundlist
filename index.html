@@ -172,23 +172,25 @@ body.lightmode .spinner {
     /* From Uiverse.io by aryamitra06 */ 
 .loader {
   display: flex;
+  justify-content: center;  /* center bars inside the loader div */
   align-items: center;
+  height: 50px;             /* optional: adjusts vertical space inside card */
 }
 .bar {
   display: inline-block;
   width: 3px;
   height: 20px;
-  background-color: rgba(255, 255, 255, .5);
+  background-color: rgba(255, 255, 255, 0.5);
   border-radius: 10px;
   animation: scale-up4 1s linear infinite;
 }
 .bar:nth-child(2) {
   height: 35px;
   margin: 0 5px;
-  animation-delay: .25s;
+  animation-delay: 0.25s;
 }
 .bar:nth-child(3) {
-  animation-delay: .5s;
+  animation-delay: 0.5s;
 }
 @keyframes scale-up4 {
   20% {
@@ -458,11 +460,13 @@ function displaySoundList(list, user) {
         const div = document.createElement("div");
         div.className = "sound-item"; div.style.position="relative";
 
-        // Custom loader wrapper 
+        // Custom loader wrapper
         const loader = document.createElement("div");
         loader.className = "loader"; // matches your CSS
         loader.style.display = "none"; // initially hidden
+        loader.style.margin = "0 auto"; // center horizontally
         div.appendChild(loader);
+
 
 
         div.style.display="flex"; div.style.alignItems="center"; div.style.gap="10px";
