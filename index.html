@@ -304,9 +304,10 @@ const userFiles = {
 };
 
 // Handle browser back/forward navigation
-window.addEventListener('popstate', (event) => {
-    if (event.state && event.state.user) {
-        loadList(event.state.user);
+window.addEventListener('hashchange', () => {
+    const hashUser = window.location.hash.slice(1);
+    if (hashUser && userFiles[hashUser]) {
+        loadList(hashUser);
     } else {
         displayUserLists();
     }
@@ -382,16 +383,14 @@ async function loadResources() {
 }
 
 window.addEventListener("DOMContentLoaded", async () => {
-    await loadResources();
+    await loadResources(); // load avatars & triggers
 
-    // Check URL for user
-    const pathParts = window.location.pathname.split('/').filter(p => p);
-    const userFromUrl = pathParts[1]; // adjust depending on /soundlist/ prefix
-
-    if (userFromUrl && userFiles[userFromUrl]) {
-        loadList(userFromUrl);
+    // Check if a hash exists in the URL
+    const hashUser = window.location.hash.slice(1); // removes the #
+    if (hashUser && userFiles[hashUser]) {
+        loadList(hashUser); // open the specific user's sound list
     } else {
-        displayUserLists();
+        displayUserLists(); // default to main list
     }
 });
 
@@ -476,8 +475,9 @@ async function loadList(user) {
     const res = await fetch(userFiles[user]);
     const data = await res.json();
 
-    // Update browser URL without reloading the page
-    history.pushState({ user }, '', `/soundlist/${user}`);
+    // Update hash URL instead of full path
+    window.location.hash = user;
+
 
     const list = Array.isArray(data)
       ? data
