@@ -305,13 +305,15 @@ const userFiles = {
 
 // Handle browser back/forward navigation
 window.addEventListener('hashchange', () => {
-    const hashUser = window.location.hash.slice(1);
+    const hashUser = window.location.hash.slice(1); // remove #
+    
     if (hashUser && userFiles[hashUser]) {
         loadList(hashUser);
     } else {
-        displayUserLists();
+        displayUserLists(); // go back to main list when hash is empty
     }
 });
+
 
 
 // Toggle dark/light mode
@@ -526,7 +528,11 @@ function displayList(list, user) {
     backButton.style.backdropFilter = "blur(6px)";
     backButton.style.cursor = "pointer";
     backButton.textContent = "⬅ Back";
-    backButton.addEventListener("click", () => displayUserLists());
+    backButton.addEventListener("click", () => {
+      window.location.hash = "";  // clears the hash
+      displayUserLists();
+});
+
 
     // Search input
     const searchInput = document.createElement("input");
