@@ -91,7 +91,7 @@
         {
             "trigger_word": "spotify",
             "sound": "https://files.catbox.moe/nf4svi.mp3",
-            "volume": 0.5,
+            "volume": 0.65,
             "chance": "100%",
             "trigger_cooldown": 0,
             "enabled": "true"
