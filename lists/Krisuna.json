@@ -427,7 +427,7 @@
         {
             "trigger_word": "xdd",
             "sound": "https://files.catbox.moe/dys50l.mp3",
-            "volume": 0.2,
+            "volume": 0.05,
             "chance": "100%",
             "trigger_cooldown": 0,
             "enabled": "true"
