@@ -131,7 +131,7 @@
         {
             "trigger_word": "Considering",
             "sound": "https://files.catbox.moe/929f5g.ogg",
-            "volume": 0.4, 
+            "volume": 0.7, 
             "chance": "100%",
             "trigger_cooldown": 0,
             "enabled": "true"
@@ -139,7 +139,7 @@
         {
             "trigger_word": "PepegaCard",
             "sound": "https://files.catbox.moe/zt1pqa.ogg",
-            "volume": 0.5, 
+            "volume": 0.6, 
             "chance": "100%",
             "trigger_cooldown": 0,
             "enabled": "true"
@@ -155,7 +155,7 @@
         {
             "trigger_word": "MONKE",
             "sound": "https://files.catbox.moe/m23tqn.ogg",
-            "volume": 0.3, 
+            "volume": 0.5, 
             "chance": "100%",
             "trigger_cooldown": 0,
             "enabled": "true"
@@ -171,7 +171,7 @@
         {
             "trigger_word": "SNIFFA",
             "sound": "https://files.catbox.moe/gsd6cv.mp3",
-            "volume": 0.1,
+            "volume": 0.2,
             "chance": "100%",
             "trigger_cooldown": 0,
             "enabled": "true"
@@ -179,7 +179,7 @@
         {
             "trigger_word": "MYAA",
             "sound": "https://files.catbox.moe/2umwk6.mp3",
-            "volume": 0.4,
+            "volume": 0.7,
             "chance": "100%",
             "trigger_cooldown": 0,
             "enabled": "true"
