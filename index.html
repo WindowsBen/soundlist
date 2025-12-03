@@ -415,10 +415,29 @@ async function loadList(user) {
 
         const list = Array.isArray(data) ? data : Object.values(data).find(v=>Array.isArray(v)) || [];
         displaySoundList(list, user);
-    } catch(err) {
+    } 
+        catch(err) {
         console.error("Error loading list:", err);
-        document.getElementById("list").innerHTML = "<p style='color:red;'>Failed to load list.</p>";
-    }
+        const container = document.getElementById("list");
+        container.innerHTML = "";
+
+        // Create back button even when loading fails
+        const backButton = document.createElement("button");
+        backButton.textContent = "⬅ Back";
+        backButton.style = `
+            padding:8px 12px; font-size:16px; color:#fff; border-radius:8px; border:2px solid #000;
+            background:rgba(0,0,0,0.3); backdrop-filter:blur(6px); cursor:pointer;
+        `;
+        backButton.addEventListener("click", ()=> { window.location.hash=""; displayUserLists(); });
+        container.appendChild(backButton);
+
+        // Show error message
+        const errorMsg = document.createElement("p");
+        errorMsg.style.color = "red";
+        errorMsg.textContent = "Failed to load list.";
+        container.appendChild(errorMsg);
+}
+
 }
 
 // Render sound list for a user
