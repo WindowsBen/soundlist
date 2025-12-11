@@ -908,8 +908,8 @@
         "link": "https://7tv.app/emotes/01J18KSAX8000FQRZQPZ7GGV75"
     },
     ":3": {
-        "image": "https://7tv.app/emotes/01GDGK795G000CF58E0FY6XT24",
-        "link": "https://cdn.7tv.app/emote/01GDGK795G000CF58E0FY6XT24/4x.avif"
+        "image": "https://cdn.7tv.app/emote/01GDGK795G000CF58E0FY6XT24/4x.avif",
+        "link": "https://7tv.app/emotes/01GDGK795G000CF58E0FY6XT24"
     },
     "Bless": {
         "image": "https://files.catbox.moe/96r127.png",
@@ -1070,5 +1070,9 @@
     "DEAD": {
         "image": "https://cdn.7tv.app/emote/01GW2HK00G0007YSARTS7H6P92/4x.avif",
         "link": "https://7tv.app/emotes/01GW2HK00G0007YSARTS7H6P92"
+    },
+    "OMEGAROLL": {
+        "image": "https://cdn.7tv.app/emote/01F77HQ790000DQ10GPBST538S/4x.avif",
+        "link": "https://7tv.app/emotes/01F77HQ790000DQ10GPBST538S"
     }
 }
