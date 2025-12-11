@@ -99,7 +99,7 @@
         {
             "trigger_word": "YEET",
             "sound": "https://files.catbox.moe/dstzdk.ogg",
-            "volume": 0.2,
+            "volume": 0.5,
             "chance": "100%",
             "trigger_cooldown": 0,
             "enabled": "true"
