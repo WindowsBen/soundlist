@@ -1082,5 +1082,9 @@
     "rune": {
         "image": "https://cdn.7tv.app/emote/01GDEQJG3R000C0VZXRM1MVG28/4x.avif",
         "link": "https://7tv.app/emotes/01GDEQJG3R000C0VZXRM1MVG28"
+    },
+    "frenchCat": {
+        "image": "https://cdn.7tv.app/emote/01HNMEJHPR000EXZQWSVKBCBWE/4x.avif",
+        "link": "https://7tv.app/emotes/01HNMEJHPR000EXZQWSVKBCBWE"
     }
 }
