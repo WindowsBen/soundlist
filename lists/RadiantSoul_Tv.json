@@ -298,8 +298,8 @@
         },
         {
             "trigger_word": "Rune",
-            "sound": "https://files.catbox.moe/mpsazu.ogg",
-            "volume": 0.3,
+            "sound": "https://files.catbox.moe/ybhbsh.ogg",
+            "volume": 0.4,
             "chance": "100%",
             "trigger_cooldown": 0,
             "enabled": "true"
@@ -392,6 +392,22 @@
             "trigger_word": "AAA",
             "sound": "https://files.catbox.moe/rtuzoj.ogg",
             "volume": 0.2,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "rune",
+            "sound": "https://files.catbox.moe/j7ddgz.mp3",
+            "volume": 0.6,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "RUNE",
+            "sound": "https://files.catbox.moe/ybhbsh.ogg",
+            "volume": 0.4,
             "chance": "100%",
             "trigger_cooldown": 0,
             "enabled": "true"
