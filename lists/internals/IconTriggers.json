@@ -1078,5 +1078,9 @@
     "YEET": {
         "image": "https://cdn.7tv.app/emote/01FQ4ZR4M0000FQA8WEBNDEA1J/4x.avif",
         "link": "https://7tv.app/emotes/01FQ4ZR4M0000FQA8WEBNDEA1J"
+    },
+    "rune": {
+        "image": "https://cdn.7tv.app/emote/01GDEQJG3R000C0VZXRM1MVG28/4x.avif",
+        "link": "https://7tv.app/emotes/01GDEQJG3R000C0VZXRM1MVG28"
     }
 }
