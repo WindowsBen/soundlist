@@ -59,7 +59,7 @@
         {
             "trigger_word": "BEEP",
             "sound": "https://files.catbox.moe/gavpht.ogg",
-            "volume": 0.4,
+            "volume": 0.7,
             "chance": "100%",
             "trigger_cooldown": 0,
             "enabled": "true"
