@@ -58,7 +58,7 @@
         },
         {
             "trigger_word": "BEEP",
-            "sound": "https://files.catbox.moe/tj7xq3.mp3",
+            "sound": "https://files.catbox.moe/gavpht.ogg",
             "volume": 0.4,
             "chance": "100%",
             "trigger_cooldown": 0,
