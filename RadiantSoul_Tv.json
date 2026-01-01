@@ -1,0 +1,424 @@
+{
+    "sounds": [
+        {
+            "trigger_word": "MYAA",
+            "sound": "https://files.catbox.moe/ndquzl.ogg",
+            "volume": 0.46,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "moo",
+            "sound": "https://files.catbox.moe/zqzu2x.ogg",
+            "volume": 0.2,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "LOOKING",
+            "sound": [
+                "https://files.catbox.moe/yl7cd8.ogg",
+                "https://files.catbox.moe/egq6nn.ogg",
+                "https://files.catbox.moe/y1wqv5.ogg"
+                 ],
+            "volume": 0.25,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "catSilly",
+            "sound":  [
+                "https://files.catbox.moe/rodrjs.ogg",
+                "https://files.catbox.moe/7wuxur.ogg",
+                "https://files.catbox.moe/dxca0p.ogg"
+                ],
+            "volume": 0.26,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "GlueTime",
+            "sound": "https://files.catbox.moe/8f0kv0.ogg",
+            "volume": 0.12,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "CLAP",
+            "sound": "https://files.catbox.moe/tpk4zf.ogg",
+            "volume": 0.15,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "eww",
+            "sound": "https://files.catbox.moe/jlgtt2.ogg",
+            "volume": 0.24,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "sorrypookie",
+            "sound": "https://files.catbox.moe/11lwzs.ogg",
+            "volume": 0.3,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "xdd",
+            "sound": "https://files.catbox.moe/vul4g4.ogg",
+            "volume": 0.37,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "GETOUT",
+            "sound": "https://files.catbox.moe/8z1ywh.ogg",
+            "volume": 0.3,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "ACTINGUP",
+            "sound": "https://files.catbox.moe/ogrhfz.ogg",
+            "volume": 0.34,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "fall",
+            "sound": "https://files.catbox.moe/iisozr.ogg",
+            "volume": 0.41,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "wiwiwi",
+            "sound": "https://files.catbox.moe/5vd8f4.ogg",
+            "volume": 0.3,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "yippee",
+            "sound": "https://files.catbox.moe/4dpnlc.ogg",
+            "volume": 0.34,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "fartingonmyroomatesdoorhaha",
+            "sound": "https://files.catbox.moe/5cg07h.ogg",
+            "volume": 0.34,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "Inconvenience",
+            "sound": "https://files.catbox.moe/8s51pe.ogg",
+            "volume": 0.12,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "LieMeter",
+            "sound": "https://files.catbox.moe/dtw6f5.ogg",
+            "volume": 0.25,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "TruthMeter",
+            "sound": "https://files.catbox.moe/2nyzeu.ogg",
+            "volume": 0.09,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "HUH",
+            "sound": "https://files.catbox.moe/kh558w.ogg",
+            "volume": 0.26,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "plink",
+            "sound": "https://files.catbox.moe/5ueqq1.ogg",
+            "volume": 0.3,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "plonk",
+            "sound": "https://files.catbox.moe/l5nieu.ogg",
+            "volume": 0.3,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "catBoom",
+            "sound": "https://files.catbox.moe/q9fxr6.ogg",
+            "volume": 0.3,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "Lizord",
+            "sound": "https://files.catbox.moe/ki7bgw.ogg",
+            "volume": 0.3,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "TheVoices",
+            "sound": "https://files.catbox.moe/80jibw.ogg",
+            "volume": 0.39,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "SirThisIsATwitchStream",
+            "sound": "https://files.catbox.moe/a8e6e5.ogg",
+            "volume": 0.3,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "WatchingStreamButIGetScared",
+            "sound": "https://files.catbox.moe/peie01.ogg",
+            "volume": 0.37,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "ALERT",
+            "sound": "https://files.catbox.moe/k3xqaj.ogg",
+            "volume": 0.11,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "maow",
+            "sound": "https://files.catbox.moe/yf3wm7.ogg",
+            "volume": 0.35,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "Widehiii",
+            "sound": [
+                "https://files.catbox.moe/9ksk5x.ogg",
+                "https://files.catbox.moe/erxhzz.ogg",
+                "https://files.catbox.moe/58ntmy.ogg"
+                ],
+            "volume": 0.36,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "YesYesM",
+            "sound": "https://files.catbox.moe/nius6r.ogg",
+            "volume": 0.3,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "burned",
+            "sound": "https://files.catbox.moe/e7uwej.ogg",
+            "volume": 0.16,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "NoNo",
+            "sound": "https://files.catbox.moe/i6fh95.ogg",
+            "volume": 0.4,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "NOPE",
+            "sound": [
+                "https://files.catbox.moe/7rzlp7.ogg",
+                "https://files.catbox.moe/38n8j5.ogg",
+                "https://files.catbox.moe/g67xsu.ogg"
+                ],
+            "volume": 0.35,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "YES",
+            "sound": "https://files.catbox.moe/hw68vj.ogg",
+            "volume": 0.46,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "buhFlipExplode",
+            "sound": "https://files.catbox.moe/mpsazu.ogg",
+            "volume": 0.2,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "Rune",
+            "sound": "https://files.catbox.moe/ybhbsh.ogg",
+            "volume": 0.4,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "THANKS",
+            "sound": "https://files.catbox.moe/44jter.ogg",
+            "volume": 0.35,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "WOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOAHYEAHBABYTHATSWHATIVEBEENWAITINGFOR",
+            "sound": "https://files.catbox.moe/rma5bk.ogg",
+            "volume": 0.35,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "balls",
+            "sound": "https://files.catbox.moe/1s5tla.ogg",
+            "volume": 0.24,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "sad",
+            "sound": "https://files.catbox.moe/j0y86o.ogg",
+            "volume": 0.22,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "brainrot",
+            "sound": "https://files.catbox.moe/qxh4hk.ogg",
+            "volume": 0.37,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "Filipiowskyy",
+            "sound": "https://files.catbox.moe/fvv6i0.ogg",
+            "volume": 0.17,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "shrimpyspotted",
+            "sound": [
+                "https://files.catbox.moe/zu1ek9.ogg",
+                "https://files.catbox.moe/zu1ek9.ogg",
+                "https://files.catbox.moe/tu82i6.ogg"
+                ],
+            "volume": 0.28,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "crunch",
+            "sound": [
+                "https://files.catbox.moe/11ve8y.ogg",
+                "https://files.catbox.moe/5c1l7r.ogg",
+                "https://files.catbox.moe/12pm5d.ogg"
+                ],
+            "volume": 0.26,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "clappi",
+            "sound": [
+                "https://files.catbox.moe/l1yu30.ogg",
+                "https://files.catbox.moe/6x9s6z.ogg",
+                "https://files.catbox.moe/z2an60.ogg"
+                ],
+            "volume": 0.29,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "AAA",
+            "sound": "https://files.catbox.moe/rtuzoj.ogg",
+            "volume": 0.2,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "rune",
+            "sound": "https://files.catbox.moe/j7ddgz.mp3",
+            "volume": 0.6,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "RUNE",
+            "sound": "https://files.catbox.moe/ybhbsh.ogg",
+            "volume": 0.4,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "frenchCat",
+            "sound": "https://files.catbox.moe/uu9p7l.ogg",
+            "volume": 0.14,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        }
+	]
+}
