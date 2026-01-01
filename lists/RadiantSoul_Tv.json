@@ -415,7 +415,7 @@
         {
             "trigger_word": "frenchCat",
             "sound": "https://files.catbox.moe/uu9p7l.ogg",
-            "volume": 0.4,
+            "volume": 0.24,
             "chance": "100%",
             "trigger_cooldown": 0,
             "enabled": "true"
