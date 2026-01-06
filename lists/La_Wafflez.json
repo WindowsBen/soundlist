@@ -111,6 +111,14 @@
             "chance": "100%",
             "trigger_cooldown": 0,
             "enabled": "true"
+        },
+        {
+            "trigger_word": "LMAO",
+            "sound": "https://files.catbox.moe/f4lb61.mp3",
+            "volume": 0.1,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
         }
 	]
 }
