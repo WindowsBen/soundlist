@@ -17,6 +17,14 @@
             "enabled": "true"
         },
         {
+            "trigger_word": "lizard",
+            "sound": "https://files.catbox.moe/z4tbs6.mp3",
+            "volume": 0.7,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
             "trigger_word": "SNIFFA",
             "sound": "https://files.catbox.moe/gsd6cv.mp3",
             "volume": 0.2,
@@ -74,8 +82,16 @@
         },
         {
             "trigger_word": "woof",
-            "sound": "https://files.catbox.moe/32kvru.mp3",
-            "volume": 0.7,
+            "sound": "https://files.catbox.moe/v9ztrl.mp3",
+            "volume": 0.6,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "HUH",
+            "sound": "https://files.catbox.moe/3tnsit.mp3",
+            "volume": 0.1,
             "chance": "100%",
             "trigger_cooldown": 0,
             "enabled": "true"
