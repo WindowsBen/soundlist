@@ -1,0 +1,84 @@
+{
+    "sounds": [
+        {
+            "trigger_word": "wiwiwi",
+            "sound": "https://files.catbox.moe/10unmm.mp3",
+            "volume": 0.5,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "Lizard",
+            "sound": "https://files.catbox.moe/z4tbs6.mp3",
+            "volume": 0.7,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "SNIFFA",
+            "sound": "https://files.catbox.moe/gsd6cv.mp3",
+            "volume": 0.2,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "moo",
+            "sound": "https://files.catbox.moe/fals5a.mp3",
+            "volume": 0.8,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "meow",
+            "sound": "https://files.catbox.moe/78ji7b.mp3",
+            "volume": 0.3,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "crunch",
+            "sound": "https://files.catbox.moe/wzlf20.webm",
+            "volume": 0.5,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "plonk",
+            "sound": "https://files.catbox.moe/uw9by3.mp3",
+            "volume": 0.5,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "plink",
+            "sound": "https://files.catbox.moe/d82l4m.mp3",
+            "volume": 0.5,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "NOPERS",
+            "sound": "https://files.catbox.moe/7r4mbf.mp3",
+            "volume": 0.6,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "woof",
+            "sound": "https://files.catbox.moe/32kvru.mp3",
+            "volume": 0.7,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        }
+    ]
+}
