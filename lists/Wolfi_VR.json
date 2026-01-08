@@ -9,14 +9,6 @@
             "enabled": "true"
         },
         {
-            "trigger_word": "Lizard",
-            "sound": "https://files.catbox.moe/z4tbs6.mp3",
-            "volume": 0.7,
-            "chance": "100%",
-            "trigger_cooldown": 0,
-            "enabled": "true"
-        },
-        {
             "trigger_word": "lizard",
             "sound": "https://files.catbox.moe/z4tbs6.mp3",
             "volume": 0.7,
@@ -92,6 +84,38 @@
             "trigger_word": "HUH",
             "sound": "https://files.catbox.moe/3tnsit.mp3",
             "volume": 0.1,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "Bonk",
+            "sound": "https://files.catbox.moe/oj25ka.ogg",
+            "volume": 0.5,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "Pog",
+            "sound": "https://files.catbox.moe/466cb0.ogg",
+            "volume": 0.6,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "MYAA",
+            "sound": "https://files.catbox.moe/2umwk6.mp3",
+            "volume": 0.4,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "monkaW",
+            "sound": "https://files.catbox.moe/zlvdcd.ogg",
+            "volume": 0.6,
             "chance": "100%",
             "trigger_cooldown": 0,
             "enabled": "true"
