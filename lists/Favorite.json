@@ -138,6 +138,22 @@
             "chance": "100%",
             "trigger_cooldown": 0,
             "enabled": "true"
+        },
+        {
+            "trigger_word": "Sadge",
+            "sound": "https://files.catbox.moe/evri8z.ogg",
+            "volume": 0.6,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "fall",
+            "sound": "https://files.catbox.moe/iisozr.ogg",
+            "volume": 0.35,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
         }
 	]
 }
