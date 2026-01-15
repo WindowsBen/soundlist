@@ -5,7 +5,7 @@
             "sound": "https://files.catbox.moe/78ji7b.mp3",
             "volume": 0.5,
             "chance": "100%",
-            "trigger_cooldown": 2,
+            "trigger_cooldown": 0,
             "enabled": "true"
         },
         {
@@ -13,7 +13,7 @@
             "sound": "https://files.catbox.moe/fals5a.mp3",
             "volume": 0.8,
             "chance": "100%",
-            "trigger_cooldown": 2,
+            "trigger_cooldown": 0,
             "enabled": "true"
         },
         {
@@ -21,7 +21,7 @@
             "sound": "https://files.catbox.moe/v9ztrl.mp3",
             "volume": 0.5,
             "chance": "100%",
-            "trigger_cooldown": 2,
+            "trigger_cooldown": 0,
             "enabled": "true"
         },
         {
@@ -29,7 +29,7 @@
             "sound": "https://files.catbox.moe/10unmm.mp3",
             "volume": 0.5,
             "chance": "100%",
-            "trigger_cooldown": 2,
+            "trigger_cooldown": 0,
             "enabled": "true"
         },
         {
@@ -37,7 +37,7 @@
             "sound": "https://files.catbox.moe/c2qnkd.mp3",
             "volume": 0.5,
             "chance": "100%",
-            "trigger_cooldown": 2,
+            "trigger_cooldown": 0,
             "enabled": "true"
         },
         {
@@ -45,7 +45,7 @@
             "sound": "https://files.catbox.moe/8pxbed.mp3",
             "volume": 0.4,
             "chance": "100%",
-            "trigger_cooldown": 2,
+            "trigger_cooldown": 0,
             "enabled": "true"
         },
         {
@@ -53,7 +53,7 @@
             "sound": "https://files.catbox.moe/dys50l.mp3",
             "volume": 0.15,
             "chance": "100%",
-            "trigger_cooldown": 2,
+            "trigger_cooldown": 0,
             "enabled": "true"
         },
         {
@@ -61,7 +61,7 @@
             "sound": "https://files.catbox.moe/9xapz4.mp3",
             "volume": 0.7,
             "chance": "100%",
-            "trigger_cooldown": 2,
+            "trigger_cooldown": 0,
             "enabled": "true"
         },
         {
@@ -69,7 +69,7 @@
             "sound": "https://files.catbox.moe/hiuddt.mp3",
             "volume": 0.4,
             "chance": "100%",
-            "trigger_cooldown": 2,
+            "trigger_cooldown": 0,
             "enabled": "true"
         },
         {
@@ -77,7 +77,7 @@
             "sound": "https://files.catbox.moe/gsd6cv.mp3",
             "volume": 0.2,
             "chance": "100%",
-            "trigger_cooldown": 2,
+            "trigger_cooldown": 0,
             "enabled": "true"
         },
         {
@@ -85,7 +85,7 @@
             "sound": "https://files.catbox.moe/z4tbs6.mp3",
             "volume": 0.7,
             "chance": "100%",
-            "trigger_cooldown": 2,
+            "trigger_cooldown": 0,
             "enabled": "true"
         },
         {
@@ -93,7 +93,7 @@
             "sound": "https://files.catbox.moe/wzlf20.webm",
             "volume": 0.4,
             "chance": "100%",
-            "trigger_cooldown": 2,
+            "trigger_cooldown": 0,
             "enabled": "true"
         },
         {
@@ -101,7 +101,7 @@
             "sound": "https://files.catbox.moe/vfn7nw.mp3",
             "volume": 1,
             "chance": "100%",
-            "trigger_cooldown": 2,
+            "trigger_cooldown": 0,
             "enabled": "true"
         },
         {
@@ -112,7 +112,7 @@
                      ],
             "volume": 0.7,
             "chance": "100%",
-            "trigger_cooldown": 2,
+            "trigger_cooldown": 0,
             "enabled": "true"
         }
 	]
