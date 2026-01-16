@@ -73,7 +73,7 @@
             "enabled": "true"
         },
         {
-            "trigger_word": "LIZARD",
+            "trigger_word": "Lizard",
             "sound": "https://files.catbox.moe/z4tbs6.mp3",
             "volume": 0.8,
             "chance": "100%",
