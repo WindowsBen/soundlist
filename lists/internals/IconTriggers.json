@@ -1099,11 +1099,11 @@
         "image": "https://cdn.7tv.app/emote/01FF24SGJG000BV871AWE9TYYV/4x.avif",
         "link": "https://7tv.app/emotes/01FF24SGJG000BV871AWE9TYYV"
     },
-    "l3orjeBald": {
+    "i3orjeBald": {
         "image": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_6c927a83d76347aab69f6a29186f8d9d/default/dark/4.0",
         "link": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_6c927a83d76347aab69f6a29186f8d9d/default/dark/4.0"
     },
-    "l3orjeLul": {
+    "i3orjeLul": {
         "image": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_ac700d9eed8d49ec971fa456c3155afd/default/dark/4.0",
         "link": "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_ac700d9eed8d49ec971fa456c3155afd/default/dark/4.0"
     },
@@ -1114,5 +1114,13 @@
     "Petdatdog": {
         "image": "https://cdn.7tv.app/emote/01K5FE1MQW1F710RM79YRE3YDB/4x.avif",
         "link": "https://7tv.app/emotes/01K5FE1MQW1F710RM79YRE3YDB"
+    },
+    "aa": {
+        "image": "https://files.catbox.moe/96r127.png",
+        "link": "https://files.catbox.moe/96r127.png"
+    },
+    "BALD": {
+        "image": "https://files.catbox.moe/96r127.png",
+        "link": "https://files.catbox.moe/96r127.png"
     }
 }

@@ -25,7 +25,7 @@
             "enabled": "true"
         },
         {
-            "trigger_word": "i3orjebald",
+            "trigger_word": "i3orjeBald",
             "sound": "https://files.catbox.moe/62f8t4.ogg",
             "volume": 0.4,
             "chance": "100%",
