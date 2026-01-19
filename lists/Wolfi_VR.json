@@ -119,6 +119,22 @@
             "chance": "100%",
             "trigger_cooldown": 0,
             "enabled": "true"
+        },
+        {
+            "trigger_word": "fish",
+            "sound": "https://files.catbox.moe/ey7pj9.mp3",
+            "volume": 0.3,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "catSalad",
+            "sound": "https://files.catbox.moe/t713me.ogg",
+            "volume": 0.4,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
         }
     ]
 }
