@@ -359,8 +359,7 @@ async function resolve7TVEmote(sevenTvUrl) {
 }
 
 function isImageUrl(url) {
-    return typeof url === "string" &&
-        /\.(png|jpe?g|gif|webp|svg)$/i.test(url);
+    return typeof url === "string" && url.startsWith("http");
 }
 
 
