@@ -332,10 +332,43 @@ function createReversedBuffer(srcBuffer) {
     return rev;
 }
 
+// ================== 7TV EMOTE RESOLVER ==================
+const emoteCache = new Map();
+
+async function resolve7TVEmote(sevenTvUrl) {
+    if (emoteCache.has(sevenTvUrl)) {
+        return emoteCache.get(sevenTvUrl);
+    }
+
+    const match = sevenTvUrl.match(/emotes\/([a-zA-Z0-9]+)/);
+    if (!match) return null;
+
+    const emoteId = match[1];
+
+    const res = await fetch(`https://7tv.io/v3/emotes/${emoteId}`);
+    const data = await res.json();
+
+    const resolved = {
+        image: `https://cdn.7tv.app/emote/${data.id}/4x.webp`,
+        link: sevenTvUrl,
+        name: data.name
+    };
+
+    emoteCache.set(sevenTvUrl, resolved);
+    return resolved;
+}
+
+function isImageUrl(url) {
+    return typeof url === "string" &&
+        /\.(png|jpe?g|gif|webp|svg)$/i.test(url);
+}
+
+
+
 // ================== RESOURCE LOADING ==================
 async function loadResources() {
     try {
-        const resTriggers = await fetch("lists/internals/IconTriggers.json");
+        const resTriggers = await fetch("lists/internals/IconTriggers2.json");
         triggerImages = await resTriggers.json();
         const resAvatars = await fetch("lists/internals/avatars.json");
         avatars = await resAvatars.json();
@@ -476,7 +509,7 @@ function displaySoundList(list, user) {
 
     const emoteDivs = []; // For search filtering
 
-    list.forEach(item => {
+    list.forEach(async item => {
         if (!item.enabled || item.enabled!=="true") return;
 
         const div = document.createElement("div");
@@ -504,14 +537,45 @@ function displaySoundList(list, user) {
 
         div.style.display="flex"; div.style.alignItems="center"; div.style.gap="10px";
 
-        // Emote image/link
-        const emoteData = triggerImages[item.trigger_word];
+        let emoteData = null;
+const triggerEntry = triggerImages[item.trigger_word];
+
+if (typeof triggerEntry === "string") {
+
+        // 7TV emote
+        if (triggerEntry.includes("7tv.app/emotes")) {
+            emoteData = await resolve7TVEmote(triggerEntry);
+        }
+        // Direct image URL (catbox, etc.)
+        else if (isImageUrl(triggerEntry)) {
+            emoteData = {
+                image: triggerEntry,
+                link: triggerEntry,
+                name: item.trigger_word
+            };
+        }
+    }
+        // Fallback (no emote attached)
+        if (!emoteData) {
+            emoteData = {
+                image: "https://files.catbox.moe/ab5icu.png",
+                link: "#",
+                name: item.trigger_word
+            };
+        }
+
         const emoteAnchor = document.createElement("a");
-        emoteAnchor.href = emoteData?.link||"#"; emoteAnchor.target="_blank";
+        emoteAnchor.href = emoteData.link;
+        emoteAnchor.target = "_blank";
+
         const emoteImg = document.createElement("img");
-        emoteImg.src = emoteData?.image || "https://files.catbox.moe/ab5icu.png";
-        emoteImg.alt = item.trigger_word;
-        emoteAnchor.appendChild(emoteImg); div.appendChild(emoteAnchor);
+        emoteImg.src = emoteData.image;
+        emoteImg.alt = emoteData.name;
+
+        emoteAnchor.appendChild(emoteImg);
+        div.appendChild(emoteAnchor);
+
+
 
         // Text column
         const text = document.createElement("div"); text.style.flex="1";
