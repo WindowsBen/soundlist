@@ -135,6 +135,22 @@
             "chance": "100%",
             "trigger_cooldown": 0,
             "enabled": "true"
+        },
+        {
+            "trigger_word": "AYAYA",
+            "sound": "https://files.catbox.moe/mguhzd.mp3",
+            "volume": 0.4,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "ALARM",
+            "sound": "https://files.catbox.moe/r51nah.mp3",
+            "volume": 0.3,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
         }
     ]
 }
