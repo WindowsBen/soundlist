@@ -119,6 +119,14 @@
             "chance": "100%",
             "trigger_cooldown": 0,
             "enabled": "true"
+        },
+        {
+            "trigger_word": "hello",
+            "sound": "https://files.catbox.moe/xr5f09.ogg",
+            "volume": 0.2,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
         }
 	]
 }
