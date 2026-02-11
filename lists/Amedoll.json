@@ -247,6 +247,32 @@
             "chance": "20%",
             "trigger_cooldown": 0,
             "enabled": "true"
+        },
+        {
+            "trigger_word": "StandingHere",
+            "sound": [
+                        "https://files.catbox.moe/lyxkik.ogg",
+                        "https://files.catbox.moe/4xwpag.ogg",
+                        "https://files.catbox.moe/0h22n1.ogg",
+                        "https://files.catbox.moe/2eogx5.ogg"
+                ],
+            "volume": 0.2,
+            "chance": "20%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "STANDINGHERE",
+            "sound": [
+                        "https://files.catbox.moe/lyxkik.ogg",
+                        "https://files.catbox.moe/4xwpag.ogg",
+                        "https://files.catbox.moe/0h22n1.ogg",
+                        "https://files.catbox.moe/2eogx5.ogg"
+                ],
+            "volume": 0.2,
+            "chance": "20%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
         }
 	]
 }
