@@ -303,6 +303,14 @@
             "chance": "100%",
             "trigger_cooldown": 0,
             "enabled": "true"
+        },
+        {
+            "trigger_word": "????",
+            "sound": "https://files.catbox.moe/1fe8y1.ogg",
+            "volume": 0.5,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
         }
 	]
 }
