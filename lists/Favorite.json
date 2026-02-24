@@ -154,6 +154,14 @@
             "chance": "100%",
             "trigger_cooldown": 0,
             "enabled": "true"
+        },
+        {
+            "trigger_word": "!boost",
+            "sound": "https://files.catbox.moe/e74pps.mp3",
+            "volume": 0.15,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
         }
 	]
 }
