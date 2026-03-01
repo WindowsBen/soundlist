@@ -66,8 +66,8 @@
         },
         {
             "trigger_word": "NOPERS",
-            "sound": "https://files.catbox.moe/7rzlp7.ogg",
-            "volume": 0.6,
+            "sound": "https://files.catbox.moe/d2de0m.ogg",
+            "volume": 0.5,
             "chance": "100%",
             "trigger_cooldown": 0,
             "enabled": "true"
