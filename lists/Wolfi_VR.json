@@ -66,7 +66,7 @@
         },
         {
             "trigger_word": "NOPERS",
-            "sound": "https://files.catbox.moe/7r4mbf.mp3",
+            "sound": "https://files.catbox.moe/7rzlp7.ogg",
             "volume": 0.6,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -147,6 +147,14 @@
         {
             "trigger_word": "ALARM",
             "sound": "https://files.catbox.moe/r51nah.mp3",
+            "volume": 0.3,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "Awoo",
+            "sound": "https://files.catbox.moe/g4ro7j.ogg",
             "volume": 0.3,
             "chance": "100%",
             "trigger_cooldown": 0,
