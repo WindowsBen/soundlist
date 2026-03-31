@@ -58,7 +58,7 @@
         },
         {
             "trigger_word": "plink",
-            "sound": "https://files.catbox.moe/c2qnkd.mp3",
+            "sound": "https://files.catbox.moe/5ueqq1.ogg",
             "volume": 0.4,
             "chance": "100%",
             "trigger_cooldown": 0,
