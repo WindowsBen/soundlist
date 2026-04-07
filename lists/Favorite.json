@@ -3,7 +3,7 @@
         {
             "trigger_word": "meow",
             "sound": "https://files.catbox.moe/78ji7b.mp3",
-            "volume": 0.5,
+            "volume": 0.4,
             "chance": "100%",
             "trigger_cooldown": 0,
             "enabled": "true"
@@ -67,7 +67,7 @@
         {
             "trigger_word": "AAAAAA",
             "sound": "https://files.catbox.moe/mfzcje.ogg",
-            "volume": 0.3,
+            "volume": 0.2,
             "chance": "100%",
             "trigger_cooldown": 0,
             "enabled": "true"
@@ -150,7 +150,7 @@
         {
             "trigger_word": "fall",
             "sound": "https://files.catbox.moe/iisozr.ogg",
-            "volume": 0.35,
+            "volume": 0.15,
             "chance": "100%",
             "trigger_cooldown": 0,
             "enabled": "true"
