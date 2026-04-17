@@ -18,7 +18,7 @@
         },
         {
             "trigger_word": "KEYS",
-            "sound": "https://files.catbox.moe/htap05.mp3",
+            "sound": "https://files.catbox.moe/4k12a7.ogg",
             "volume": 0.4,
             "chance": "100%",
             "trigger_cooldown": 0,
