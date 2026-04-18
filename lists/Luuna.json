@@ -10,7 +10,7 @@
         },
         {
             "trigger_word": "meow_?",
-            "sound": "https://files.catbox.moe/1f0nkf.mp3",
+            "sound": "https://files.catbox.moe/m5cplx.ogg",
             "volume": 0.5,
             "chance": "100%",
             "trigger_cooldown": 0,

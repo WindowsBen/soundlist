@@ -10,7 +10,7 @@
         },
         {
             "trigger_word": "meow_?",
-            "sound": "https://files.catbox.moe/1f0nkf.mp3",
+            "sound": "https://files.catbox.moe/m5cplx.ogg",
             "volume": 0.5,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -18,7 +18,7 @@
         },
         {
             "trigger_word": "SUSSY",
-            "sound": "https://files.catbox.moe/nahwuf.mp3",
+            "sound": "https://files.catbox.moe/o9rpms.ogg",
             "volume": 0.4,
             "chance": "100%",
             "trigger_cooldown": 0,
