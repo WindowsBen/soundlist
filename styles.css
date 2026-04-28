@@ -36,6 +36,16 @@ body.lightmode .container > h1 {
     text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
 }
 
+/* ===== Loading Message (point 10) ===== */
+.loading-msg {
+    color: #fff;
+    font-size: 16px;
+    opacity: 0.7;
+}
+body.lightmode .loading-msg {
+    color: #000;
+}
+
 /* ===== Sound Item Cards (Frosted Glass) ===== */
 .sound-item {
     display: flex;
@@ -46,7 +56,7 @@ body.lightmode .container > h1 {
     border-radius: 12px;
     background: rgba(0,0,0,0.3);
     backdrop-filter: blur(6px);
-    transition: background 0.5s ease, border-color 0.5s ease, color 0.5s ease;
+    transition: background 0.5s ease, border-color 0.3s ease, color 0.5s ease, box-shadow 0.3s ease;
 }
 .sound-item img {
     width: 50px;
@@ -63,6 +73,33 @@ body.lightmode .container > h1 {
 .sound-item div {
     color: #fff;
     text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+}
+
+/* ===== Playing State (point 7) ===== */
+.sound-item.playing {
+    border-color: #a06fff;
+    animation: playingPulse 1.2s ease-in-out infinite;
+}
+body.lightmode .sound-item.playing {
+    border-color: #3c00c8;
+    animation: playingPulsLight 1.2s ease-in-out infinite;
+}
+@keyframes playingPulse {
+    0%, 100% { box-shadow: 0 0 12px 3px rgba(130, 80, 255, 0.6); }
+    50%       { box-shadow: 0 0 24px 8px rgba(130, 80, 255, 0.9); }
+}
+@keyframes playingPulsLight {
+    0%, 100% { box-shadow: 0 0 12px 3px rgba(60, 0, 200, 0.4); }
+    50%       { box-shadow: 0 0 24px 8px rgba(60, 0, 200, 0.7); }
+}
+
+/* ===== Error Flash (point 4) ===== */
+.sound-item.sound-error {
+    animation: errorFlash 0.8s ease forwards !important;
+}
+@keyframes errorFlash {
+    0%   { border-color: #ff4444; box-shadow: 0 0 14px rgba(255, 68, 68, 0.9); }
+    100% { border-color: #000;    box-shadow: none; }
 }
 
 /* ===== Links ===== */
@@ -198,4 +235,108 @@ body.lightmode .stop-btn, body.lightmode .reverse-btn {
 }
 body.lightmode .stop-btn:hover, body.lightmode .reverse-btn:hover {
     background: rgba(0,0,0,0.25);
+}
+
+/* ===== Search Input (points 5 & 6) ===== */
+.search-input {
+    padding: 8px 12px;
+    font-size: 16px;
+    border-radius: 12px;
+    border: 2px solid #000;
+    background: rgba(0,0,0,0.3);
+    backdrop-filter: blur(6px);
+    color: #fff;
+    outline: none;
+    transition: border-color 0.3s;
+    width: 300px;
+}
+.search-input:focus {
+    border-color: #fff;
+}
+body.lightmode .search-input {
+    background: rgba(255,255,255,0.5);
+    color: #000;
+    border-color: #000;
+}
+body.lightmode .search-input:focus {
+    border-color: #333;
+}
+.search-input.user-search {
+    margin-bottom: 15px;
+}
+
+/* ===== Back Button (point 5) ===== */
+.back-btn {
+    padding: 8px 12px;
+    font-size: 16px;
+    color: #fff;
+    border-radius: 8px;
+    border: 2px solid #000;
+    background: rgba(0,0,0,0.3);
+    backdrop-filter: blur(6px);
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+.back-btn:hover {
+    background: rgba(255,255,255,0.15);
+}
+body.lightmode .back-btn {
+    color: #000;
+    background: rgba(255,255,255,0.5);
+}
+body.lightmode .back-btn:hover {
+    background: rgba(0,0,0,0.1);
+}
+
+/* ===== Header Wrapper (point 5) ===== */
+.header-wrapper {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 15px;
+    align-items: center;
+}
+
+/* ===== Sound Text Column (point 5) ===== */
+.sound-text {
+    flex: 1;
+    overflow: hidden;
+}
+
+/* ===== Sound Controls Panel (point 5) ===== */
+.sound-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+    min-width: 120px;
+}
+
+/* ===== Volume Wrapper (point 5) ===== */
+.vol-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.vol-wrapper label,
+.pitch-row label {
+    font-size: 12px;
+    color: #fff;
+}
+body.lightmode .vol-wrapper label,
+body.lightmode .pitch-row label {
+    color: #000;
+}
+.vol-wrapper input[type="range"] {
+    width: 100px;
+}
+
+/* ===== Pitch / Speed Row (point 5) ===== */
+.pitch-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.pitch-row input[type="number"] {
+    width: 60px;
+    font-size: 12px;
 }

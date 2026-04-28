@@ -1,56 +1,71 @@
-// ================== CONFIG ==================
-const userFiles = {
-    Amedoll:           "lists/Amedoll.json",
-    Boshiitime:        "lists/BoshiiTime.json",
-    Favorite:          "lists/Favorite.json",
-    Fubuki_Vr:         "lists/Fubuki_Vr.json",
-    Greywolf:          "lists/Greywolf.json",
-    HeyImRadiant:      "lists/HeyImRadiant.json",
-    I3orje:            "lists/I3orje.json",
-    Jakkuba_VR:        "lists/Jakkuba_VR.json",
-    Kasimina:          "lists/Kasimina.json",
-    Kohrean:           "lists/Kohrean.json",
-    Krisuna:           "lists/Krisuna.json",
-    Kromia:            "lists/Kromia.json",
-    La_Wafflez:        "lists/La_Wafflez.json",
-    LittleMiri_CZ:     "lists/LittleMiri_CZ.json",
-    Luuna:             "lists/Luuna.json",
-    Puck:              "lists/Puck.json",
-    PuertoRicanPup:    "lists/PuertoRicanPup.json",
-    RadiantSoul_Tv:    "lists/RadiantSoul_Tv.json",
-    RadiantSoul_Tv_Sub:"lists/RadiantSoul_Tv_SubSounds.json",
-    RinMunchkin:       "lists/RinMunchkin.json",
-    SKTKawaiiNeko:     "lists/SKTKawaiiNeko.json",
-    Taletrap:          "lists/Taletrap.json",
-    Totless:           "lists/Totless.json",
-    Wolfi_VR:          "lists/Wolfi_VR.json"
+// ================== CONFIG (point 9) ==================
+// Fallback user list — used only if lists/index.json is not found.
+// To add streamers without touching this file, create lists/index.json instead.
+const FALLBACK_USER_FILES = {
+    Amedoll:            "lists/Amedoll.json",
+    Boshiitime:         "lists/BoshiiTime.json",
+    Favorite:           "lists/Favorite.json",
+    Fubuki_Vr:          "lists/Fubuki_Vr.json",
+    Greywolf:           "lists/Greywolf.json",
+    HeyImRadiant:       "lists/HeyImRadiant.json",
+    I3orje:             "lists/I3orje.json",
+    Jakkuba_VR:         "lists/Jakkuba_VR.json",
+    Kasimina:           "lists/Kasimina.json",
+    Kohrean:            "lists/Kohrean.json",
+    Krisuna:            "lists/Krisuna.json",
+    Kromia:             "lists/Kromia.json",
+    La_Wafflez:         "lists/La_Wafflez.json",
+    LittleMiri_CZ:      "lists/LittleMiri_CZ.json",
+    Luuna:              "lists/Luuna.json",
+    Puck:               "lists/Puck.json",
+    PuertoRicanPup:     "lists/PuertoRicanPup.json",
+    RadiantSoul_Tv:     "lists/RadiantSoul_Tv.json",
+    RadiantSoul_Tv_Sub: "lists/RadiantSoul_Tv_SubSounds.json",
+    RinMunchkin:        "lists/RinMunchkin.json",
+    SKTKawaiiNeko:      "lists/SKTKawaiiNeko.json",
+    Taletrap:           "lists/Taletrap.json",
+    Totless:            "lists/Totless.json",
+    Wolfi_VR:           "lists/Wolfi_VR.json"
 };
 
 // TODO: move this fallback image to R2
 const FALLBACK_EMOTE_IMAGE = "https://files.catbox.moe/ab5icu.png";
 
 // ================== STATE ==================
+let userFiles = {};
 let triggerImages = {};
 let avatars = {};
-const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-window.__GLOBAL_SOURCES__ = [];
+const listCache = new Map();     // point 3: cache parsed JSON per user
+const globalSources = [];        // point 2: off window, module-level
+
+// ================== AUDIO CONTEXT (point 1) ==================
+// Created lazily on first play to avoid browser autoplay warnings.
+let _audioCtx = null;
+function getAudioContext() {
+    if (!_audioCtx) {
+        _audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    if (_audioCtx.state === "suspended") _audioCtx.resume();
+    return _audioCtx;
+}
 
 // ================== UTILITY FUNCTIONS ==================
 
 // Fetch + decode audio buffer
 async function fetchAndDecode(url) {
+    const ctx = getAudioContext();
     const res = await fetch(url);
     const arrayBuffer = await res.arrayBuffer();
-    return await audioCtx.decodeAudioData(arrayBuffer);
+    return await ctx.decodeAudioData(arrayBuffer);
 }
 
 // Stop all playing sounds globally
 function stopAllSounds() {
-    window.__GLOBAL_SOURCES__.forEach(src => {
+    globalSources.forEach(src => {
         try { src.stop(); } catch(e) {}
         try { src.disconnect(); } catch(e) {}
     });
-    window.__GLOBAL_SOURCES__ = [];
+    globalSources.length = 0;
 }
 
 // Pick a weighted random sound from array [{clip, chance, volume}]
@@ -71,14 +86,38 @@ function pickWeighted(subSounds) {
 
 // Create reversed audio buffer
 function createReversedBuffer(srcBuffer) {
+    const ctx = getAudioContext();
     const numChannels = srcBuffer.numberOfChannels;
-    const rev = audioCtx.createBuffer(numChannels, srcBuffer.length, srcBuffer.sampleRate);
+    const rev = ctx.createBuffer(numChannels, srcBuffer.length, srcBuffer.sampleRate);
     for (let c = 0; c < numChannels; c++) {
         const ch = srcBuffer.getChannelData(c);
         const revCh = rev.getChannelData(c);
         for (let i = 0, L = ch.length; i < L; i++) revCh[i] = ch[L - 1 - i];
     }
     return rev;
+}
+
+// Extract a readable filename from a sound URL (point 8)
+function getSoundFilename(sound) {
+    const url = Array.isArray(sound)
+        ? (sound[0]?.clip || sound[0] || "")
+        : (sound || "");
+    if (!url || url === "#") return "Sound Link";
+    try {
+        const parts = new URL(url).pathname.split("/");
+        return decodeURIComponent(parts[parts.length - 1]) || "Sound Link";
+    } catch {
+        return "Sound Link";
+    }
+}
+
+function getSoundLinkUrl(sound) {
+    if (Array.isArray(sound)) return sound[0]?.clip || sound[0] || "#";
+    return sound || "#";
+}
+
+function isImageUrl(url) {
+    return typeof url === "string" && url.startsWith("http");
 }
 
 // ================== 7TV EMOTE RESOLVER ==================
@@ -104,11 +143,21 @@ async function resolve7TVEmote(sevenTvUrl) {
     return resolved;
 }
 
-function isImageUrl(url) {
-    return typeof url === "string" && url.startsWith("http");
+// ================== RESOURCE LOADING ==================
+
+// point 9: Try to load user list from lists/index.json, fall back to hardcoded object
+async function loadUserFiles() {
+    try {
+        const res = await fetch("lists/index.json");
+        if (res.ok) {
+            console.log("Loaded user list from lists/index.json");
+            return await res.json();
+        }
+    } catch {}
+    console.log("lists/index.json not found, using built-in user list");
+    return { ...FALLBACK_USER_FILES };
 }
 
-// ================== RESOURCE LOADING ==================
 async function loadResources() {
     try {
         const resTriggers = await fetch("lists/internals/IconTriggers2.json");
@@ -121,6 +170,27 @@ async function loadResources() {
     }
 }
 
+// ================== DOM HELPERS ==================
+
+function createBackButton() {
+    const btn = document.createElement("button");
+    btn.textContent = "⬅ Back";
+    btn.className = "back-btn";
+    btn.addEventListener("click", () => {
+        history.replaceState(null, "", " ");
+        displayUserLists();
+    });
+    return btn;
+}
+
+function createSearchInput(placeholder, extraClass = "") {
+    const input = document.createElement("input");
+    input.type = "text";
+    input.placeholder = placeholder;
+    input.className = "search-input" + (extraClass ? " " + extraClass : "");
+    return input;
+}
+
 // ================== DISPLAY FUNCTIONS ==================
 
 // Show main user list
@@ -128,17 +198,7 @@ function displayUserLists() {
     const container = document.getElementById("list");
     container.innerHTML = "";
 
-    // Search input
-    const searchInput = document.createElement("input");
-    searchInput.type = "text";
-    searchInput.placeholder = "Search users...";
-    searchInput.style.cssText = `
-        margin-bottom:15px; padding:8px 12px; width:300px; font-size:16px;
-        border-radius:12px; border:2px solid #000; background:rgba(0,0,0,0.3);
-        backdrop-filter:blur(6px); color:#fff; outline:none; transition:all 0.3s;
-    `;
-    searchInput.addEventListener("focus", () => searchInput.style.borderColor = "#fff");
-    searchInput.addEventListener("blur",  () => searchInput.style.borderColor = "#000");
+    const searchInput = createSearchInput("Search users...", "user-search");
     container.appendChild(searchInput);
 
     const userDivs = [];
@@ -148,19 +208,16 @@ function displayUserLists() {
         div.className = "sound-item";
         div.style.cursor = "pointer";
 
-        // Twitch avatar
         const img = document.createElement("img");
         img.src = avatars[user] || "https://static.twitchcdn.net/assets/favicon-32-e29e246c157142c94346.png";
         img.alt = user;
 
-        // Link to Twitch
         const link = document.createElement("a");
         link.href = `https://twitch.tv/${user}`;
         link.target = "_blank";
         link.appendChild(img);
         div.appendChild(link);
 
-        // Text label
         const text = document.createElement("div");
         const strong = document.createElement("strong");
         strong.textContent = user;
@@ -182,26 +239,34 @@ function displayUserLists() {
 
     searchInput.addEventListener("input", () => {
         const query = searchInput.value.toLowerCase();
-        userDivs.forEach(obj => obj.div.style.display = obj.name.includes(query) ? "flex" : "none");
+        userDivs.forEach(obj => {
+            obj.div.style.display = obj.name.includes(query) ? "flex" : "none";
+        });
     });
 }
 
 // Load and display a specific user's sounds
 async function loadList(user) {
     try {
-        const res = await fetch(userFiles[user]);
-        const data = await res.json();
-        history.replaceState(null, "", "#" + user);
+        let list;
 
-        const list = Array.isArray(data) ? data : Object.values(data).find(v => Array.isArray(v)) || [];
+        // point 3: use cached JSON if available
+        if (listCache.has(user)) {
+            list = listCache.get(user);
+        } else {
+            const res = await fetch(userFiles[user]);
+            const data = await res.json();
+            list = Array.isArray(data) ? data : Object.values(data).find(v => Array.isArray(v)) || [];
+            listCache.set(user, list);
+        }
+
+        history.replaceState(null, "", "#" + user);
         displaySoundList(list, user);
     } catch(err) {
         console.error("Error loading list:", err);
         const container = document.getElementById("list");
         container.innerHTML = "";
-
-        const backButton = createBackButton();
-        container.appendChild(backButton);
+        container.appendChild(createBackButton());
 
         const errorMsg = document.createElement("p");
         errorMsg.style.color = "red";
@@ -210,43 +275,17 @@ async function loadList(user) {
     }
 }
 
-// Creates a reusable back button
-function createBackButton() {
-    const backButton = document.createElement("button");
-    backButton.textContent = "⬅ Back";
-    backButton.style.cssText = `
-        padding:8px 12px; font-size:16px; color:#fff; border-radius:8px; border:2px solid #000;
-        background:rgba(0,0,0,0.3); backdrop-filter:blur(6px); cursor:pointer;
-    `;
-    backButton.addEventListener("click", () => {
-        window.location.hash = "";
-        displayUserLists();
-    });
-    return backButton;
-}
-
 // Render sound list for a user
 async function displaySoundList(list, user) {
     const container = document.getElementById("list");
     container.innerHTML = "";
 
-    // Header: Back + Search
     const headerWrapper = document.createElement("div");
-    headerWrapper.style.cssText = "display:flex; gap:12px; margin-bottom:15px;";
-
+    headerWrapper.className = "header-wrapper";
     headerWrapper.appendChild(createBackButton());
 
-    const searchInput = document.createElement("input");
-    searchInput.type = "text";
-    searchInput.placeholder = "Search emotes...";
-    searchInput.style.cssText = `
-        padding:10px; width:300px; font-size:16px; border-radius:12px; border:2px solid #000;
-        background:rgba(0,0,0,0.3); backdrop-filter:blur(6px); color:#fff; outline:none; transition:all 0.3s;
-    `;
-    searchInput.addEventListener("focus", () => searchInput.style.borderColor = "#fff");
-    searchInput.addEventListener("blur",  () => searchInput.style.borderColor = "#000");
+    const searchInput = createSearchInput("Search emotes...");
     headerWrapper.appendChild(searchInput);
-
     container.appendChild(headerWrapper);
 
     if (!list.length) {
@@ -258,16 +297,12 @@ async function displaySoundList(list, user) {
 
     const emoteDivs = [];
 
-    // Fixed: use for...of instead of forEach so async/await works correctly
     for (const item of list) {
         if (!item.enabled || item.enabled !== "true") continue;
 
         const div = document.createElement("div");
         div.className = "sound-item";
         div.style.position = "relative";
-        div.style.display = "flex";
-        div.style.alignItems = "center";
-        div.style.gap = "10px";
 
         // Loader
         const loader = document.createElement("div");
@@ -306,16 +341,18 @@ async function displaySoundList(list, user) {
         emoteAnchor.appendChild(emoteImg);
         div.appendChild(emoteAnchor);
 
-        // Text column — fixed: use textContent/DOM instead of innerHTML to avoid XSS
+        // Text column
         const text = document.createElement("div");
-        text.style.flex = "1";
-        text.style.overflow = "hidden";
+        text.className = "sound-text";
         const strong = document.createElement("strong");
         strong.textContent = item.trigger_word;
+
+        // point 8: show actual filename instead of generic "Sound Link"
         const soundLink = document.createElement("a");
-        soundLink.href = Array.isArray(item.sound) ? (item.sound[0]?.clip || item.sound[0] || "#") : item.sound;
+        soundLink.href = getSoundLinkUrl(item.sound);
         soundLink.target = "_blank";
-        soundLink.textContent = "Sound Link";
+        soundLink.textContent = getSoundFilename(item.sound);
+
         text.appendChild(strong);
         text.appendChild(document.createElement("br"));
         text.appendChild(soundLink);
@@ -323,30 +360,26 @@ async function displaySoundList(list, user) {
 
         // Controls
         const controls = document.createElement("div");
-        controls.style.cssText = "display:flex; flex-direction:column; align-items:flex-end; gap:6px; min-width:120px;";
+        controls.className = "sound-controls";
 
         // Volume
+        const volWrapper = document.createElement("div");
+        volWrapper.className = "vol-wrapper";
         const volLabel = document.createElement("label");
         volLabel.textContent = "Vol";
-        volLabel.style.fontSize = "12px";
         const volInput = document.createElement("input");
         volInput.type = "range"; volInput.min = "0"; volInput.max = "100";
         volInput.value = typeof item.volume === "number" ? Math.round(item.volume * 100) : 50;
-        volInput.style.width = "100px";
-        const volWrapper = document.createElement("div");
-        volWrapper.style.cssText = "display:flex; flex-direction:column; align-items:flex-end;";
         volWrapper.appendChild(volLabel);
         volWrapper.appendChild(volInput);
 
-        // Pitch / Speed
+        // Speed
         const pitchRow = document.createElement("div");
-        pitchRow.style.cssText = "display:flex; align-items:center; gap:6px;";
+        pitchRow.className = "pitch-row";
         const pitchLabel = document.createElement("label");
         pitchLabel.textContent = "Speed";
-        pitchLabel.style.fontSize = "12px";
         const pitchInput = document.createElement("input");
-        pitchInput.type = "number"; pitchInput.min = "50"; pitchInput.max = "200";
-        pitchInput.value = "100"; pitchInput.style.width = "60px"; pitchInput.style.fontSize = "12px";
+        pitchInput.type = "number"; pitchInput.min = "50"; pitchInput.max = "200"; pitchInput.value = "100";
         pitchRow.appendChild(pitchLabel);
         pitchRow.appendChild(pitchInput);
 
@@ -369,6 +402,7 @@ async function displaySoundList(list, user) {
         // ================== AUDIO HANDLING ==================
         const bufferCache = new Map();
         const reversedCache = new Map();
+        let playingCount = 0; // point 7: track active sources per card
 
         async function getBufferForUrl(url) {
             if (bufferCache.has(url)) return bufferCache.get(url);
@@ -400,28 +434,41 @@ async function displaySoundList(list, user) {
                 chosenUrl = item.sound;
             }
 
+            const ctx = getAudioContext(); // point 1: lazy context
             const buf = await getBufferForUrl(chosenUrl);
+
             let bufferToPlay = buf;
             if (reversed) {
                 if (!reversedCache.has(chosenUrl)) reversedCache.set(chosenUrl, createReversedBuffer(buf));
                 bufferToPlay = reversedCache.get(chosenUrl);
             }
 
-            const src = audioCtx.createBufferSource();
+            const src = ctx.createBufferSource();
             src.buffer = bufferToPlay;
-            window.__GLOBAL_SOURCES__.push(src);
+            globalSources.push(src); // point 2: module-level array
 
-            const gainNode = audioCtx.createGain();
+            const gainNode = ctx.createGain();
             gainNode.gain.value = ((parseFloat(volInput.value) || 50) / 100) * (perSoundVolume != null ? perSoundVolume : 1);
             src.playbackRate.value = Math.max(0.01, (parseFloat(pitchInput.value) || 100) / 100);
 
-            src.connect(gainNode).connect(audioCtx.destination);
+            src.connect(gainNode).connect(ctx.destination);
             src.start(0);
+
+            // point 7: add playing glow when sound starts
+            playingCount++;
+            div.classList.add("playing");
 
             src.onended = () => {
                 try { src.disconnect(); gainNode.disconnect(); } catch(e) {}
-                const idx = window.__GLOBAL_SOURCES__.indexOf(src);
-                if (idx !== -1) window.__GLOBAL_SOURCES__.splice(idx, 1);
+                const idx = globalSources.indexOf(src);
+                if (idx !== -1) globalSources.splice(idx, 1);
+
+                // point 7: remove glow only when all sources from this card are done
+                playingCount--;
+                if (playingCount <= 0) {
+                    playingCount = 0;
+                    div.classList.remove("playing");
+                }
             };
 
             return src;
@@ -429,15 +476,28 @@ async function displaySoundList(list, user) {
 
         div.addEventListener("click", e => {
             if (e.target.closest("a")) return;
-            playRandomBuffer({ reversed: false }).catch(err => console.error("Playback error:", err));
+            // point 4: visual error feedback on failed playback
+            playRandomBuffer({ reversed: false }).catch(err => {
+                console.error("Playback error:", err);
+                div.classList.remove("sound-error");
+                void div.offsetWidth; // force reflow so animation restarts if already erroring
+                div.classList.add("sound-error");
+            });
         });
         reverseBtn.addEventListener("click", e => {
             e.stopPropagation();
-            playRandomBuffer({ reversed: true }).catch(err => console.error("Playback error:", err));
+            playRandomBuffer({ reversed: true }).catch(err => {
+                console.error("Playback error:", err);
+                div.classList.remove("sound-error");
+                void div.offsetWidth;
+                div.classList.add("sound-error");
+            });
         });
         stopBtn.addEventListener("click", e => {
             e.stopPropagation();
             stopAllSounds();
+            playingCount = 0;
+            div.classList.remove("playing");
         });
         pitchInput.addEventListener("keydown", ev => {
             if (ev.key === "Enter") ev.target.blur();
@@ -449,7 +509,9 @@ async function displaySoundList(list, user) {
 
     searchInput.addEventListener("input", () => {
         const query = searchInput.value.toLowerCase();
-        emoteDivs.forEach(obj => obj.div.style.display = obj.trigger_word.includes(query) ? "flex" : "none");
+        emoteDivs.forEach(obj => {
+            obj.div.style.display = obj.trigger_word.includes(query) ? "flex" : "none";
+        });
     });
 }
 
@@ -469,7 +531,13 @@ darkModeSwitch.addEventListener("change", () => {
 
 // ================== INIT ==================
 window.addEventListener("DOMContentLoaded", async () => {
+    // point 10: show loading state immediately before anything fetches
+    const listEl = document.getElementById("list");
+    listEl.innerHTML = "<p class='loading-msg'>Loading...</p>";
+
     await loadResources();
+    userFiles = await loadUserFiles(); // point 9
+
     const hashUser = window.location.hash.slice(1);
     if (hashUser && userFiles[hashUser]) loadList(hashUser);
     else displayUserLists();
