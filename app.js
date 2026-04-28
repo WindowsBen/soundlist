@@ -191,7 +191,7 @@ async function loadList(user) {
     try {
         const res = await fetch(userFiles[user]);
         const data = await res.json();
-        window.location.hash = user;
+        history.replaceState(null, "", "#" + user);
 
         const list = Array.isArray(data) ? data : Object.values(data).find(v => Array.isArray(v)) || [];
         displaySoundList(list, user);
