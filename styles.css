@@ -1,0 +1,201 @@
+/* ===== Body & Gradient Background ===== */
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background: linear-gradient(270deg in oklab, #4d480a, #120b49, #410d47, #043306);
+    background-size: 400% 400%;
+    animation: gradientBG 60s linear infinite alternate;
+    transition: background 0.5s ease, color 0.5s ease;
+    color: transparent;
+}
+
+@keyframes gradientBG {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ===== Light Mode Body ===== */
+body.lightmode {
+    background: linear-gradient(270deg in oklab, #e2d522, #3b27f0, #cc26e2, #18d821);
+    color: transparent;
+}
+
+/* ===== Container ===== */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+.container > h1 {
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+    margin-bottom: 15px;
+}
+body.lightmode .container > h1 {
+    color: #000;
+    text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+}
+
+/* ===== Sound Item Cards (Frosted Glass) ===== */
+.sound-item {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    padding: 10px;
+    border: 2px solid #000;
+    border-radius: 12px;
+    background: rgba(0,0,0,0.3);
+    backdrop-filter: blur(6px);
+    transition: background 0.5s ease, border-color 0.5s ease, color 0.5s ease;
+}
+.sound-item img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    margin-right: 15px;
+    border-radius: 5px;
+    background: transparent;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+.sound-item img:hover { transform: scale(1.2); }
+
+.sound-item div {
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+}
+
+/* ===== Links ===== */
+.sound-item a {
+    color: #fff;
+    text-decoration: underline;
+}
+body.lightmode .sound-item a { color: #000; }
+
+/* ===== Light Mode Card Overrides ===== */
+body.lightmode .sound-item {
+    border: 5px solid #000;
+    background: rgba(255,255,255,0.6);
+}
+body.lightmode .sound-item div {
+    color: #000;
+    text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+}
+
+/* ===== Contact Button Card ===== */
+.contact-card {
+    display: inline-block;
+    padding: 15px;
+    border-radius: 16px;
+    border: 2px solid #000;
+    background: rgba(0,0,0,0.3);
+    backdrop-filter: blur(6px);
+    transition: all 0.3s ease;
+}
+.contact-card:hover {
+    box-shadow: 0 0 20px rgba(255,255,255,0.8);
+    transform: scale(1.05);
+}
+body.lightmode .contact-card {
+    background: rgba(255,255,255,0.6);
+    border: 2px solid #000;
+}
+body.lightmode .contact-card:hover {
+    box-shadow: 0 0 20px rgba(0,0,0,0.7);
+}
+
+/* ===== Toggle Switch (Dark/Light Mode) ===== */
+.switch {
+    font-size: 17px;
+    position: relative;
+    display: inline-block;
+    width: 3.5em;
+    height: 2em;
+}
+.switch input { opacity: 0; width: 0; height: 0; }
+
+.slider {
+    --background: #28096b;
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: var(--background);
+    transition: .5s;
+    border-radius: 30px;
+}
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 1.4em;
+    width: 1.4em;
+    border-radius: 50%;
+    left: 10%;
+    bottom: 15%;
+    box-shadow: inset 8px -4px 0px 0px #fff000;
+    background: var(--background);
+    transition: .5s;
+}
+input:checked + .slider {
+    background-color: #522ba7;
+}
+input:checked + .slider:before {
+    transform: translateX(100%);
+    box-shadow: inset 15px -4px 0px 15px #fff000;
+}
+
+/* ===== Custom Loader (from Uiverse.io by aryamitra06) ===== */
+.loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+}
+.bar {
+    display: inline-block;
+    width: 3px;
+    height: 20px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    animation: scale-up4 1s linear infinite;
+}
+.bar:nth-child(2) {
+    height: 35px;
+    margin: 0 5px;
+    animation-delay: 0.25s;
+}
+.bar:nth-child(3) {
+    animation-delay: 0.5s;
+}
+@keyframes scale-up4 {
+    20% {
+        background-color: #ffff;
+        transform: scaleY(1.5);
+    }
+    40% {
+        transform: scaleY(1);
+    }
+}
+
+/* ===== Stop / Reverse Buttons ===== */
+.stop-btn, .reverse-btn {
+    padding: 6px 10px;
+    border-radius: 8px;
+    backdrop-filter: blur(6px);
+    background: rgba(255,255,255,0.1);
+    border: 1px solid #fff;
+    color: #fff;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.2s ease;
+}
+.stop-btn:hover, .reverse-btn:hover {
+    background: rgba(255,255,255,0.25);
+}
+body.lightmode .stop-btn, body.lightmode .reverse-btn {
+    background: rgba(0,0,0,0.1);
+    border: 1px solid #000;
+    color: #000;
+}
+body.lightmode .stop-btn:hover, body.lightmode .reverse-btn:hover {
+    background: rgba(0,0,0,0.25);
+}
