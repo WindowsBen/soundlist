@@ -34,7 +34,7 @@
         },
         {
             "trigger_word": "tiger",
-            "sound": "https://files.catbox.moe/ilc98g.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/Tiger.ogg",
             "volume": 0.4,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -58,7 +58,7 @@
         },
         {
             "trigger_word": "Rawr",
-            "sound": "https://files.catbox.moe/vfx3o1.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/rawr.ogg",
             "volume": 0.7,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -67,8 +67,8 @@
         {
             "trigger_word": "GroanTube",
             "sound": [
-                "https://files.catbox.moe/3o21r8.mp3",
-                "https://files.catbox.moe/xj9kgz.mp3"
+                "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/GroanTube1.ogg",
+                "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/GroanTube2.ogg"
             ],
             "volume": 0.5,
             "chance": "100%",

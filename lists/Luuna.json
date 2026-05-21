@@ -18,7 +18,7 @@
         },
         {
             "trigger_word": "woof",
-            "sound": "https://files.catbox.moe/32kvru.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/woof.ogg",
             "volume": 0.7,
             "chance": "100%",
             "trigger_cooldown": 0,

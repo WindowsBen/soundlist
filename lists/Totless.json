@@ -226,7 +226,7 @@
         },
         {
             "trigger_word": "peepoWhistle",
-            "sound": "https://files.catbox.moe/fr3mk3.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/peepoWhistle.ogg",
             "volume": 0.5,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -242,7 +242,7 @@
         },
         {
             "trigger_word": "WOULD",
-            "sound": "https://files.catbox.moe/04ihnc.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/WOULD.ogg",
             "volume": 0.05,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -250,7 +250,7 @@
         },
         {
             "trigger_word": "popCat",
-            "sound": "https://files.catbox.moe/27ghec.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/popCat.ogg",
             "volume": 0.7,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -266,7 +266,7 @@
         },
         {
             "trigger_word": "YIPPEE",
-            "sound": "https://files.catbox.moe/7llcq9.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/YIPPEE.ogg",
             "volume": 0.5,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -274,7 +274,7 @@
         },
         {
             "trigger_word": "pausecham",
-            "sound": "https://files.catbox.moe/0xxeub.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/pausecham.ogg",
             "volume": 0.2,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -282,7 +282,7 @@
         },
         {
             "trigger_word": "LUBBERS",
-            "sound": "https://files.catbox.moe/olnjyx.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/LUBBERS.ogg",
             "volume": 0.2,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -363,8 +363,8 @@
         {
             "trigger_word": "GroanTube",
             "sound": [
-                "https://files.catbox.moe/3o21r8.mp3",
-                "https://files.catbox.moe/xj9kgz.mp3"
+                "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/GroanTube1.ogg",
+                "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/GroanTube2.ogg"
             ],
             "volume": 0.5,
             "chance": "100%",
@@ -381,7 +381,7 @@
         },
         {
             "trigger_word": "GlueTime",
-            "sound": "https://files.catbox.moe/d9orq2.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/GlueTime.ogg",
             "volume": 0.6,
             "chance": "100%",
             "trigger_cooldown": 0,

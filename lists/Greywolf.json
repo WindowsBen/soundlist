@@ -10,7 +10,7 @@
         },
         {
             "trigger_word": "HELP",
-            "sound": "https://files.catbox.moe/nxgcz9.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/HELP.ogg",
             "volume": 0.7,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -50,7 +50,7 @@
         },
         {
             "trigger_word": "....",
-            "sound": "https://files.catbox.moe/3121x9.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/dots.ogg",
             "volume": 0.5,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -66,7 +66,7 @@
         },
         {
             "trigger_word": "Pootsive",
-            "sound": "https://files.catbox.moe/x3sanr.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/Pootsive.ogg",
             "volume": 0.6,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -82,7 +82,7 @@
         },
         {
             "trigger_word": "!d20",
-            "sound": "https://files.catbox.moe/o4tzrt.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/!d20.ogg",
             "volume": 0.3,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -114,7 +114,7 @@
         },
         {
             "trigger_word": "xqcSmash",
-            "sound": "https://files.catbox.moe/j1ut9i.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/xqcSmash.ogg",
             "volume": 0.4,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -122,7 +122,7 @@
         },
         {
             "trigger_word": "FeelsWeakMan",
-            "sound": "https://files.catbox.moe/j0y86o.ogg",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/FeelsWeakMan.ogg",
             "volume": 0.2,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -130,7 +130,7 @@
         },
         {
             "trigger_word": "Considering",
-            "sound": "https://files.catbox.moe/929f5g.ogg",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/Considering.ogg",
             "volume": 0.7,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -138,7 +138,7 @@
         },
         {
             "trigger_word": "PepegaCard",
-            "sound": "https://files.catbox.moe/zt1pqa.ogg",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/PepegaCard.ogg",
             "volume": 0.6,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -146,7 +146,7 @@
         },
         {
             "trigger_word": "NYEHEHEHE",
-            "sound": "https://files.catbox.moe/fz2o5r.ogg",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/NYEHEHEHE_grey.ogg",
             "volume": 0.5,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -154,7 +154,7 @@
         },
         {
             "trigger_word": "MONKE",
-            "sound": "https://files.catbox.moe/m23tqn.ogg",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/MONKE.ogg",
             "volume": 0.5,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -162,7 +162,7 @@
         },
         {
             "trigger_word": "HACKERMANS",
-            "sound": "https://files.catbox.moe/vu2cn9.ogg",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/HACKERMANS.ogg",
             "volume": 0.7,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -186,7 +186,7 @@
         },
         {
             "trigger_word": "xddWalk",
-            "sound": "https://files.catbox.moe/pui00s.ogg",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/xddWalk.ogg",
             "volume": 0.6,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -202,7 +202,7 @@
         },
         {
             "trigger_word": "aaaaaaaaa",
-            "sound": "https://files.catbox.moe/km1202.ogg",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/aaaaaaaaa.ogg",
             "volume": 0.5,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -218,7 +218,7 @@
         },
         {
             "trigger_word": "EEEE",
-            "sound": "https://files.catbox.moe/9qq4sv.ogg",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/EEEE.ogg",
             "volume": 0.5,
             "chance": "100%",
             "trigger_cooldown": 0,

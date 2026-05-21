@@ -18,7 +18,7 @@
         },
         {
             "trigger_word": "Lobter",
-            "sound": "https://files.catbox.moe/40l8xj.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/LOBTER.ogg",
             "volume": 0.4,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -66,7 +66,7 @@
         },
         {
             "trigger_word": "SCALER",
-            "sound": "https://files.catbox.moe/1urwpl.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/SCALER.ogg",
             "volume": 0.5,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -90,7 +90,7 @@
         },
         {
             "trigger_word": "spotify",
-            "sound": "https://files.catbox.moe/nf4svi.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/spotify.ogg",
             "volume": 0.65,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -122,7 +122,7 @@
         },
         {
             "trigger_word": "hello",
-            "sound": "https://files.catbox.moe/aw9ftu.ogg",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/hello.ogg",
             "volume": 0.2,
             "chance": "100%",
             "trigger_cooldown": 0,

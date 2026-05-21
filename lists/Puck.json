@@ -2,7 +2,7 @@
     "sounds": [
         {
             "trigger_word": "Airhorn",
-            "sound": "https://files.catbox.moe/2sczn2.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/Airhorn.ogg",
             "volume": 0.05,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -10,7 +10,7 @@
         },
         {
             "trigger_word": "Cheese",
-            "sound": "https://files.catbox.moe/yxmjix.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/Cheese.ogg",
             "volume": 0.4,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -18,7 +18,7 @@
         },
         {
             "trigger_word": "BUZZER",
-            "sound": "https://files.catbox.moe/0sjk3y.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/BUZZER.ogg",
             "volume": 0.2,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -50,7 +50,7 @@
         },
         {
             "trigger_word": "CHEER",
-            "sound": "https://files.catbox.moe/35hc1k.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/CHEER.ogg",
             "volume": 0.5,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -58,7 +58,7 @@
         },
         {
             "trigger_word": "SCREAM",
-            "sound": "https://files.catbox.moe/qu7un9.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/SCREAM.ogg",
             "volume": 0.5,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -74,7 +74,7 @@
         },
         {
             "trigger_word": "MetalPipe",
-            "sound": "https://files.catbox.moe/4qlpks.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/MetalPipe.ogg",
             "volume": 0.1,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -82,7 +82,7 @@
         },
         {
             "trigger_word": "o7",
-            "sound": "https://files.catbox.moe/5oy20v.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/o7_puck.ogg",
             "volume": 0.5,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -90,7 +90,7 @@
         },
         {
             "trigger_word": "AWWW",
-            "sound": "https://files.catbox.moe/06im1d.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/AWWW.ogg",
             "volume": 0.5,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -98,7 +98,7 @@
         },
         {
             "trigger_word": "RIPBOZO",
-            "sound": "https://files.catbox.moe/1l3xsd.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/RIPBOZO.ogg",
             "volume": 0.5,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -115,8 +115,8 @@
         {
             "trigger_word": "GroanTube",
             "sound": [
-                "https://files.catbox.moe/3o21r8.mp3",
-                "https://files.catbox.moe/xj9kgz.mp3"
+                "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/GroanTube1.ogg",
+                "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/GroanTube2.ogg"
             ],
             "volume": 0.5,
             "chance": "100%",
@@ -125,7 +125,7 @@
         },
         {
             "trigger_word": "gremlinJAM",
-            "sound": "https://files.catbox.moe/h5www0.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/gremlinJAM.ogg",
             "volume": 0.4,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -133,7 +133,7 @@
         },
         {
             "trigger_word": "mexicat",
-            "sound": "https://files.catbox.moe/h5www0.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/gremlinJAM.ogg",
             "volume": 0.4,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -141,7 +141,7 @@
         },
         {
             "trigger_word": "GaySex",
-            "sound": "https://files.catbox.moe/6fkvyf.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/GaySex.ogg",
             "volume": 0.5,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -149,7 +149,7 @@
         },
         {
             "trigger_word": "WideAmongUsGaySex",
-            "sound": "https://files.catbox.moe/6fkvyf.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/GaySex.ogg",
             "volume": 0.5,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -157,7 +157,7 @@
         },
         {
             "trigger_word": "NUT",
-            "sound": "https://files.catbox.moe/in3b8n.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/NUT.ogg",
             "volume": 0.5,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -165,7 +165,7 @@
         },
         {
             "trigger_word": "OOF",
-            "sound": "https://files.catbox.moe/yjdoa2.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/OOF.ogg",
             "volume": 0.5,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -173,7 +173,7 @@
         },
         {
             "trigger_word": "TISM",
-            "sound": "https://files.catbox.moe/wm0w3i.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/TISM.ogg",
             "volume": 0.3,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -213,7 +213,7 @@
         },
         {
             "trigger_word": "BBnolikey",
-            "sound": "https://files.catbox.moe/b9zq4n.wav",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/BBnolikey.ogg",
             "volume": 0.2,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -221,7 +221,7 @@
         },
         {
             "trigger_word": "dinkDonk",
-            "sound": "https://files.catbox.moe/6bg937.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/dinkDonk_puck.ogg",
             "volume": 0.6,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -229,7 +229,7 @@
         },
         {
             "trigger_word": "CORRECT",
-            "sound": "https://files.catbox.moe/sn2j43.ogg",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/CORRECT.ogg",
             "volume": 0.25,
             "chance": "100%",
             "trigger_cooldown": 0,

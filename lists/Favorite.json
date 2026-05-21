@@ -18,7 +18,7 @@
         },
         {
             "trigger_word": "woof",
-            "sound": "https://files.catbox.moe/v9ztrl.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/woof.ogg",
             "volume": 0.5,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -58,7 +58,7 @@
         },
         {
             "trigger_word": "kok",
-            "sound": "https://files.catbox.moe/0u5muu.ogg",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/kok.ogg",
             "volume": 0.7,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -66,7 +66,7 @@
         },
         {
             "trigger_word": "AAAAAA",
-            "sound": "https://files.catbox.moe/mfzcje.ogg",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/AAAAAA.ogg",
             "volume": 0.2,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -98,7 +98,7 @@
         },
         {
             "trigger_word": "awoo",
-            "sound": "https://files.catbox.moe/vfn7nw.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/awoo_cat.ogg",
             "volume": 1,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -107,8 +107,8 @@
         {
             "trigger_word": "GroanTube",
             "sound": [
-                "https://files.catbox.moe/3o21r8.mp3",
-                "https://files.catbox.moe/xj9kgz.mp3"
+                "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/GroanTube1.ogg",
+                "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/GroanTube2.ogg"
             ],
             "volume": 0.7,
             "chance": "100%",
@@ -141,7 +141,7 @@
         },
         {
             "trigger_word": "Sadge",
-            "sound": "https://files.catbox.moe/evri8z.ogg",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/Sadge.ogg",
             "volume": 0.6,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -149,7 +149,7 @@
         },
         {
             "trigger_word": "fall",
-            "sound": "https://files.catbox.moe/iisozr.ogg",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/fall.ogg",
             "volume": 0.15,
             "chance": "100%",
             "trigger_cooldown": 0,

@@ -201,7 +201,7 @@
         },
         {
             "trigger_word": "meow",
-            "sound": "https://files.catbox.moe/kfcsyw.wav",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/meow_rin.ogg",
             "volume": 0.2,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -209,7 +209,7 @@
         },
         {
             "trigger_word": "chipichapa",
-            "sound": "https://files.catbox.moe/yjtjh1.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/chipichapa.ogg",
             "volume": 0.2,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -217,7 +217,7 @@
         },
         {
             "trigger_word": "Lobter",
-            "sound": "https://files.catbox.moe/40l8xj.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/LOBTER.ogg",
             "volume": 0.5,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -225,7 +225,7 @@
         },
         {
             "trigger_word": "amogus",
-            "sound": "https://files.catbox.moe/wetkc8.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/amogus.ogg",
             "volume": 0.3,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -241,7 +241,7 @@
         },
         {
             "trigger_word": "YIPPEE",
-            "sound": "https://files.catbox.moe/7llcq9.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/YIPPEE.ogg",
             "volume": 0.5,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -249,7 +249,7 @@
         },
         {
             "trigger_word": "waaa",
-            "sound": "https://files.catbox.moe/h9r0ru.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/waaa.ogg",
             "volume": 0.5,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -305,7 +305,7 @@
         },
         {
             "trigger_word": "boom",
-            "sound": "https://files.catbox.moe/87wvj0.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/boom.ogg",
             "volume": 0.5,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -346,8 +346,8 @@
         {
             "trigger_word": "GroanTube",
             "sound": [
-                "https://files.catbox.moe/3o21r8.mp3",
-                "https://files.catbox.moe/xj9kgz.mp3"
+                "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/GroanTube1.ogg",
+                "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/GroanTube2.ogg"
             ],
             "volume": 0.3,
             "chance": "100%",
@@ -380,7 +380,7 @@
         },
         {
             "trigger_word": "Wigglecat",
-            "sound": "https://files.catbox.moe/m3m66j.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/Wigglecat.ogg",
             "volume": 0.5,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -396,7 +396,7 @@
         },
         {
             "trigger_word": "????",
-            "sound": "https://files.catbox.moe/1fe8y1.ogg",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/questionmarks.ogg",
             "volume": 0.6,
             "chance": "100%",
             "trigger_cooldown": 0,

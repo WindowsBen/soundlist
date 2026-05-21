@@ -50,7 +50,7 @@
         },
         {
             "trigger_word": "fubuPlink",
-            "sound": "https://files.catbox.moe/d82l4m.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/plink.ogg",
             "volume": 0.5,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -82,7 +82,7 @@
         },
         {
             "trigger_word": "jah",
-            "sound": "https://files.catbox.moe/p7mgb0.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/jah.ogg",
             "volume": 0.5,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -98,7 +98,7 @@
         },
         {
             "trigger_word": "YEET",
-            "sound": "https://files.catbox.moe/dstzdk.ogg",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/YEET.ogg",
             "volume": 0.5,
             "chance": "100%",
             "trigger_cooldown": 0,

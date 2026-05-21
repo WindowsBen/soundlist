@@ -66,7 +66,7 @@
         },
         {
             "trigger_word": "Boshii",
-            "sound": "https://files.catbox.moe/bq8vw8.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/Boshii_ame.ogg",
             "volume": 0.4,
             "chance": "20%",
             "trigger_cooldown": 0,
@@ -74,7 +74,7 @@
         },
         {
             "trigger_word": "SUBSCRIBE",
-            "sound": "https://files.catbox.moe/6heisx.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/SUBSCRIBE.ogg",
             "volume": 0.4,
             "chance": "20%",
             "trigger_cooldown": 0,
@@ -82,7 +82,7 @@
         },
         {
             "trigger_word": "xqcSmash",
-            "sound": "https://files.catbox.moe/j1ut9i.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/xqcSmash.ogg",
             "volume": 0.4,
             "chance": "20%",
             "trigger_cooldown": 0,
@@ -122,7 +122,7 @@
         },
         {
             "trigger_word": "NICECOCK",
-            "sound": "https://files.catbox.moe/pjwvji.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/NICECOCK.ogg",
             "volume": 0.5,
             "chance": "20%",
             "trigger_cooldown": 0,
@@ -130,7 +130,7 @@
         },
         {
             "trigger_word": "Yitty",
-            "sound": "https://files.catbox.moe/2c590u.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/Yitty.ogg",
             "volume": 0.4,
             "chance": "20%",
             "trigger_cooldown": 0,
@@ -146,23 +146,15 @@
         },
         {
             "trigger_word": "AmeYAY",
-            "sound": "https://files.catbox.moe/nkb2bo.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/AmeYAY.ogg",
             "volume": 0.2,
             "chance": "20%",
             "trigger_cooldown": 0,
             "enabled": "true"
         },
         {
-            "trigger_word": "peepoLickBowserFeet",
-            "sound": "https://files.catbox.moe/usg705.mp3",
-            "volume": 0.8,
-            "chance": "20%",
-            "trigger_cooldown": 0,
-            "enabled": "true"
-        },
-        {
             "trigger_word": "would",
-            "sound": "https://files.catbox.moe/04ihnc.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/WOULD.ogg",
             "volume": 0.5,
             "chance": "10%",
             "trigger_cooldown": 0,
@@ -170,7 +162,7 @@
         },
         {
             "trigger_word": "WOULD",
-            "sound": "https://files.catbox.moe/04ihnc.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/WOULD.ogg",
             "volume": 0.5,
             "chance": "10%",
             "trigger_cooldown": 0,
@@ -178,7 +170,7 @@
         },
         {
             "trigger_word": "o7",
-            "sound": "https://files.catbox.moe/894yr3.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/o7.ogg",
             "volume": 0.5,
             "chance": "0.05%",
             "trigger_cooldown": 0,
@@ -186,7 +178,7 @@
         },
         {
             "trigger_word": "O7",
-            "sound": "https://files.catbox.moe/894yr3.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/o7.ogg",
             "volume": 0.5,
             "chance": "0.05%",
             "trigger_cooldown": 0,
@@ -194,7 +186,7 @@
         },
         {
             "trigger_word": "peepo7",
-            "sound": "https://files.catbox.moe/894yr3.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/o7.ogg",
             "volume": 0.5,
             "chance": "0.05%",
             "trigger_cooldown": 0,
@@ -202,7 +194,7 @@
         },
         {
             "trigger_word": "owo7",
-            "sound": "https://files.catbox.moe/894yr3.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/o7.ogg",
             "volume": 0.5,
             "chance": "0.05%",
             "trigger_cooldown": 0,
@@ -218,7 +210,7 @@
         },
         {
             "trigger_word": "Nyehehehe",
-            "sound": "https://files.catbox.moe/9lj7i2.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/Nyehehehe.ogg",
             "volume": 0.7,
             "chance": "20%",
             "trigger_cooldown": 0,
@@ -234,7 +226,7 @@
         },
         {
             "trigger_word": "YIPPEE",
-            "sound": "https://files.catbox.moe/7llcq9.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/YIPPEE.ogg",
             "volume": 0.8,
             "chance": "20%",
             "trigger_cooldown": 0,
@@ -242,7 +234,7 @@
         },
         {
             "trigger_word": "NOW",
-            "sound": "https://files.catbox.moe/nyx7w5.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/NOW.ogg",
             "volume": 0.7,
             "chance": "20%",
             "trigger_cooldown": 0,
@@ -251,10 +243,10 @@
         {
             "trigger_word": "StandingHere",
             "sound": [
-                "https://files.catbox.moe/lyxkik.ogg",
-                "https://files.catbox.moe/4xwpag.ogg",
-                "https://files.catbox.moe/0h22n1.ogg",
-                "https://files.catbox.moe/2eogx5.ogg"
+                "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/StandingHere1.ogg",
+                "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/StandingHere2.ogg",
+                "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/StandingHere3.ogg",
+                "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/StandingHere4.ogg"
             ],
             "volume": 0.2,
             "chance": "20%",
@@ -264,10 +256,10 @@
         {
             "trigger_word": "STANDINGHERE",
             "sound": [
-                "https://files.catbox.moe/lyxkik.ogg",
-                "https://files.catbox.moe/4xwpag.ogg",
-                "https://files.catbox.moe/0h22n1.ogg",
-                "https://files.catbox.moe/2eogx5.ogg"
+                "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/StandingHere1.ogg",
+                "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/StandingHere2.ogg",
+                "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/StandingHere3.ogg",
+                "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/StandingHere4.ogg"
             ],
             "volume": 0.2,
             "chance": "20%",
