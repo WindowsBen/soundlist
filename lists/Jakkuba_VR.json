@@ -2,7 +2,7 @@
     "sounds": [
         {
             "trigger_word": "LMAO",
-            "sound": "https://files.catbox.moe/f4lb61.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/LMAO.ogg",
             "volume": 0.2,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -10,7 +10,7 @@
         },
         {
             "trigger_word": "plink",
-            "sound": "https://files.catbox.moe/5ueqq1.ogg",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/plink.ogg",
             "volume": 0.4,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -18,7 +18,7 @@
         },
         {
             "trigger_word": "plonk",
-            "sound": "https://files.catbox.moe/uw9by3.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/plonk.ogg",
             "volume": 0.5,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -26,7 +26,7 @@
         },
         {
             "trigger_word": "SNIFFA",
-            "sound": "https://files.catbox.moe/gsd6cv.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/SNIFFA.ogg",
             "volume": 0.2,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -34,7 +34,7 @@
         },
         {
             "trigger_word": "KEKW",
-            "sound": "https://files.catbox.moe/o7iapi.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/KEKW.ogg",
             "volume": 0.5,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -42,7 +42,7 @@
         },
         {
             "trigger_word": "Clap",
-            "sound": "https://files.catbox.moe/ue4pys.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/clappi.ogg",
             "volume": 0.1,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -50,7 +50,7 @@
         },
         {
             "trigger_word": "Clap2",
-            "sound": "https://files.catbox.moe/ue4pys.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/clappi.ogg",
             "volume": 0.1,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -58,7 +58,7 @@
         },
         {
             "trigger_word": "clappi",
-            "sound": "https://files.catbox.moe/ue4pys.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/clappi.ogg",
             "volume": 0.1,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -66,7 +66,7 @@
         },
         {
             "trigger_word": "FISH",
-            "sound": "https://files.catbox.moe/ey7pj9.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/FISH.ogg",
             "volume": 0.4,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -74,7 +74,7 @@
         },
         {
             "trigger_word": "Piston",
-            "sound": "https://files.catbox.moe/gjy888.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/piston.ogg",
             "volume": 0.4,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -82,7 +82,7 @@
         },
         {
             "trigger_word": "JAKKU",
-            "sound": "https://files.catbox.moe/3ygs0r.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/JAKKU.ogg",
             "volume": 0.5,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -90,7 +90,7 @@
         },
         {
             "trigger_word": "wiwiwi",
-            "sound": "https://files.catbox.moe/10unmm.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/wiwiwi.ogg",
             "volume": 0.4,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -98,7 +98,7 @@
         },
         {
             "trigger_word": "jakkuJorkin",
-            "sound": "https://files.catbox.moe/vmuuuc.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/jorkin.ogg",
             "volume": 0.8,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -106,11 +106,11 @@
         },
         {
             "trigger_word": "DOOT",
-            "sound": "https://files.catbox.moe/bkstmh.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/krisuDoot.ogg",
             "volume": 0.4,
             "chance": "100%",
             "trigger_cooldown": 0,
             "enabled": "true"
         }
-	]
+    ]
 }

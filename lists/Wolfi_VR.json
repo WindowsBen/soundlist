@@ -2,7 +2,7 @@
     "sounds": [
         {
             "trigger_word": "wiwiwi",
-            "sound": "https://files.catbox.moe/10unmm.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/wiwiwi.ogg",
             "volume": 0.5,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -10,7 +10,7 @@
         },
         {
             "trigger_word": "lizard",
-            "sound": "https://files.catbox.moe/z4tbs6.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/lizard.ogg",
             "volume": 0.7,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -18,7 +18,7 @@
         },
         {
             "trigger_word": "SNIFFA",
-            "sound": "https://files.catbox.moe/gsd6cv.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/SNIFFA.ogg",
             "volume": 0.2,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -26,7 +26,7 @@
         },
         {
             "trigger_word": "moo",
-            "sound": "https://files.catbox.moe/fals5a.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/moo.ogg",
             "volume": 0.8,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -34,7 +34,7 @@
         },
         {
             "trigger_word": "meow",
-            "sound": "https://files.catbox.moe/78ji7b.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/meow.ogg",
             "volume": 0.3,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -42,7 +42,7 @@
         },
         {
             "trigger_word": "crunch",
-            "sound": "https://files.catbox.moe/wzlf20.webm",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/crunch.ogg",
             "volume": 0.5,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -50,7 +50,7 @@
         },
         {
             "trigger_word": "plonk",
-            "sound": "https://files.catbox.moe/uw9by3.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/plonk.ogg",
             "volume": 0.5,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -58,7 +58,7 @@
         },
         {
             "trigger_word": "plink",
-            "sound": "https://files.catbox.moe/5ueqq1.ogg",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/plink.ogg",
             "volume": 0.5,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -82,7 +82,7 @@
         },
         {
             "trigger_word": "HUH",
-            "sound": "https://files.catbox.moe/3tnsit.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/HUH.ogg",
             "volume": 0.1,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -106,7 +106,7 @@
         },
         {
             "trigger_word": "MYAA",
-            "sound": "https://files.catbox.moe/2umwk6.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/MYAA.ogg",
             "volume": 0.4,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -122,7 +122,7 @@
         },
         {
             "trigger_word": "fish",
-            "sound": "https://files.catbox.moe/ey7pj9.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/FISH.ogg",
             "volume": 0.3,
             "chance": "100%",
             "trigger_cooldown": 0,

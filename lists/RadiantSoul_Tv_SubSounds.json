@@ -36,29 +36,29 @@
             "trigger_word": "ssoulDoinDaCatJiggleThing",
             "sound": [
                 {
-                "clip": "https://files.catbox.moe/f7x8cw.ogg",
-                "volume": 0.2,
-                "chance": "3.3%"
+                    "clip": "https://files.catbox.moe/f7x8cw.ogg",
+                    "volume": 0.2,
+                    "chance": "3.3%"
                 },
                 {
-                "clip": "https://files.catbox.moe/zan966.ogg",
-                "volume": 0.54,
-                "chance": "3.3%"
+                    "clip": "https://files.catbox.moe/zan966.ogg",
+                    "volume": 0.54,
+                    "chance": "3.3%"
                 },
-                {    
-                "clip": "https://files.catbox.moe/nd2wz3.ogg",
-                "volume": 0.29,
-                "chance": "3.3%"
+                {
+                    "clip": "https://files.catbox.moe/nd2wz3.ogg",
+                    "volume": 0.29,
+                    "chance": "3.3%"
                 },
-                {    
-                "clip": "https://files.catbox.moe/8k0kca.ogg",
-                "volume": 0.3,
-                "chance": "3.3%"
+                {
+                    "clip": "https://files.catbox.moe/8k0kca.ogg",
+                    "volume": 0.3,
+                    "chance": "3.3%"
                 },
-                {    
-                "clip": "https://files.catbox.moe/mlw8ju.ogg",
-                "volume": 0.3,
-                "chance": "86.8%"
+                {
+                    "clip": "https://files.catbox.moe/mlw8ju.ogg",
+                    "volume": 0.3,
+                    "chance": "86.8%"
                 }
             ],
             "volume": 0.5,
@@ -69,10 +69,10 @@
         {
             "trigger_word": "ssoulBark",
             "sound": [
-                        "https://files.catbox.moe/t82ghv.ogg",
-                        "https://files.catbox.moe/k31knu.ogg",
-                        "https://files.catbox.moe/ouvz23.ogg"
-                     ],
+                "https://files.catbox.moe/t82ghv.ogg",
+                "https://files.catbox.moe/k31knu.ogg",
+                "https://files.catbox.moe/ouvz23.ogg"
+            ],
             "volume": 0.3,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -80,11 +80,11 @@
         },
         {
             "trigger_word": "ssoulMeow",
-            "sound":  [
-                        "https://files.catbox.moe/6r03h6.ogg",
-                        "https://files.catbox.moe/1voscg.ogg",
-                        "https://files.catbox.moe/bgur2i.ogg"
-                      ],
+            "sound": [
+                "https://files.catbox.moe/6r03h6.ogg",
+                "https://files.catbox.moe/1voscg.ogg",
+                "https://files.catbox.moe/bgur2i.ogg"
+            ],
             "volume": 0.3,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -109,9 +109,9 @@
         {
             "trigger_word": "ssoulSniffa",
             "sound": [
-                        "https://files.catbox.moe/k2jsv5.ogg",
-                        "https://files.catbox.moe/4xwpag.ogg"
-                ],
+                "https://files.catbox.moe/k2jsv5.ogg",
+                "https://files.catbox.moe/4xwpag.ogg"
+            ],
             "volume": 0.25,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -127,16 +127,16 @@
         },
         {
             "trigger_word": "ssoulKissAHomie",
-            "sound" : [
+            "sound": [
                 {
-                "clip": "https://files.catbox.moe/fawrjk.ogg",
-                "volume": 0.29,
-                "chance": "5%"
+                    "clip": "https://files.catbox.moe/fawrjk.ogg",
+                    "volume": 0.29,
+                    "chance": "5%"
                 },
                 {
-                "clip": "https://files.catbox.moe/fwjts4.ogg",
-                "volume": 0.35,
-                "chance": "95%"
+                    "clip": "https://files.catbox.moe/fwjts4.ogg",
+                    "volume": 0.35,
+                    "chance": "95%"
                 }
             ],
             "volume": 0.5,

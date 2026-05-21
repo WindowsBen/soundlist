@@ -22,7 +22,7 @@
                 "https://files.catbox.moe/yl7cd8.ogg",
                 "https://files.catbox.moe/egq6nn.ogg",
                 "https://files.catbox.moe/y1wqv5.ogg"
-                 ],
+            ],
             "volume": 0.25,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -30,11 +30,11 @@
         },
         {
             "trigger_word": "catSilly",
-            "sound":  [
+            "sound": [
                 "https://files.catbox.moe/rodrjs.ogg",
                 "https://files.catbox.moe/7wuxur.ogg",
                 "https://files.catbox.moe/dxca0p.ogg"
-                ],
+            ],
             "volume": 0.26,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -162,7 +162,7 @@
         },
         {
             "trigger_word": "plink",
-            "sound": "https://files.catbox.moe/5ueqq1.ogg",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/plink.ogg",
             "volume": 0.3,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -238,7 +238,7 @@
                 "https://files.catbox.moe/9ksk5x.ogg",
                 "https://files.catbox.moe/erxhzz.ogg",
                 "https://files.catbox.moe/58ntmy.ogg"
-                ],
+            ],
             "volume": 0.36,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -274,7 +274,7 @@
                 "https://files.catbox.moe/7rzlp7.ogg",
                 "https://files.catbox.moe/38n8j5.ogg",
                 "https://files.catbox.moe/g67xsu.ogg"
-                ],
+            ],
             "volume": 0.35,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -358,7 +358,7 @@
                 "https://files.catbox.moe/zu1ek9.ogg",
                 "https://files.catbox.moe/zu1ek9.ogg",
                 "https://files.catbox.moe/tu82i6.ogg"
-                ],
+            ],
             "volume": 0.28,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -370,7 +370,7 @@
                 "https://files.catbox.moe/11ve8y.ogg",
                 "https://files.catbox.moe/5c1l7r.ogg",
                 "https://files.catbox.moe/12pm5d.ogg"
-                ],
+            ],
             "volume": 0.26,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -382,7 +382,7 @@
                 "https://files.catbox.moe/l1yu30.ogg",
                 "https://files.catbox.moe/6x9s6z.ogg",
                 "https://files.catbox.moe/z2an60.ogg"
-                ],
+            ],
             "volume": 0.29,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -398,7 +398,7 @@
         },
         {
             "trigger_word": "rune",
-            "sound": "https://files.catbox.moe/j7ddgz.mp3",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/rune.ogg",
             "volume": 0.6,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -420,5 +420,5 @@
             "trigger_cooldown": 0,
             "enabled": "true"
         }
-	]
+    ]
 }
