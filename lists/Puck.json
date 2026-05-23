@@ -19,7 +19,7 @@
         {
             "trigger_word": "BUZZER",
             "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/BUZZER.ogg",
-            "volume": 0.2,
+            "volume": 0.15,
             "chance": "100%",
             "trigger_cooldown": 0,
             "enabled": "true"
