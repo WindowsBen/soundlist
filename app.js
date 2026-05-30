@@ -142,8 +142,10 @@ async function resolve7TVEmote(sevenTvUrl) {
     if (!match) return null;
 
     const emoteId = match[1];
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 10000);
     try {
-        const res = await fetch(`https://7tv.io/v3/emotes/${emoteId}`);
+        const res = await fetch(`https://7tv.io/v3/emotes/${emoteId}`, { signal: controller.signal });
         if (!res.ok) return null;
         const data = await res.json();
         if (!data?.id) return null;
@@ -155,7 +157,9 @@ async function resolve7TVEmote(sevenTvUrl) {
         emoteCache.set(sevenTvUrl, resolved);
         return resolved;
     } catch {
-        return null; // network error or bad JSON (e.g. 502) — fall back to default emote image
+        return null; // timeout, network error, or bad JSON — fall back to default emote image
+    } finally {
+        clearTimeout(timeout);
     }
 }
 
