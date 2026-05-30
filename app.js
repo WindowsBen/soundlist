@@ -142,17 +142,21 @@ async function resolve7TVEmote(sevenTvUrl) {
     if (!match) return null;
 
     const emoteId = match[1];
-    const res = await fetch(`https://7tv.io/v3/emotes/${emoteId}`);
-    const data = await res.json();
-
-    const resolved = {
-        image: `https://cdn.7tv.app/emote/${data.id}/4x.webp`,
-        link: sevenTvUrl,
-        name: data.name
-    };
-
-    emoteCache.set(sevenTvUrl, resolved);
-    return resolved;
+    try {
+        const res = await fetch(`https://7tv.io/v3/emotes/${emoteId}`);
+        if (!res.ok) return null;
+        const data = await res.json();
+        if (!data?.id) return null;
+        const resolved = {
+            image: `https://cdn.7tv.app/emote/${data.id}/4x.webp`,
+            link: sevenTvUrl,
+            name: data.name
+        };
+        emoteCache.set(sevenTvUrl, resolved);
+        return resolved;
+    } catch {
+        return null; // network error or bad JSON (e.g. 502) — fall back to default emote image
+    }
 }
 
 // ================== RESOURCE LOADING ==================
