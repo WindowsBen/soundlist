@@ -319,6 +319,14 @@
             "chance": "100%",
             "trigger_cooldown": 0,
             "enabled": "true"
+        },
+        {
+            "trigger_word": "????",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/AUGH.ogg",
+            "volume": 1,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
         }
     ]
 }
