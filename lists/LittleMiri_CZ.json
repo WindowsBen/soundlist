@@ -817,7 +817,7 @@
         },
         {
             "trigger_word": "67",
-            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/67.ogg",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/SixSeven.ogg",
             "volume": 0.5,
             "chance": "100%",
             "trigger_cooldown": 0,
