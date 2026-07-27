@@ -25,6 +25,7 @@ const FALLBACK_USER_FILES = {
     SKTKawaiiNeko:      "lists/SKTKawaiiNeko.json",
     Taletrap:           "lists/Taletrap.json",
     Totless:            "lists/Totless.json",
+    venomssk:           "lists/venomssk.json",
     Wolfi_VR:           "lists/Wolfi_VR.json"
 };
 
