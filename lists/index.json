@@ -16,11 +16,12 @@
     "Luuna":              "lists/Luuna.json",
     "Puck":               "lists/Puck.json",
     "PuertoRicanPup":     "lists/PuertoRicanPup.json",
-    "RadiantSoul_Tv":     "lists/RadiantSoul_Tv.json",
-    "RadiantSoul_Tv_Sub": "lists/RadiantSoul_Tv_SubSounds.json",
+    "HeyImSoul"     :     "lists/HeyImSoul.json",
+    "HeyImSoul_Sub":      "lists/HeyImSoul_SubSounds.json",
     "RinMunchkin":        "lists/RinMunchkin.json",
     "SKTKawaiiNeko":      "lists/SKTKawaiiNeko.json",
     "Taletrap":           "lists/Taletrap.json",
     "Totless":            "lists/Totless.json",
+    "venomssk":           "lists/venomssk.json",
     "Wolfi_VR":           "lists/Wolfi_VR.json"
 }
