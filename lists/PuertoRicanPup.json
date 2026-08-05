@@ -293,7 +293,7 @@
         },
         {
             "trigger_word": "TruthMeter",
-            "sound": "https://files.catbox.moe/2nyzeu.ogg",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/TruthMeter.ogg",
             "volume": 0.09,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -301,7 +301,7 @@
         },
         {
             "trigger_word": "TheVoices",
-            "sound": "https://files.catbox.moe/80jibw.ogg",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/TruthMeter.ogg",
             "volume": 0.39,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -309,7 +309,7 @@
         },
         {
             "trigger_word": "maow",
-            "sound": "https://files.catbox.moe/yf3wm7.ogg",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/maow.ogg",
             "volume": 0.35,
             "chance": "100%",
             "trigger_cooldown": 0,
@@ -318,9 +318,9 @@
         {
             "trigger_word": "Widehiii",
             "sound": [
-                "https://files.catbox.moe/9ksk5x.ogg",
-                "https://files.catbox.moe/erxhzz.ogg",
-                "https://files.catbox.moe/58ntmy.ogg"
+                "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/TruthMeter.ogg",
+                "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/Widehiii_2.ogg",
+                "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/Widehiii_3.ogg"
             ],
             "volume": 0.36,
             "chance": "100%",
@@ -329,7 +329,7 @@
         },
         {
             "trigger_word": "burned",
-            "sound": "https://files.catbox.moe/e7uwej.ogg",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/burned.ogg",
             "volume": 0.16,
             "chance": "100%",
             "trigger_cooldown": 0,
