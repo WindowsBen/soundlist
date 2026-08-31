@@ -710,8 +710,14 @@ async function displaySoundList(list, user) {
       if (capturedTrigger in overrides) {
         const override = overrides[capturedTrigger];
         if (override === null) {
-          emoteImg.src     = "https://files.catbox.moe/ab5icu.png";
-          emoteAnchor.href = override;
+          // Just a plain word — hide image, show a text badge instead
+          emoteImg.style.display = "none";
+          const wordBadge = document.createElement("span");
+          wordBadge.className   = "word-badge";
+          wordBadge.textContent = capturedTrigger;
+          emoteAnchor.appendChild(wordBadge);
+          emoteAnchor.style.pointerEvents = "none";
+          emoteAnchor.style.cursor        = "default";
         } else {
           // Manual image URL
           emoteImg.src     = override;
