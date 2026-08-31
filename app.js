@@ -17,6 +17,7 @@ const FALLBACK_USER_FILES = {
   Krisuna: "lists/Krisuna.json",
   Kromia: "lists/Kromia.json",
   La_Wafflez: "lists/La_Wafflez.json",
+  Leafions: "lists/Leafions.json",
   LittleMiri_CZ: "lists/LittleMiri_CZ.json",
   Luuna: "lists/Luuna.json",
   Puck: "lists/Puck.json",
