@@ -467,15 +467,15 @@ window.addEventListener("hashchange", () => {
     else displayUserLists();
 });
 
-// ================== DARK/LIGHT MODE ==================
-const darkModeSwitch = document.getElementById("darkModeSwitch").querySelector("input");
-darkModeSwitch.checked = document.body.classList.contains("lightmode");
-darkModeSwitch.addEventListener("change", () => {
-    document.body.classList.toggle("lightmode", darkModeSwitch.checked);
-});
-
 // ================== INIT ==================
 window.addEventListener("DOMContentLoaded", async () => {
+    // Dark/light mode — must run after DOM is ready
+    const darkModeSwitch = document.getElementById("darkModeSwitch").querySelector("input");
+    darkModeSwitch.checked = document.body.classList.contains("lightmode");
+    darkModeSwitch.addEventListener("change", () => {
+        document.body.classList.toggle("lightmode", darkModeSwitch.checked);
+    });
+
     document.getElementById("list").innerHTML = "<p class='loading-msg'>Loading...</p>";
     await loadResources();
     try {
