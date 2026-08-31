@@ -19,7 +19,7 @@
         {
             "trigger_word": "HUH",
             "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/questionmarks.ogg",
-            "volume": 0.5,
+            "volume": 0.2,
             "chance": "100%",
             "trigger_cooldown": 0,
             "enabled": "true"
@@ -36,6 +36,22 @@
             "trigger_word": "GULP",
             "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/gulp.ogg",
             "volume": 0.2,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "plonk",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/plonk.ogg",
+            "volume": 0.4,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "true"
+        },
+        {
+            "trigger_word": "plink",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/plink.ogg",
+            "volume": 0.4,
             "chance": "100%",
             "trigger_cooldown": 0,
             "enabled": "true"
