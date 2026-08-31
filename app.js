@@ -7,6 +7,7 @@ let userFiles = {};
 let avatars = {};
 const listCache     = new Map(); // cache parsed JSON per user after first load
 const emoteMapCache = new Map(); // cache 7TV emote maps per user
+const overrideCache = new Map(); // cache per-streamer manual overrides
 const globalSources = []; // all active AudioBufferSourceNodes
 let _renderGen = 0; // incremented on every navigation; aborts stale async renders
 
@@ -149,6 +150,32 @@ async function fetchUserEmotes(username) {
 
   emoteMapCache.set(username, emoteMap);
   return emoteMap;
+}
+
+// ================== OVERRIDE LOADING ==================
+//
+// Per-streamer manual overrides live in lists/overrides/{username}.json
+// Format: { "triggerWord": "https://image-url" | null }
+//   - A URL:  use this image instead of whatever 7TV would return
+//   - null:   this trigger is just a word — show a text badge, no image
+//
+// The file is optional — if it doesn't exist, nothing changes for that streamer.
+
+async function fetchOverrides(username) {
+  if (overrideCache.has(username)) return overrideCache.get(username);
+  try {
+    const res = await fetch(`lists/overrides/${username}.json`, { cache: "no-cache" });
+    if (!res.ok) {
+      overrideCache.set(username, {});
+      return {};
+    }
+    const data = await res.json();
+    overrideCache.set(username, data);
+    return data;
+  } catch {
+    overrideCache.set(username, {});
+    return {};
+  }
 }
 
 // ================== RESOURCE LOADING ==================
@@ -389,9 +416,11 @@ async function displaySoundList(list, user) {
     });
   });
 
-  // Start fetching this user's 7TV emotes — one request shared across all cards.
-  // Cards render immediately; images fill in once the fetch resolves.
-  const emoteMapPromise = fetchUserEmotes(user);
+  // Start fetching 7TV emotes and manual overrides before the loop —
+  // both are shared across all cards. Cards render immediately; images fill
+  // in once the fetches resolve. Overrides take priority over 7TV.
+  const emoteMapPromise  = fetchUserEmotes(user);
+  const overridesPromise = fetchOverrides(user);
 
   for (const item of list) {
     if (!item.enabled || item.enabled !== "true") continue;
@@ -671,14 +700,29 @@ async function displaySoundList(list, user) {
     soundGrid.appendChild(div);
     emoteDivs.push({ div, trigger_word: item.trigger_word.toLowerCase() });
 
-    // Resolve emote image from 7TV — fills in once the shared fetch resolves.
-    // Same-name emotes on different streamers correctly show that streamer's version.
-    const capturedGen = myGen;
+    // Resolve emote image — overrides take priority, then 7TV, then fallback.
+    const capturedGen     = myGen;
     const capturedTrigger = item.trigger_word;
-    emoteMapPromise.then((emoteMap) => {
+    Promise.all([emoteMapPromise, overridesPromise]).then(([emoteMap, overrides]) => {
       if (_renderGen !== capturedGen) return; // navigated away — discard
-      const entry = emoteMap.get(capturedTrigger.toLowerCase());
-      emoteImg.src    = entry?.imageUrl ?? FALLBACK_EMOTE_IMAGE;
+
+      // 1. Check manual override
+      if (capturedTrigger in overrides) {
+        const override = overrides[capturedTrigger];
+        if (override === null) {
+          emoteImg.src     = "https://files.catbox.moe/ab5icu.png";
+          emoteAnchor.href = override;
+        } else {
+          // Manual image URL
+          emoteImg.src     = override;
+          emoteAnchor.href = override;
+        }
+        return;
+      }
+
+      // 2. Fall back to 7TV
+      const entry      = emoteMap.get(capturedTrigger.toLowerCase());
+      emoteImg.src     = entry?.imageUrl ?? FALLBACK_EMOTE_IMAGE;
       emoteAnchor.href = entry?.pageUrl  ?? "#";
     });
   }
