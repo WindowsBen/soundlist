@@ -6,7 +6,7 @@
             "volume": 0.5,
             "chance": "100%",
             "trigger_cooldown": 0,
-            "enabled": "true"
+            "enabled": "false"
         },
         {
             "trigger_word": "clappi",
@@ -14,7 +14,7 @@
             "volume": 0.1,
             "chance": "100%",
             "trigger_cooldown": 0,
-            "enabled": "true"
+            "enabled": "false"
         },
         {
             "trigger_word": "HUH",
@@ -22,7 +22,7 @@
             "volume": 0.2,
             "chance": "100%",
             "trigger_cooldown": 0,
-            "enabled": "true"
+            "enabled": "false"
         },
         {
             "trigger_word": "sniper",
@@ -30,7 +30,7 @@
             "volume": 0.5,
             "chance": "100%",
             "trigger_cooldown": 0,
-            "enabled": "true"
+            "enabled": "false"
         },
         {
             "trigger_word": "GULP",
@@ -38,7 +38,7 @@
             "volume": 0.2,
             "chance": "100%",
             "trigger_cooldown": 0,
-            "enabled": "true"
+            "enabled": "false"
         },
         {
             "trigger_word": "plonk",
@@ -46,7 +46,7 @@
             "volume": 0.4,
             "chance": "100%",
             "trigger_cooldown": 0,
-            "enabled": "true"
+            "enabled": "false"
         },
         {
             "trigger_word": "plink",
@@ -54,7 +54,7 @@
             "volume": 0.4,
             "chance": "100%",
             "trigger_cooldown": 0,
-            "enabled": "true"
+            "enabled": "false"
         },
         {
             "trigger_word": "wiwiwi",
@@ -62,7 +62,7 @@
             "volume": 0.4,
             "chance": "100%",
             "trigger_cooldown": 0,
-            "enabled": "true"
+            "enabled": "false"
         },
         {
             "trigger_word": "LMAO",
@@ -70,12 +70,20 @@
             "volume": 0.05,
             "chance": "100%",
             "trigger_cooldown": 0,
-            "enabled": "true"
+            "enabled": "false"
         },
         {
             "trigger_word": "muhehehe",
             "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/Muhehe.ogg",
             "volume": 0.5,
+            "chance": "100%",
+            "trigger_cooldown": 0,
+            "enabled": "false"
+        },
+        {
+            "trigger_word": "HeyCanIHaveThis",
+            "sound": "https://pub-c49a4bdf348c4d8a9f4415aa3a1551c4.r2.dev/heycanihavethis.ogg",
+            "volume": 0.4,
             "chance": "100%",
             "trigger_cooldown": 0,
             "enabled": "true"
