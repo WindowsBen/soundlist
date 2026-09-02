@@ -1,0 +1,328 @@
+/* ===== Shared Card Glow Divs ===== */
+/* https://uiverse.io/SouravBandyopadhyay/rude-tiger-29 (adapted) */
+.notiglow,
+.notiborderglow {
+  position: absolute;
+  width: 20rem;
+  height: 20rem;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle closest-side at center, white, transparent);
+  opacity: 0;
+  transition: opacity 300ms ease;
+  pointer-events: none;
+}
+.notiglow       { z-index: 3; }
+.notiborderglow { z-index: 1; }
+
+/* ===== Sound Item Cards ===== */
+.sound-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 22px 14px 14px;
+  isolation: isolate;
+  position: relative;
+  border-radius: 1rem;
+  background: #29292c;
+  overflow: hidden;
+  --gradient: linear-gradient(to right, #2eadff, #3d83ff, #7e61ff);
+  --color: #32a6ff;
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.2s ease;
+  cursor: pointer;
+}
+.sound-item:hover { transform: translateY(-2px); }
+
+.sound-item::before {
+  position: absolute;
+  content: "";
+  inset: 0.0625rem;
+  border-radius: 0.9375rem;
+  background: #18181b;
+  z-index: 2;
+}
+.sound-item::after {
+  position: absolute;
+  content: "";
+  height: 0.25rem;
+  inset: 0.5rem 0.65rem auto 0.65rem;
+  border-radius: 0.125rem;
+  background: var(--gradient);
+  transition: transform 300ms ease;
+  z-index: 4;
+}
+.sound-item:hover::after      { transform: translateY(0.15rem); }
+.sound-item:hover .notiglow   { opacity: 0.1; }
+.sound-item:hover .notiborderglow { opacity: 0.1; }
+
+.sound-item img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    border-color 0.3s ease;
+  position: relative;
+  z-index: 5;
+  border: 2px solid rgba(50, 166, 255, 0.2);
+}
+.sound-item img:hover {
+  transform: scale(1.1);
+  border-color: var(--color);
+}
+
+.sound-item > a  { position: relative; z-index: 5; }
+
+.sound-item strong {
+  color: var(--color);
+  display: block;
+  font-size: 1rem;
+  word-break: break-all;
+}
+
+.sound-item .sound-text span,
+.sound-item .sound-text a {
+  position: relative;
+  z-index: 5;
+}
+
+.sound-item a {
+  color: #99999d;
+  text-decoration: underline;
+}
+
+/* Sound text & controls layout */
+.sound-text {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 10px;
+  overflow: hidden;
+  position: relative;
+  z-index: 5;
+}
+.sound-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 5px;
+  width: 100%;
+  position: relative;
+  z-index: 5;
+}
+
+/* ===== Playing State ===== */
+.sound-item.playing {
+  background: #3d1a7a;
+  animation: playingPulse 1.2s ease-in-out infinite;
+}
+body.lightmode .sound-item.playing {
+  background: #8855cc;
+  animation: playingPulseLight 1.2s ease-in-out infinite;
+}
+@keyframes playingPulse {
+  0%, 100% { box-shadow: 0 0 12px 3px rgba(130, 80, 255, 0.6); }
+  50%       { box-shadow: 0 0 24px 8px rgba(130, 80, 255, 0.9); }
+}
+@keyframes playingPulseLight {
+  0%, 100% { box-shadow: 0 0 12px 3px rgba(60, 0, 200, 0.4); }
+  50%       { box-shadow: 0 0 24px 8px rgba(60, 0, 200, 0.7); }
+}
+
+/* ===== Error Flash ===== */
+.sound-item.sound-error {
+  animation: errorFlash 0.8s ease forwards !important;
+}
+@keyframes errorFlash {
+  0%   { box-shadow: 0 0 20px 4px rgba(255, 68, 68, 0.9); }
+  100% { box-shadow: none; }
+}
+
+/* ===== Light Mode — Sound Cards ===== */
+body.lightmode .sound-item             { background: #c4c4c8; }
+body.lightmode .sound-item::before     { background: #f8f8fa; }
+body.lightmode .sound-item strong      { color: #0077cc; }
+body.lightmode .sound-item .sound-text span,
+body.lightmode .sound-item .sound-text a,
+body.lightmode .sound-item .sound-user-text span { color: #555558; }
+body.lightmode .sound-item a           { color: #0077cc; }
+
+/* ===== Sound Grid ===== */
+.sound-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+/* ===== Streamer Cards ===== */
+.streamer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+  gap: 14px;
+}
+
+.streamer-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 22px 14px 16px;
+  text-align: center;
+  isolation: isolate;
+  position: relative;
+  border-radius: 1rem;
+  background: #29292c;
+  overflow: hidden;
+  cursor: pointer;
+  --gradient: linear-gradient(to right, #2eadff, #3d83ff, #7e61ff);
+  --color: #32a6ff;
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.2s ease;
+}
+.streamer-card:hover { transform: translateY(-3px); }
+
+.streamer-card::before {
+  position: absolute;
+  content: "";
+  inset: 0.0625rem;
+  border-radius: 0.9375rem;
+  background: #18181b;
+  z-index: 2;
+}
+.streamer-card::after {
+  position: absolute;
+  content: "";
+  height: 0.25rem;
+  inset: 0.5rem 0.65rem auto 0.65rem;
+  border-radius: 0.125rem;
+  background: var(--gradient);
+  transition: transform 300ms ease;
+  z-index: 4;
+}
+.streamer-card:hover::after          { transform: translateY(0.15rem); }
+.streamer-card:hover .notiglow       { opacity: 0.1; }
+.streamer-card:hover .notiborderglow { opacity: 0.1; }
+
+.streamer-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 5;
+  border: 2px solid rgba(50, 166, 255, 0.25);
+  transition:
+    border-color 0.3s ease,
+    transform 0.2s ease;
+}
+.streamer-card:hover .streamer-avatar {
+  border-color: var(--color);
+  transform: scale(1.05);
+}
+
+.streamer-card-name {
+  color: var(--color);
+  font-size: 0.9rem;
+  font-weight: 600;
+  position: relative;
+  z-index: 5;
+  margin-bottom: 6px;
+  word-break: break-all;
+}
+
+.sound-count-badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: rgba(50, 166, 255, 0.12);
+  color: #99999d;
+  font-size: 11px;
+  position: relative;
+  z-index: 5;
+}
+
+/* ===== JSON Link ===== */
+.json-link {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(50, 166, 255, 0.3);
+  color: #99999d;
+  font-size: 11px;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  text-decoration: none;
+  position: relative;
+  z-index: 5;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+.json-link:hover {
+  color: #32a6ff;
+  border-color: #32a6ff;
+  background: rgba(50, 166, 255, 0.12);
+}
+.card-json-link   { margin-top: 6px; }
+.header-json-link { flex-shrink: 0; }
+
+/* ===== Light Mode — Streamer Cards ===== */
+body.lightmode .streamer-card              { background: #c4c4c8; }
+body.lightmode .streamer-card::before     { background: #f8f8fa; }
+body.lightmode .streamer-card-name        { color: #0077cc; }
+body.lightmode .sound-count-badge         { background: rgba(0, 119, 204, 0.1); color: #555558; }
+body.lightmode .json-link                 { border-color: rgba(0, 119, 204, 0.3); color: #555558; }
+body.lightmode .json-link:hover           { color: #0077cc; border-color: #0077cc; background: rgba(0, 119, 204, 0.1); }
+
+/* ===== Glass Panel (wraps card lists) ===== */
+.list-panel {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(8px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 16px;
+}
+body.lightmode .list-panel {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+/* ===== Sound List Header ===== */
+.sound-list-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.streamer-info-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+.header-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 2px solid rgba(50, 166, 255, 0.4);
+}
+.header-username {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #32a6ff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+body.lightmode .header-avatar   { border-color: rgba(0, 119, 204, 0.4); }
+body.lightmode .header-username { color: #0077cc; }
