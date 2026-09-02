@@ -1,6 +1,9 @@
 // ================== CONFIG ==================
 // TODO: move this fallback image to R2
 const FALLBACK_EMOTE_IMAGE = "https://files.catbox.moe/ab5icu.png";
+// Image shown for triggers that are plain words (no emote)
+// TODO: move this to R2 too
+const NO_EMOTE_IMAGE = "https://files.catbox.moe/96r127.png";
 
 // ================== STATE ==================
 let userFiles = {};
@@ -710,14 +713,11 @@ async function displaySoundList(list, user) {
       if (capturedTrigger in overrides) {
         const override = overrides[capturedTrigger];
         if (override === null) {
-          // Just a plain word — hide image, show a text badge instead
-          emoteImg.style.display = "none";
-          const wordBadge = document.createElement("span");
-          wordBadge.className   = "word-badge";
-          wordBadge.textContent = capturedTrigger;
-          emoteAnchor.appendChild(wordBadge);
+          // Plain word trigger — show the no-emote placeholder image
+          emoteImg.src             = NO_EMOTE_IMAGE;
+          emoteAnchor.href         = "#";
+          emoteAnchor.style.cursor = "default";
           emoteAnchor.style.pointerEvents = "none";
-          emoteAnchor.style.cursor        = "default";
         } else {
           // Manual image URL
           emoteImg.src     = override;
